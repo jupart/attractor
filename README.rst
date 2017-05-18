@@ -4,7 +4,7 @@ Attractor
 A puzzle solving mobile game where the player uses the forces of magnetic attraction
 and replusion to achieve goals.
 
-* built with `python3 <https://python.org>`_, `kivy <https://kivy.org>`_, `kivent <https://kivent.org>`_
+* built with `python3 <https://python.org>`_, `kivy <kivy.org>`_, `kivent <https://kivent.org>`_
 * intended for release on android
 
 
