@@ -1,0 +1,19 @@
+#: kivy 1.10.0
+
+AttractorGame:
+
+<AttractorGame>:
+    id: game
+    gameworld: world
+
+    GameWorld:
+        id: world
+        gamescreenmanager: screen_manager
+        size_of_gameworld: 100 * 1024
+        zones: {'general': 10000, 'touch': 1000}
+
+        # Systems
+
+    GameScreenManager:
+        id: screen_manager
+        gameworld: world
