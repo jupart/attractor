@@ -13,7 +13,7 @@ from kivent_core.gameworld import GameWorld
 class AttractorGame(Widget):
     def __init__(self, **kwargs):
         super(AttractorGame, self).__init__(**kwargs)
-        self.world.init_gameworld([], callback=self.initGame)
+        self.gameworld.init_gameworld([], callback=self.initGame)
 
     def initGame(self):
         pass
