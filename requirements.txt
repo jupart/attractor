@@ -1,0 +1,13 @@
+appdirs==1.4.3
+cymunk==0.0.0.dev0
+Cython==0.25.2
+docutils==0.13.1
+KivEnt-Core==2.2.0.dev0
+KivEnt-Cymunk==1.0.0
+Kivy==1.10.0
+Kivy-Garden==0.1.4
+packaging==16.8
+Pygments==2.2.0
+pyparsing==2.2.0
+requests==2.14.2
+six==1.10.0

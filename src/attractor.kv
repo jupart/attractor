@@ -2,6 +2,7 @@
 
 AttractorGame:
 
+
 <AttractorGame>:
     id: game
     gameworld: world
@@ -14,6 +15,33 @@ AttractorGame:
 
         # Systems
 
-    GameScreenManager:
+    ScreenManager:
         id: screen_manager
         gameworld: world
+
+
+<ScreenManager>:
+    MenuScreen:
+        id: menu_screen
+
+    PlayScreen:
+        id: play_screen
+
+
+<MenuScreen@GameScreen>:
+    name: 'menu_screen'
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.4, 0.25
+
+        Button:
+            text: 'P'
+            on_release: app.game.go_to_play_screen()
+
+
+<PlayScreen@GameScreen>:
+    name: 'play_screen'
