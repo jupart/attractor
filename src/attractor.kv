@@ -5,22 +5,62 @@ AttractorGame:
 
 <AttractorGame>:
     id: game
-    gameworld: world
+    gameworld: gameworld
 
     GameWorld:
-        id: world
-        gamescreenmanager: screen_manager
+        id: gameworld
+        gamescreenmanager: gamescreenmanager
         size_of_gameworld: 100 * 1024
-        zones: {'general': 10000, 'touch': 1000}
+        zones: {'general': 20000, 'touch': 1000}
 
-        # Systems
+        PositionSystem2D:
+            system_id: 'position'
+            gameworld: gameworld
+            zones: ['general', 'touch']
 
-    ScreenManager:
-        id: screen_manager
-        gameworld: world
+        RotateSystem2D:
+            system_id: 'rotate'
+            gameworld: gameworld
+            zones: ['general']
+
+        CymunkPhysics:
+            system_id: 'cymunk_physics'
+            gameworld: gameworld
+            zones: ['general']
+
+        RotateRenderer:
+            system_id: 'rotate_renderer'
+            gameworld: gameworld
+            frame_count: 2
+            updateable: True
+            force_update: True
+            gameview: 'play_camera'
+            shader_source: 'resources/shaders/p_r_shader.glsl'
+            zones: ['general']
+
+        GameView:
+            system_id: 'play_camera'
+            gameworld: gameworld
+            id: play_camera
+            size: root.size
+            window_size: root.size
+            pos: root.pos
+            updateable: True
+            do_scroll: True
+            do_scroll_lock: True
+            #focus_entity: True
+            #entity_to_focus: game.player_id
+            touch_pass_through: True
+            zones: ['general']
+
+    GameScreenManager:
+        id: gamescreenmanager
+        gameworld: gameworld
+        size: root.size
+        pos: root.pos
 
 
-<ScreenManager>:
+<GameScreenManager>:
     MenuScreen:
         id: menu_screen
 
