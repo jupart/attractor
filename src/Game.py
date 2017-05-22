@@ -11,15 +11,10 @@ from kivy.properties import NumericProperty
 import kivent_core
 import kivent_cymunk
 
-# Systems
-from kivent_core.systems.position_systems import PositionSystem2D
-from kivent_core.systems.rotate_systems import RotateSystem2D
-from kivent_core.systems.renderers import RotateRenderer
-from kivent_core.systems.gamesystem import GameSystem
-
 # Managers
 from kivent_core.managers.resource_managers import texture_manager
-from kivent_core.gameworld import GameWorld
+
+from EntityFactory import EntityFactory
 
 
 texture_manager.load_image('./resources/png/ball.png')
@@ -34,12 +29,15 @@ class AttractorGame(Widget):
                                        'position',
                                        'rotate',
                                        'rotate_renderer',
-                                       'play_camera'], callback=self.init_game)
+                                       'play_camera'],
+                                      callback=self.init_game)
 
     def init_game(self):
         self.setup_states()
         self.gameworld.state = 'play'
         self.load_models()
+
+        self.entity_factory = EntityFactory(self.gameworld.init_entity)
         self.create_entities()
 
     def setup_states(self):
@@ -48,7 +46,7 @@ class AttractorGame(Widget):
                                  systems_removed=['position',
                                                   'rotate',
                                                   'cymunk_physics',
-                                                  'play_camera',],
+                                                  'play_camera'],
                                  systems_paused=[],
                                  systems_unpaused=['rotate_renderer'],
                                  screenmanager_screen='menu_screen')
@@ -57,14 +55,14 @@ class AttractorGame(Widget):
                                                 'rotate',
                                                 'rotate_renderer',
                                                 'cymunk_physics',
-                                                'play_camera',],
+                                                'play_camera'],
                                  systems_removed=[],
                                  systems_paused=[],
                                  systems_unpaused=['rotate_renderer',
                                                    'position',
                                                    'rotate',
                                                    'cymunk_physics',
-                                                   'play_camera',],
+                                                   'play_camera'],
                                  screenmanager_screen='play_screen')
 
     def load_models(self):
@@ -76,14 +74,7 @@ class AttractorGame(Widget):
                                               'ball')
 
     def create_entities(self):
-        gameview = self.gameworld.system_manager['play_camera']
-        x = int(-gameview.camera_pos[0])
-        y = int(-gameview.camera_pos[1])
-        w = int(gameview.size[0])
-        h = int(gameview.size[1])
-
-        self.ball_id = self.createBall()
-        ball = self.gameworld.entities[self.ball_id]
+        self.entity_factory.create_entity_at('attractor', 100, 100)
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
@@ -111,9 +102,9 @@ class AttractorGame(Widget):
                    'col_shapes': col_shapes}
         components = {'position': (100, 100),
                       'rotate_renderer': {'texture': 'ball',
-                                     'size': (100, 100),
-                                     'model_key': 'ball',
-                                     'render': True},
+                                          'size': (100, 100),
+                                          'model_key': 'ball',
+                                          'render': True},
                       'cymunk_physics': physics,
                       'rotate': 0}
         order = ['position',
@@ -121,5 +112,3 @@ class AttractorGame(Widget):
                  'rotate_renderer',
                  'cymunk_physics']
         return self.gameworld.init_entity(components, order)
-
-
