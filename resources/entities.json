@@ -1,39 +1,17 @@
 {
     "entities": [
 		{
-            "name": "small_block",
+            "name": "ball",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "small_block1"},
-                {"type": "collision", "rects": [
-                    {"size_x": 10, "size_y": 10, "offset_x": 0, "offset_y": 0}
-                ]}
-            ]
-        },
-		{
-            "name": "medium_block",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "medium_block1"},
-                {"type": "collision", "rects": [
-                    {"size_x": 20, "size_y": 20, "offset_x": 0, "offset_y": 0}
-                ]}
-            ]
-        },
-		{
-            "name": "guy",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "movement"},
-                {"type": "velocity", "x": 0, "y": 0},
-                {"type": "render", "texture": "guy_idle0"},
-                {"type": "animation", "Idle": "guy_idle", "Jump": "guy_jump",
-                    "Run": "guy_run", "current": "Idle"},
-                {"type": "collision", "rects": [
-                    {"size_x": 20, "size_y": 10, "offset_x": 0, "offset_y": -20},
-                    {"size_x": 20, "size_y": 10, "offset_x": 0, "offset_y": 20},
-                    {"size_x": 10, "size_y": 20, "offset_x": 0, "offset_y": 0}
-                ]}
+                {"type": "render", "texture": "ball", "size_x": 100, "size_y": 100},
+                {"type": "physics", 
+                    "rects": [], 
+                    "circles": [
+                        {"radius": 50, "offset_x": 0, "offset_y": 0}],
+                    "mass": 10, "friction": 1.0, "moment": 1, "rotation": 0,
+                    "shape": "circle"},
+                {"type": "rotate", "rotation": 0}
             ]
         }
 	]
