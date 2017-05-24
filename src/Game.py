@@ -1,5 +1,3 @@
-from math import radians
-
 # Kivy visuals
 from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import Screen, ScreenManager
@@ -74,41 +72,8 @@ class AttractorGame(Widget):
                                               'ball')
 
     def create_entities(self):
-        self.entity_factory.create_entity_at('attractor', 100, 100)
+        self.entity_factory.create_entity_at('ball', 100, 100)
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
 
-    def createBall(self):
-        shape = {'inner_radius': 0,
-                 'outer_radius': 50,
-                 'mass': 10,
-                 'offset': (0, 0)}
-        col_shape = {'shape_type': 'circle',
-                     'elasticity': 0,
-                     'collision_type': 1,
-                     'shape_info': shape,
-                     'friction': 1.0}
-        col_shapes = [col_shape]
-        physics = {'main_shape': 'circle',
-                   'velocity': (0, 0),
-                   'position': (100, 100),
-                   'angle': 0,
-                   'angular_velocity': 0,
-                   'vel_limit': 100,
-                   'ang_vel_limit': radians(200),
-                   'mass': 10,
-                   'moment': 1,
-                   'col_shapes': col_shapes}
-        components = {'position': (100, 100),
-                      'rotate_renderer': {'texture': 'ball',
-                                          'size': (100, 100),
-                                          'model_key': 'ball',
-                                          'render': True},
-                      'cymunk_physics': physics,
-                      'rotate': 0}
-        order = ['position',
-                 'rotate',
-                 'rotate_renderer',
-                 'cymunk_physics']
-        return self.gameworld.init_entity(components, order)
