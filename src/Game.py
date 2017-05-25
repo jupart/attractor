@@ -1,3 +1,5 @@
+from pubsub import pub
+
 # Kivy visuals
 from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import Screen, ScreenManager
@@ -13,13 +15,14 @@ import kivent_cymunk
 from kivent_core.managers.resource_managers import texture_manager
 
 from EntityFactory import EntityFactory
+from ChargeSystem import ChargeSystem, ChargeComponent
 
 
 texture_manager.load_image('./resources/png/ball.png')
 
 
 class AttractorGame(Widget):
-    ball_id = NumericProperty(-1)
+    attractor_id = NumericProperty(-1)
 
     def __init__(self, **kwargs):
         super(AttractorGame, self).__init__(**kwargs)
@@ -27,7 +30,8 @@ class AttractorGame(Widget):
                                        'position',
                                        'rotate',
                                        'rotate_renderer',
-                                       'play_camera'],
+                                       'play_camera',
+                                       'charge'],
                                       callback=self.init_game)
 
     def init_game(self):
@@ -72,8 +76,15 @@ class AttractorGame(Widget):
                                               'ball')
 
     def create_entities(self):
-        self.entity_factory.create_entity_at('ball', 100, 100)
+        self.attractor_id = self.entity_factory.create_entity_at('ball', 100, 100)
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
 
+    def change_attractor_charge(self, change_to):
+        if change_to != '+' and change_to != '-' and change_to != 'n':
+            return
+
+        attractor = self.gameworld.entities[self.attractor_id]
+        pub.sendMessage('charge', ent=attractor, change_to=change_to)
+        # attractor.charge.charge = change_to

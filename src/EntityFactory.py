@@ -1,7 +1,5 @@
-import os.path
 import json
 from math import radians
-from pprint import pprint
 
 
 class EntityFactory():
@@ -21,8 +19,6 @@ class EntityFactory():
                 new_ent_data = self.get_entity_data(ent)
                 new_ent_data[0]['cymunk_physics']['position'] = (x, y)
                 new_ent_data[0]['position'] = (x, y)
-                pprint(new_ent_data[0])
-                pprint(new_ent_data[1])
                 return self.gameworld_init_entity(new_ent_data[0],
                                                   new_ent_data[1])
         else:
@@ -47,6 +43,7 @@ class EntityFactory():
             c_order.append('charge')
         if 'cymunk_physics' in c_data:
             c_order.append('cymunk_physics')
+
         return [c_data, c_order]
 
     def get_component_data(self, component_data):
@@ -69,7 +66,7 @@ class EntityFactory():
                                    'y': component_data['y']}}
 
         elif component_data['type'] == 'charge':
-            c_dict = {'charge': component_data['charge']}
+            c_dict = {'charge': {'charge': component_data['charge']}}
 
         elif component_data['type'] == 'animation':
             pass
