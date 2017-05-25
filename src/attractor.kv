@@ -53,6 +53,11 @@ AttractorGame:
             touch_pass_through: True
             zones: ['general']
 
+        ChargeSystem:
+            system_id: 'charge'
+            gameworld: gameworld
+            zones: ['general']
+
     GameScreenManager:
         id: gamescreenmanager
         gameworld: gameworld
@@ -85,3 +90,20 @@ AttractorGame:
 
 <PlayScreen@GameScreen>:
     name: 'play_screen'
+
+    FloatLayout:
+        Button:
+            text: '+'
+            pos_hint: {'x': 0, 'center_y': 0.5}
+            size_hint: 0.1, 0.1
+            on_release: app.game.change_attractor_charge('+')
+        Button:
+            text: '-'
+            pos_hint: {'right': 1, 'center_y': 0.5}
+            size_hint: 0.1, 0.1
+            on_release: app.game.change_attractor_charge('-')
+        Button:
+            text: 'n'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint: 0.1, 0.1
+            on_release: app.game.change_attractor_charge('n')
