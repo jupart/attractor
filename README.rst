@@ -13,7 +13,7 @@ Features
 ########
 * 2d graphics
 * music tracks for sets of levels
-* sound effects for metal ball bounce
+* sound effects for attractor collision
 * touch to move magnets
 * achievement system
 * timed play
@@ -22,7 +22,7 @@ Features
 ###################
 Project checkpoints
 ###################
-1. First level, navigating metal pinball through obstacles using magnets
+1. First level, navigating attractor through obstacles using magnets
 2. Decide on visual aesthetic
 3. First set of 10 levels, sound effects
 4. Decide on aural aesthetic, music for first set
@@ -34,3 +34,7 @@ Project checkpoints
 ##############
 Idea Sketchpad
 ##############
+* player controls an attractor that can switch "poles"
+  * neutral, north, or south based
+  * maybe it should be simply charged-based (positive, negative, neutral)
+  * level is laid out statically, so player only changes the attractor's charge

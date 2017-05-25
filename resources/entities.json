@@ -1,0 +1,19 @@
+{
+    "entities": [
+		{
+            "name": "ball",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "ball", "size_x": 100, "size_y": 100},
+                {"type": "physics", 
+                    "rects": [], 
+                    "circles": [
+                        {"radius": 50, "offset_x": 0, "offset_y": 0}],
+                    "mass": 10, "friction": 1.0, "moment": 1, "rotation": 0,
+                    "shape": "circle"},
+                {"type": "rotate", "rotation": 0},
+                {"type": "charge", "charge": "n"}
+            ]
+        }
+	]
+}
