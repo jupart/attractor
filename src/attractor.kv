@@ -24,32 +24,41 @@ AttractorGame:
             zones: ['general']
 
         CymunkPhysics:
+            id: cymunk_physics
             system_id: 'cymunk_physics'
             gameworld: gameworld
             zones: ['general']
 
-        RotateRenderer:
-            system_id: 'rotate_renderer'
+        Renderer:
+            system_id: 'renderer'
             gameworld: gameworld
             frame_count: 2
             updateable: True
-            force_update: True
+            force_update: False
             gameview: 'play_camera'
             shader_source: 'resources/shaders/p_r_shader.glsl'
             zones: ['general']
 
+        GameMap:
+            id: gamemap
+            gameworld: gameworld
+            map_size: 144 * 20, 144 * 20
+            zones: ['general']
+
         GameView:
+            id: play_camera
             system_id: 'play_camera'
             gameworld: gameworld
-            id: play_camera
+            # current_map: gamemap
+            camera_scale: 4
             size: root.size
             window_size: root.size
             pos: root.pos
             updateable: True
             do_scroll: True
             do_scroll_lock: True
-            #focus_entity: True
-            #entity_to_focus: game.player_id
+            # focus_entity: True
+            # entity_to_focus: game.attractor_id
             touch_pass_through: True
             zones: ['general']
 
@@ -57,6 +66,7 @@ AttractorGame:
             system_id: 'charge'
             gameworld: gameworld
             zones: ['general']
+            updateable: True
 
     GameScreenManager:
         id: gamescreenmanager
@@ -83,9 +93,9 @@ AttractorGame:
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         size_hint: 0.4, 0.25
 
-        Button:
-            text: 'P'
-            on_release: app.game.go_to_play_screen()
+        # Button:
+            # text: 'P'
+            # on_release: app.game.go_to_play_screen()
 
 
 <PlayScreen@GameScreen>:

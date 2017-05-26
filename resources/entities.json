@@ -1,18 +1,55 @@
 {
     "entities": [
 		{
-            "name": "ball",
+            "name": "attractor",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "ball", "size_x": 100, "size_y": 100},
+                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
                 {"type": "physics", 
-                    "rects": [], 
+                    "segments": [], 
                     "circles": [
-                        {"radius": 50, "offset_x": 0, "offset_y": 0}],
-                    "mass": 10, "friction": 1.0, "moment": 1, "rotation": 0,
+                        {"radius": 30, "offset_x": 0, "offset_y": 0}],
+                    "mass": 1, "friction": 1.0, "moment": 1, "rotation": 0,
                     "shape": "circle"},
                 {"type": "rotate", "rotation": 0},
                 {"type": "charge", "charge": "n"}
+            ]
+        },
+		{
+            "name": "wall",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "wall", "size_x": 240, "size_y": 120},
+                {"type": "physics", 
+                    "segments": [
+                        {"ax": -120, "ay": -60, "bx": -120, "by": 60, "radius": 1},
+                        {"ax": 120, "ay": -60, "bx": -120, "by": -60, "radius": 1},
+                        {"ax": -120, "ay": 60, "bx": 120, "by": 60, "radius": 1},
+                        {"ax": 120, "ay": 60, "bx": 120, "by": -60, "radius": 1}
+                    ], 
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "rotation": 0,
+                    "shape": "box"},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
+            "name": "dipole",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "dipole", "size_x": 240, "size_y": 120},
+                {"type": "physics", 
+                    "segments": [
+                        {"ax": -120, "ay": -60, "bx": -120, "by": 60, "radius": 1},
+                        {"ax": 120, "ay": -60, "bx": -120, "by": -60, "radius": 1},
+                        {"ax": -120, "ay": 60, "bx": 120, "by": 60, "radius": 1},
+                        {"ax": 120, "ay": 60, "bx": 120, "by": -60, "radius": 1}
+                    ], 
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "rotation": 0,
+                    "shape": "box"},
+                {"type": "rotate", "rotation": 0},
+                {"type": "charge", "charge": "+/-"}
             ]
         }
 	]

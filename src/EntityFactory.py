@@ -12,13 +12,16 @@ class EntityFactory():
             data = json.load(j_file)
         self.entity_data = data['entities']
 
-    def create_entity_at(self, name, x, y):
+    def create_entity_at(self, name, x, y, rot=0):
         # Find a match for "name" within entity_data
         for ent in self.entity_data:
             if ent['name'] == name:
                 new_ent_data = self.get_entity_data(ent)
                 new_ent_data[0]['cymunk_physics']['position'] = (x, y)
                 new_ent_data[0]['position'] = (x, y)
+                if 'rotate' in new_ent_data[0]:
+                    new_ent_data[0]['cymunk_physics']['rotate'] = rot
+                    new_ent_data[0]['rotate'] = rot
                 return self.gameworld_init_entity(new_ent_data[0],
                                                   new_ent_data[1])
         else:
@@ -37,8 +40,8 @@ class EntityFactory():
             c_order.append('rotate')
         if 'animation' in c_data:
             c_order.append('animation')
-        if 'rotate_renderer' in c_data:
-            c_order.append('rotate_renderer')
+        if 'renderer' in c_data:
+            c_order.append('renderer')
         if 'charge' in c_data:
             c_order.append('charge')
         if 'cymunk_physics' in c_data:
@@ -48,11 +51,11 @@ class EntityFactory():
 
     def get_component_data(self, component_data):
         if component_data['type'] == 'render':
-            c_dict = {'rotate_renderer': {'texture': component_data['texture'],
-                                          'size': (component_data['size_x'],
-                                                   component_data['size_y']),
-                                          'model_key': component_data['texture'],
-                                          'render': True}}
+            c_dict = {'renderer': {'texture': component_data['texture'],
+                                   'size': (component_data['size_x'],
+                                            component_data['size_y']),
+                                   'model_key': component_data['texture'],
+                                   'render': True}}
 
         elif component_data['type'] == 'rotate':
             c_dict = {'rotate': component_data['rotation']}
@@ -83,13 +86,14 @@ class EntityFactory():
                                                   'offset': (circle['offset_x'],
                                                              circle['offset_y'])},
                                    'friction': 1.0})
-            for box in component_data['rects']:
-                col_shapes.append({'shape_type': 'circle',
+            for seg in component_data['segments']:
+                col_shapes.append({'shape_type': 'segment',
                                    'elasticity': 0,
                                    'collision_type': 1,
-                                   'shape_info': {'width': box['width'],
-                                                  'height': box['height'],
-                                                  'mass': component_data['mass']},
+                                   'shape_info': {'a': (seg['ax'], seg['ay']),
+                                                  'b': (seg['bx'], seg['by']),
+                                                  'mass': component_data['mass'],
+                                                  'radius': seg['radius']},
                                    'friction': 1.0})
 
             c_dict = {'cymunk_physics': {'main_shape': component_data['shape'],
