@@ -18,7 +18,8 @@ class ChargeSystem(GameSystem):
 
     def update(self, dt):
         entities = self.gameworld.entities
-        attractor = entities[App.get_running_app().game.attractor_id]
+        attractor_id = App.get_running_app().game.attractor_id
+        attractor = entities[attractor_id]
 
         if attractor.charge.charge == 'n':
             return
@@ -26,22 +27,28 @@ class ChargeSystem(GameSystem):
         for component in self.components:
             if component is not None:
                 entity_id = component.entity_id
+                if entity_id == attractor_id:
+                    continue
+
                 entity = entities[entity_id]
 
-                # Only dipoles exert force and only on the attractor
-                if entity.charge == '+/-':
+                if entity.charge != 'n':
                     if self.in_range(entity.position.pos,
-                                     entity.rotate,
+                                     entity.charge.strength,
                                      attractor.position.pos):
                         self.exert_force(entity.position.pos,
-                                         entity.rotate,
+                                         entity.charge.strength,
                                          attractor.position.pos,
                                          attractor.charge.charge)
 
-    def in_range(self, dipole_pos, dipole_rotate, attractor_pos):
+    def in_range(self, pos, strength, attractor_pos):
+        # some arbitrary radius based on strength arg
+        # first check > or < pos +/- radius, then
+            # (x - center_x)^2 + (y - center_y)^2 < radius^2
         pass
 
-    def exert_force(self, dipole_pos, dipole_rotate, attractor_pos, attractor_charge):
+    def exert_force(self, pos, strength, attractor_pos, attractor_charge):
+        # sqrt((pos.x - attractor_pos.x)^2 + (pos.y - attractor_pos.y)^2) * strength * some_mod
         pass
 
 

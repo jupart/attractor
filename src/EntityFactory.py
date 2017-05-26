@@ -69,7 +69,8 @@ class EntityFactory():
                                    'y': component_data['y']}}
 
         elif component_data['type'] == 'charge':
-            c_dict = {'charge': {'charge': component_data['charge']}}
+            c_dict = {'charge': {'charge': component_data['charge'],
+                                 'strength': component_data['strength']}}
 
         elif component_data['type'] == 'animation':
             pass

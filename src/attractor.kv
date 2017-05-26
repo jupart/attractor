@@ -107,13 +107,16 @@ AttractorGame:
             pos_hint: {'x': 0, 'center_y': 0.5}
             size_hint: 0.1, 0.1
             on_release: app.game.change_attractor_charge('+')
+            background_color: [0.1, 0.4, 0.4, 0.4]
         Button:
             text: '-'
             pos_hint: {'right': 1, 'center_y': 0.5}
             size_hint: 0.1, 0.1
             on_release: app.game.change_attractor_charge('-')
+            background_color: [0.1, 0.4, 0.4, 0.4]
         Button:
             text: 'n'
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             size_hint: 0.1, 0.1
             on_release: app.game.change_attractor_charge('n')
+            background_color: [0.1, 0.4, 0.4, 0.4]

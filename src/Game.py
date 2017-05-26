@@ -1,5 +1,4 @@
 import os
-# from pubsub import pub
 
 # Kivy visuals
 from kivy.uix.widget import Widget
@@ -21,6 +20,7 @@ from EntityFactory import EntityFactory
 from ChargeSystem import ChargeSystem, ChargeComponent
 
 
+# Load all .png in resources/png
 png_list = []
 png_source_list = []
 for root, dirs, files in os.walk("resources/png"):
