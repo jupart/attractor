@@ -20,8 +20,10 @@ class EntityFactory():
                 new_ent_data[0]['cymunk_physics']['position'] = (x, y)
                 new_ent_data[0]['position'] = (x, y)
                 if 'rotate' in new_ent_data[0]:
-                    new_ent_data[0]['cymunk_physics']['rotate'] = rot
+                    print('setting rotate to {}'.format(rot))
+                    new_ent_data[0]['cymunk_physics']['angle'] = rot
                     new_ent_data[0]['rotate'] = rot
+                    new_ent_data[0]['rotate_renderer']['rotate'] = rot
                 return self.gameworld_init_entity(new_ent_data[0],
                                                   new_ent_data[1])
         else:
@@ -40,8 +42,8 @@ class EntityFactory():
             c_order.append('rotate')
         if 'animation' in c_data:
             c_order.append('animation')
-        if 'renderer' in c_data:
-            c_order.append('renderer')
+        if 'rotate_renderer' in c_data:
+            c_order.append('rotate_renderer')
         if 'charge' in c_data:
             c_order.append('charge')
         if 'cymunk_physics' in c_data:
@@ -51,11 +53,11 @@ class EntityFactory():
 
     def get_component_data(self, component_data):
         if component_data['type'] == 'render':
-            c_dict = {'renderer': {'texture': component_data['texture'],
-                                   'size': (component_data['size_x'],
-                                            component_data['size_y']),
-                                   'model_key': component_data['texture'],
-                                   'render': True}}
+            c_dict = {'rotate_renderer': {'texture': component_data['texture'],
+                                          'size': (component_data['size_x'],
+                                                   component_data['size_y']),
+                                          'model_key': component_data['texture'],
+                                          'render': True}}
 
         elif component_data['type'] == 'rotate':
             c_dict = {'rotate': component_data['rotation']}
@@ -100,7 +102,7 @@ class EntityFactory():
             c_dict = {'cymunk_physics': {'main_shape': component_data['shape'],
                                          'velocity': (0, 0),
                                          'position': (0, 0),
-                                         'angle': component_data['rotation'],
+                                         'angle': 0,
                                          'angular_velocity': 0,
                                          'vel_limit': 100,
                                          'ang_vel_limit': radians(200),

@@ -1,4 +1,5 @@
 import os
+from math import pi
 
 # Kivy visuals
 from kivy.uix.widget import Widget
@@ -48,7 +49,7 @@ class AttractorGame(Widget):
         self.gameworld.init_gameworld(['cymunk_physics',
                                        'position',
                                        'rotate',
-                                       'renderer',
+                                       'rotate_renderer',
                                        'play_camera',
                                        'charge'],
                                       callback=self.init_game)
@@ -63,26 +64,26 @@ class AttractorGame(Widget):
 
     def setup_states(self):
         self.gameworld.add_state(state_name='menu',
-                                 systems_added=['renderer',
+                                 systems_added=['rotate_renderer',
                                                 'charge'],
                                  systems_removed=['position',
                                                   'rotate',
                                                   'cymunk_physics',
                                                   'play_camera'],
                                  systems_paused=[],
-                                 systems_unpaused=['renderer',
+                                 systems_unpaused=['rotate_renderer',
                                                    'charge'],
                                  screenmanager_screen='menu_screen')
         self.gameworld.add_state(state_name='play',
                                  systems_added=['position',
                                                 'rotate',
-                                                'renderer',
+                                                'rotate_renderer',
                                                 'cymunk_physics',
                                                 'play_camera',
                                                 'charge'],
                                  systems_removed=[],
                                  systems_paused=[],
-                                 systems_unpaused=['renderer',
+                                 systems_unpaused=['rotate_renderer',
                                                    'position',
                                                    'rotate',
                                                    'cymunk_physics',
@@ -100,6 +101,11 @@ class AttractorGame(Widget):
                                                   width, height,
                                                   asset_name,
                                                   asset_name)
+            tex_key = texture_manager.get_texkey_from_name(asset_name)
+            uv = texture_manager.get_uvs(tex_key)
+            uv = list((uv[0], uv[3], uv[2], uv[1]))
+            model = model_manager.models[asset_name]
+            model.set_textured_rectangle(width, height, uv)
 
     def create_entities(self):
         self.attractor_id = self.entity_factory.create_entity_at('attractor', 100, 100)
@@ -112,8 +118,15 @@ class AttractorGame(Widget):
         joint.max_bias = 5000.
         self.ids.cymunk_physics.space.add_constraint(joint)
 
-        self.entity_factory.create_entity_at('dipole', 400, 400, 30)
+        self.entity_factory.create_entity_at('dipole', 400, 400, pi/4)
         self.entity_factory.create_entity_at('wall', 1200, 400)
+
+        self.entity_factory.create_entity_at('negapole', 300, 600)
+        self.entity_factory.create_entity_at('posipole', 500, 600)
+        self.entity_factory.create_entity_at('negapole_corner', 700, 600)
+        self.entity_factory.create_entity_at('posipole_corner', 900, 600)
+        self.entity_factory.create_entity_at('negapole_corner', 1100, 600, pi/4)
+        self.entity_factory.create_entity_at('posipole_corner', 1300, 600, 3*pi/8)
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
@@ -131,7 +144,7 @@ class AttractorGame(Widget):
             new_texture = 'attractor_negative'
 
         attractor.cymunk_physics.body.apply_impulse((-10, 0), (10, 0))
-        attractor.renderer.texture_key = new_texture
+        attractor.rotate_renderer.texture_key = new_texture
         attractor.charge.charge = change_to
 
     def on_touch_down(self, touch):

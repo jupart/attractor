@@ -29,8 +29,8 @@ AttractorGame:
             gameworld: gameworld
             zones: ['general']
 
-        Renderer:
-            system_id: 'renderer'
+        RotateRenderer:
+            system_id: 'rotate_renderer'
             gameworld: gameworld
             frame_count: 2
             updateable: True
@@ -42,23 +42,23 @@ AttractorGame:
         GameMap:
             id: gamemap
             gameworld: gameworld
-            map_size: 144 * 20, 144 * 20
+            map_size: 100 * 40, 100 * 40
             zones: ['general']
 
         GameView:
             id: play_camera
             system_id: 'play_camera'
             gameworld: gameworld
-            # current_map: gamemap
-            camera_scale: 4
+            currentmap: gamemap
+            camera_scale: 1
             size: root.size
             window_size: root.size
             pos: root.pos
             updateable: True
             do_scroll: True
             do_scroll_lock: True
-            # focus_entity: True
-            # entity_to_focus: game.attractor_id
+            focus_entity: True
+            entity_to_focus: game.attractor_id
             touch_pass_through: True
             zones: ['general']
 
