@@ -1,4 +1,5 @@
 import os
+import json
 from math import pi
 
 # Kivy visuals
@@ -19,23 +20,20 @@ from kivent_core.managers.resource_managers import texture_manager
 
 from EntityFactory import EntityFactory
 from ChargeSystem import ChargeSystem, ChargeComponent
+from TouchedTextBox import TouchedTextBox
+from IconButton import IconButton
 
 
 # Load all .png in resources/png
 png_list = []
 png_source_list = []
 for root, dirs, files in os.walk("resources/png"):
-    load_using_load_image = True
-
     for asset in files:
         if '.atlas' in asset:
-            load_using_load_image = False
             texture_manager.load_atlas(os.path.join(root, asset))
 
-    for asset in files:
         if '.png' in asset:
-            if load_using_load_image:
-                texture_manager.load_image(os.path.join(root, asset))
+            texture_manager.load_image(os.path.join(root, asset))
 
             png_list.append(asset)
             png_source_list.append(os.path.join(root, asset))
@@ -43,6 +41,9 @@ for root, dirs, files in os.walk("resources/png"):
 
 class AttractorGame(Widget):
     attractor_id = NumericProperty(-1)
+
+    level_editor_enabled = False
+    level_editor_deleting = False
 
     def __init__(self, **kwargs):
         super(AttractorGame, self).__init__(**kwargs)
@@ -56,11 +57,11 @@ class AttractorGame(Widget):
 
     def init_game(self):
         self.setup_states()
+        self.gameworld.state = 'menu'
         self.load_models()
 
         self.entity_factory = EntityFactory(self.gameworld.init_entity)
         self.create_entities()
-        self.go_to_play_screen()
 
     def setup_states(self):
         self.gameworld.add_state(state_name='menu',
@@ -90,6 +91,22 @@ class AttractorGame(Widget):
                                                    'play_camera',
                                                    'charge'],
                                  screenmanager_screen='play_screen')
+        self.gameworld.add_state(state_name='editor',
+                                 systems_added=['position',
+                                                'rotate',
+                                                'rotate_renderer',
+                                                'cymunk_physics',
+                                                'play_camera',
+                                                'charge'],
+                                 systems_removed=[],
+                                 systems_paused=[],
+                                 systems_unpaused=['rotate_renderer',
+                                                   'position',
+                                                   'rotate',
+                                                   'cymunk_physics',
+                                                   'play_camera',
+                                                   'charge'],
+                                 screenmanager_screen='editor_screen')
 
     def load_models(self):
         model_manager = self.gameworld.model_manager
@@ -111,25 +128,22 @@ class AttractorGame(Widget):
         self.attractor_id = self.entity_factory.create_entity_at('attractor', 100, 100)
         attractor = self.gameworld.entities[self.attractor_id]
 
-        self.moving_to = Body('INF', 'INF')
-        self.moving_to.position = attractor.position.pos
-        joint = PivotJoint(self.moving_to, attractor.cymunk_physics.body, (0, 0), (0, 0))
-        joint.max_force = 5000.
-        joint.max_bias = 5000.
-        self.ids.cymunk_physics.space.add_constraint(joint)
+        # Debug moving stuff
+        # self.moving_to = Body('INF', 'INF')
+        # self.moving_to.position = attractor.position.pos
+        # joint = PivotJoint(self.moving_to, attractor.cymunk_physics.body, (0, 0), (0, 0))
+        # joint.max_force = 5000.
+        # joint.max_bias = 5000.
+        # self.ids.cymunk_physics.space.add_constraint(joint)
+        #
 
-        self.entity_factory.create_entity_at('dipole', 400, 400, pi/4)
-        self.entity_factory.create_entity_at('wall', 1200, 400)
-
-        self.entity_factory.create_entity_at('negapole', 300, 600)
-        self.entity_factory.create_entity_at('posipole', 500, 600)
-        self.entity_factory.create_entity_at('negapole_corner', 700, 600)
-        self.entity_factory.create_entity_at('posipole_corner', 900, 600)
-        self.entity_factory.create_entity_at('negapole_corner', 1100, 600, pi/4)
-        self.entity_factory.create_entity_at('posipole_corner', 1300, 600, 3*pi/8)
+        self.entity_factory.create_entity_at('posipole', 0, 100)
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
+
+    def go_to_editor_screen(self):
+        self.gameworld.state = 'editor'
 
     def change_attractor_charge(self, change_to):
         if change_to != '+' and change_to != '-' and change_to != 'n':
@@ -165,3 +179,29 @@ class AttractorGame(Widget):
             bodies = self.ids.cymunk_physics.space.bodies
             if b not in bodies:
                 self.ids.cymunk_physics.space.add_body(b)
+    def toggle_editor_deleting(self):
+        level_editor_deleting = not level_editor_deleting
+        
+    def toggle_level_editor(self):
+        if self.gameworld.state == 'editor':
+            self.gameworld.state = 'play'
+
+            self.ids.rotate_renderer.gameview = 'play_camera'
+
+        else:
+            self.gameworld.state = 'editor'
+            self.ids.camera.focus_entity = False
+
+            for asset in self.entity_factory.get_entity_names():
+                clickable_image = IconButton(source=asset,
+                                             num=assets.index(asset.split('/')[-1][:-4]),
+                                             size_hint_y=None,
+                                             height=60)
+                label = Label(text=asset.split('/')[-1][:-4])
+                clickable_image.bind(on_release=self.updateLevelEditorAsset)
+
+                self.ids.entity_list.add_widget(clickable_image)
+                self.ids.entity_list.add_widget(label)
+
+            # Create level editor UI
+            entity_names = self.entity_factory.get_entity_names()

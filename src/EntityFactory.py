@@ -20,7 +20,6 @@ class EntityFactory():
                 new_ent_data[0]['cymunk_physics']['position'] = (x, y)
                 new_ent_data[0]['position'] = (x, y)
                 if 'rotate' in new_ent_data[0]:
-                    print('setting rotate to {}'.format(rot))
                     new_ent_data[0]['cymunk_physics']['angle'] = rot
                     new_ent_data[0]['rotate'] = rot
                     new_ent_data[0]['rotate_renderer']['rotate'] = rot
@@ -104,7 +103,7 @@ class EntityFactory():
                                          'position': (0, 0),
                                          'angle': 0,
                                          'angular_velocity': 0,
-                                         'vel_limit': 100,
+                                         'vel_limit': 1000,
                                          'ang_vel_limit': radians(200),
                                          'mass': component_data['mass'],
                                          'moment': component_data['moment'],
@@ -114,4 +113,12 @@ class EntityFactory():
             return {}
 
         return c_dict
+
+    def get_entity_names(self):
+        names = []
+        for ent in self.entity_data:
+            names.append(ent['name'])
+
+        return names
+
 

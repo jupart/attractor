@@ -68,25 +68,6 @@
             ]
         },
 		{
-            "name": "dipole",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "dipole", "size_x": 240, "size_y": 120},
-                {"type": "physics", 
-                    "segments": [
-                        {"ax": -120, "ay": -60, "bx": -120, "by": 60, "radius": 1},
-                        {"ax": 120, "ay": -60, "bx": -120, "by": -60, "radius": 1},
-                        {"ax": -120, "ay": 60, "bx": 120, "by": 60, "radius": 1},
-                        {"ax": 120, "ay": 60, "bx": 120, "by": -60, "radius": 1}
-                    ], 
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "rotation": 0,
-                    "shape": "box"},
-                {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "+/-", "strength": 1}
-            ]
-        },
-		{
             "name": "negapole_corner",
             "components": [
                 {"type": "position", "x": 0, "y": 0},

@@ -30,6 +30,7 @@ AttractorGame:
             zones: ['general']
 
         RotateRenderer:
+            id: rotate_renderer
             system_id: 'rotate_renderer'
             gameworld: gameworld
             frame_count: 2
@@ -50,7 +51,7 @@ AttractorGame:
             system_id: 'play_camera'
             gameworld: gameworld
             currentmap: gamemap
-            camera_scale: 1
+            camera_scale: 2
             size: root.size
             window_size: root.size
             pos: root.pos
@@ -82,6 +83,9 @@ AttractorGame:
     PlayScreen:
         id: play_screen
 
+    EditorScreen:
+        id: editor_screen
+
 
 <MenuScreen@GameScreen>:
     name: 'menu_screen'
@@ -93,9 +97,13 @@ AttractorGame:
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         size_hint: 0.4, 0.25
 
-        # Button:
-            # text: 'P'
-            # on_release: app.game.go_to_play_screen()
+        Button:
+            text: 'play'
+            on_release: app.game.go_to_play_screen()
+
+        Button:
+            text: 'editor'
+            on_release: app.game.go_to_editor_screen()
 
 
 <PlayScreen@GameScreen>:
@@ -120,3 +128,58 @@ AttractorGame:
             size_hint: 0.1, 0.1
             on_release: app.game.change_attractor_charge('n')
             background_color: [0.1, 0.4, 0.4, 0.4]
+
+<EditorScreen@GameScreen>:
+    name: 'editor_screen'
+
+    # Grid settings
+    BoxLayout:
+        padding: 5
+        spacing: 5
+        size_hint: None, None
+        orientation: 'horizontal'
+        size: 300, 40
+        pos: 400, 0
+
+        Label:
+            text: 'Grid spacing:'
+
+        TouchedTextBox:
+            text: '10'
+
+        ToggleButton:
+            text: 'Deleting'
+            on_release: app.game.toggle_editor_deleting()
+
+    # Save/load UI
+    BoxLayout:
+        padding: 5
+        spacing: 5
+        size_hint: None, None
+        orientation: 'horizontal'
+        size: 400, 40
+
+        Label:
+            text: 'Map name:'
+
+        Button:
+            text: 'Save'
+            on_release: app.game.save_level()
+
+        Button:
+            text: 'Load'
+            on_release: app.game.load_level()
+
+
+    # Entity selection UI
+    ScrollView:
+        size_hint: 0.15, 1
+        do_scroll_x: False
+        pos_hint: {'center_x': 1 - 0.075, 'center_y': 0.5}
+
+        BoxLayout:
+            id: entity_list
+            padding: 10
+            spacing: 10
+            size_hint: 1, None
+            orientation: 'vertical'
