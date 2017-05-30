@@ -130,37 +130,44 @@ AttractorGame:
             background_color: [0.1, 0.4, 0.4, 0.4]
 
 <EditorScreen@GameScreen>:
+    id: editor_screen
     name: 'editor_screen'
 
     # Grid settings
     BoxLayout:
+        id: ui
         padding: 5
         spacing: 5
         size_hint: None, None
         orientation: 'horizontal'
-        size: 300, 40
-        pos: 400, 0
+        size: 800, 40
+        pos: 0, 0
+
+        canvas:
+            Color:
+                rgba: 0.16, 0.16, 0.16, 0.85
+
+            Rectangle:
+                size: self.size
+                pos: self.pos
 
         Label:
             text: 'Grid spacing:'
 
         TouchedTextBox:
+            id: grid
             text: '10'
 
         ToggleButton:
             text: 'Deleting'
             on_release: app.game.toggle_editor_deleting()
 
-    # Save/load UI
-    BoxLayout:
-        padding: 5
-        spacing: 5
-        size_hint: None, None
-        orientation: 'horizontal'
-        size: 400, 40
-
         Label:
-            text: 'Map name:'
+            text: 'Level name:'
+
+        TouchedTextBox:
+            id: level_name
+            text: ''
 
         Button:
             text: 'Save'
@@ -169,17 +176,3 @@ AttractorGame:
         Button:
             text: 'Load'
             on_release: app.game.load_level()
-
-
-    # Entity selection UI
-    ScrollView:
-        size_hint: 0.15, 1
-        do_scroll_x: False
-        pos_hint: {'center_x': 1 - 0.075, 'center_y': 0.5}
-
-        BoxLayout:
-            id: entity_list
-            padding: 10
-            spacing: 10
-            size_hint: 1, None
-            orientation: 'vertical'
