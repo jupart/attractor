@@ -1,0 +1,60 @@
+{
+    "animations": [
+        {"name": "negative_to_neutral", "duration": 100, "frames": [
+            {"frame": "negative_to_neutral-0"},
+            {"frame": "negative_to_neutral-1"},
+            {"frame": "negative_to_neutral-2"},
+            {"frame": "negative_to_neutral-3"},
+            {"frame": "negative_to_neutral-4"},
+            {"frame": "negative_to_neutral-5"}
+        ]},
+        {"name": "positive_to_neutral", "duration": 100, "frames": [
+            {"frame": "positive_to_neutral-0"},
+            {"frame": "positive_to_neutral-1"},
+            {"frame": "positive_to_neutral-2"},
+            {"frame": "positive_to_neutral-3"},
+            {"frame": "positive_to_neutral-4"},
+            {"frame": "positive_to_neutral-5"}
+        ]},
+        {"name": "positive_to_negative", "duration": 100, "frames": [
+            {"frame": "positive_to_neutral-0"},
+            {"frame": "positive_to_neutral-1"},
+            {"frame": "positive_to_neutral-2"},
+            {"frame": "positive_to_neutral-3"},
+            {"frame": "positive_to_neutral-4"},
+            {"frame": "positive_to_neutral-5"}
+        ]},
+        {"name": "posipole_idle", "duration": 100, "frames": [
+            {"frame": "posipole_idle-0"},
+            {"frame": "posipole_idle-1"},
+            {"frame": "posipole_idle-2"},
+            {"frame": "posipole_idle-3"},
+            {"frame": "posipole_idle-4"},
+            {"frame": "posipole_idle-5"}
+        ]},
+        {"name": "negapole_idle", "duration": 100, "frames": [
+            {"frame": "negapole_idle-0"},
+            {"frame": "negapole_idle-1"},
+            {"frame": "negapole_idle-2"},
+            {"frame": "negapole_idle-3"},
+            {"frame": "negapole_idle-4"},
+            {"frame": "negapole_idle-5"}
+        ]},
+        {"name": "negapole_corner_idle", "duration": 100, "frames": [
+            {"frame": "negapole_corner_idle-0"},
+            {"frame": "negapole_corner_idle-1"},
+            {"frame": "negapole_corner_idle-2"},
+            {"frame": "negapole_corner_idle-3"},
+            {"frame": "negapole_corner_idle-4"},
+            {"frame": "negapole_corner_idle-5"}
+        ]},
+        {"name": "posipole_corner_idle", "duration": 100, "frames": [
+            {"frame": "posipole_corner_idle-0"},
+            {"frame": "posipole_corner_idle-1"},
+            {"frame": "posipole_corner_idle-2"},
+            {"frame": "posipole_corner_idle-3"},
+            {"frame": "posipole_corner_idle-4"},
+            {"frame": "posipole_corner_idle-5"}
+        ]}
+    ]
+}
