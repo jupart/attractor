@@ -20,9 +20,8 @@ class ChargeSystem(GameSystem):
         super(ChargeSystem, self).__init__(**kwargs)
 
     def update(self, dt):
-        entities = self.gameworld.entities
         attractor_id = App.get_running_app().game.attractor_id
-        attractor = entities[attractor_id]
+        attractor = self.gameworld.entities[attractor_id]
 
         if attractor.charge.charge == 'n':
             return

@@ -14,7 +14,7 @@ class AttractorApp(App):
         Config.set('graphics', 'height', '200')
 
         Window.set_title('Attractor')
-        Window.clearcolor = (255, 253, 216, 216)
+        Window.clearcolor = (0.17, 0.17, 0.17, 1)
 
         self.game = Game.AttractorGame()
         return self.game

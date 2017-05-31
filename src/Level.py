@@ -11,14 +11,16 @@ class Level():
     names = []
     points = []
     rotations = []
+    ids = []
 
     def __init__(self, **kwargs):
         pass
 
-    def add_entity(self, name, x, y, rot):
+    def add_entity(self, name, x, y, rot, ids):
         self.names.append(name)
         self.points.append(Point(x, y))
         self.rotations.append(rot)
+        self.ids.append(ids)
 
     def empty(self):
         if self.names == []:

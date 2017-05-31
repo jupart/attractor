@@ -1,5 +1,8 @@
 {
     "animations": [
+        {"name": "attractor_neutral_idle", "duration": 100, "frames": [
+            {"frame": "attractor_neutral"}
+        ]},
         {"name": "attractor_negative_idle", "duration": 100, "frames": [
             {"frame": "attractor_negative_idle_00"},
             {"frame": "attractor_negative_idle_01"},

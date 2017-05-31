@@ -116,6 +116,13 @@ AttractorGame:
 <PlayScreen@GameScreen>:
     name: 'play_screen'
 
+    Button:
+        size_hint: None, None
+        size: 100, 40
+        pos: 0, self.parent.height - 40
+        text: "Menu"
+        on_release: app.game.go_to_menu_screen()
+
     FloatLayout:
         Button:
             text: '+'
@@ -140,6 +147,13 @@ AttractorGame:
     id: editor_screen
     name: 'editor_screen'
 
+    Button:
+        size_hint: None, None
+        size: 100, 40
+        pos: 0, self.parent.height - 40
+        text: "Menu"
+        on_release: app.game.go_to_menu_screen()
+
     # Grid settings
     BoxLayout:
         id: ui
@@ -152,7 +166,7 @@ AttractorGame:
 
         canvas:
             Color:
-                rgba: 0.16, 0.16, 0.16, 0.85
+                rgba: 0.12, 0.12, 0.12, 0.85
 
             Rectangle:
                 size: self.size

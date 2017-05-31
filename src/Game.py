@@ -203,7 +203,7 @@ class AttractorGame(Widget):
             manager.load_animation(anim['name'], len(animation_frames), animation_frames)
 
     def create_entities(self):
-        self.attractor_id = self.entity_factory.create_entity_at('attractor', 100, 100)
+        self.attractor_id = self.entity_factory.create_entity_at('attractor', 200, 200)
         # attractor = self.gameworld.entities[self.attractor_id]
 
         # Debug moving stuff
@@ -217,6 +217,9 @@ class AttractorGame(Widget):
 
         # self.entity_factory.create_entity_at('posipole', 0, 100)
 
+    def go_to_menu_screen(self):
+        self.gameworld.state = 'menu'
+
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
 
@@ -229,34 +232,36 @@ class AttractorGame(Widget):
 
         attractor = self.gameworld.entities[self.attractor_id]
 
-        new_texture = 'attractor_neutral'
+        new_anim = 'attractor_neutral_idle'
         if change_to == '+':
-            new_texture = 'attractor_positive'
+            new_anim = 'attractor_positive_idle'
         elif change_to == '-':
-            new_texture = 'attractor_negative'
+            new_anim = 'attractor_negative_idle'
 
-        attractor.cymunk_physics.body.apply_impulse((-10, 0), (10, 0))
-        attractor.rotate_renderer.texture_key = new_texture
+        attractor.animation.animation = new_anim
         attractor.charge.charge = change_to
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):
             return True
 
+        cam = self.ids.play_camera
+
+        cam_pos = cam.camera_pos
+        scale = cam.camera_scale
+        pos = (touch.pos[0] * scale - cam_pos[0], touch.pos[1] * scale - cam_pos[1])
+
         state = self.gameworld.state
 
         if state == 'editor':
             if touch.button == 'left':
                 if self.level_editor_deleting:
-                    pass
+                    self.delete_at(pos)
+                    print('deleting at {}'.format(pos))
 
                 else:
                     if self.level_editor_entity_to_place == '':
                         return
-
-                    cam_pos = self.ids.play_camera.camera_pos
-                    scale = self.ids.play_camera.camera_scale
-                    pos = (touch.pos[0] * scale - cam_pos[0], touch.pos[1] * scale - cam_pos[1])
 
                     grid = self.ids.gamescreenmanager.ids.editor_screen.ids.grid
 
@@ -268,44 +273,34 @@ class AttractorGame(Widget):
                         on_grid_x = int(round(pos[0]/grid) * grid)
                         on_grid_y = int(round(pos[1]/grid) * grid)
 
+                    print('placing at {}'.format((on_grid_x, on_grid_y)))
+
                     r = int(self.ids.gamescreenmanager.ids.editor_screen.ids.rotation.text)
-                    self.entity_factory.create_entity_at(self.level_editor_entity_to_place,
-                                                         on_grid_x,
-                                                         on_grid_y,
-                                                         r)
+                    ids = self.entity_factory.create_entity_at(self.level_editor_entity_to_place,
+                                                               on_grid_x,
+                                                               on_grid_y,
+                                                               r)
                     self.level_editor_level.add_entity(self.level_editor_entity_to_place,
                                                        on_grid_x,
                                                        on_grid_y,
-                                                       r)
+                                                       r,
+                                                       ids)
                     self.level_editor_entity_to_place = ''
 
             elif touch.button == 'scrollup':
-                scale = self.ids.play_camera.camera_scale
-                if scale < 3:
-                    self.ids.play_camera.camera_scale = scale + 0.1
+                cam.camera_scale = cam.camera_scale + 0.1
 
             elif touch.button == 'scrolldown':
-                scale = self.ids.play_camera.camera_scale
-                if scale > 0.5:
-                    self.ids.play_camera.camera_scale = scale - 0.1
+                cam.camera_scale = cam.camera_scale - 0.1
 
             elif touch.button == 'middle':
-                self.ids.play_camera.focus_entity = False
-                self.ids.play_camera.do_scroll_lock = False
-
-                cam_pos = self.ids.play_camera.camera_pos
-                scale = self.ids.play_camera.camera_scale
-                pos = (touch.pos[0] * scale - cam_pos[0],
-                       touch.pos[1] * scale - cam_pos[1])
-                self.ids.play_camera.look_at(pos)
+                cam.focus_entity = False
+                cam.do_scroll_lock = False
+                cam.look_at(pos)
 
         # For debug use only
         elif state == 'play':
             b = self.moving_to
-            cam_pos = self.ids.play_camera.camera_pos
-            scale = self.ids.play_camera.camera_scale
-            pos = (touch.pos[0] * scale - cam_pos[0], touch.pos[1] * scale - cam_pos[1])
-
             b.position = pos
 
             bodies = self.ids.cymunk_physics.space.bodies
@@ -390,17 +385,32 @@ class AttractorGame(Widget):
             y = ent['y']
             rot = ent['rotation']
 
-            self.entity_factory.create_entity_at(name, x, y, rot)
-            self.level_editor_level.add_entity(name, x, y, rot)
+            ids = self.entity_factory.create_entity_at(name, x, y, rot)
+            self.level_editor_level.add_entity(name, x, y, rot, ids)
 
     def clear_level(self):
         self.gameworld.clear_entities()
         self.attractor_id = self.entity_factory.create_entity_at('attractor',
-                                                                 100,
-                                                                 100,
+                                                                 200,
+                                                                 200,
                                                                  0)
         self.level_editor_level.add_entity('attractor',
-                                           100,
-                                           100,
-                                           0)
+                                           200,
+                                           200,
+                                           0,
+                                           self.attractor_id)
         self.level_editor_level.clear()
+
+    def delete_at(self, pos):
+        FLUFF = 25
+        for i, point in enumerate(self.level_editor_level.points):
+            if ((pos[0] - FLUFF) < point.x) and ((point.x < pos[0] + FLUFF)) and \
+                    ((pos[1] - FLUFF) < point.y) and ((point.y < pos[1] + FLUFF)):
+
+                self.level_editor_level.names.pop(i)
+                self.level_editor_level.points.pop(i)
+                self.level_editor_level.rotations.pop(i)
+                self.level_editor_level.ids.pop(i)
+
+                ent_id = self.level_editor_level.ids.pop(i)
+                self.gameworld.remove_entity(ent_id)
