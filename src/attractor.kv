@@ -10,7 +10,7 @@ AttractorGame:
     GameWorld:
         id: gameworld
         gamescreenmanager: gamescreenmanager
-        size_of_gameworld: 100 * 1024
+        size_of_gameworld: 200 * 1024
         zones: {'general': 20000, 'touch': 1000}
 
         PositionSystem2D:
@@ -33,8 +33,8 @@ AttractorGame:
             id: animation
             system_id: 'animation'
             gameworld: gameworld
-            zones: ['general']
             updateable: True
+            zones: ['general']
 
         RotateRenderer:
             id: rotate_renderer
@@ -159,18 +159,18 @@ AttractorGame:
                 pos: self.pos
 
         Label:
-            text: 'Grid spacing:'
+            text: 'Grid:'
 
         TouchedTextBox:
             id: grid
             text: '10'
 
         ToggleButton:
-            text: 'Deleting'
+            text: 'Delete'
             on_release: app.game.toggle_editor_deleting()
 
         Label:
-            text: 'Level name:'
+            text: 'Level:'
 
         TouchedTextBox:
             id: level_name
@@ -183,3 +183,10 @@ AttractorGame:
         Button:
             text: 'Load'
             on_release: app.game.load_level()
+
+        Label:
+            text: 'Rot:'
+
+        TouchedTextBox:
+            id: rotation
+            text: '0'

@@ -39,10 +39,10 @@ class EntityFactory():
             c_order.append('position')
         if 'rotate' in c_data:
             c_order.append('rotate')
-        if 'animation' in c_data:
-            c_order.append('animation')
         if 'rotate_renderer' in c_data:
             c_order.append('rotate_renderer')
+        if 'animation' in c_data:
+            c_order.append('animation')
         if 'charge' in c_data:
             c_order.append('charge')
         if 'cymunk_physics' in c_data:

@@ -35,7 +35,7 @@
             "name": "posipole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "posipole", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "posipole-0", "size_x": 120, "size_y": 120},
                 {"type": "physics",
                     "segments": [
                         {"ax": -60, "ay": -60, "bx": -60, "by": 60, "radius": 1},
@@ -54,7 +54,7 @@
             "name": "negapole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "negapole", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "negapole-0", "size_x": 120, "size_y": 120},
                 {"type": "physics",
                     "segments": [
                         {"ax": -60, "ay": -60, "bx": -60, "by": 60, "radius": 1},

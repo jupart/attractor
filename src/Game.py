@@ -246,36 +246,58 @@ class AttractorGame(Widget):
         state = self.gameworld.state
 
         if state == 'editor':
-            if self.level_editor_deleting:
-                pass
+            if touch.button == 'left':
+                if self.level_editor_deleting:
+                    pass
 
-            else:
-                if self.level_editor_entity_to_place == '':
-                    return
+                else:
+                    if self.level_editor_entity_to_place == '':
+                        return
+
+                    cam_pos = self.ids.play_camera.camera_pos
+                    scale = self.ids.play_camera.camera_scale
+                    pos = (touch.pos[0] * scale - cam_pos[0], touch.pos[1] * scale - cam_pos[1])
+
+                    grid = self.ids.gamescreenmanager.ids.editor_screen.ids.grid
+
+                    if not isinstance(grid, int):
+                        on_grid_x = int(round(pos[0]/10) * 10)
+                        on_grid_y = int(round(pos[1]/10) * 10)
+
+                    else:
+                        on_grid_x = int(round(pos[0]/grid) * grid)
+                        on_grid_y = int(round(pos[1]/grid) * grid)
+
+                    r = int(self.ids.gamescreenmanager.ids.editor_screen.ids.rotation.text)
+                    self.entity_factory.create_entity_at(self.level_editor_entity_to_place,
+                                                         on_grid_x,
+                                                         on_grid_y,
+                                                         r)
+                    self.level_editor_level.add_entity(self.level_editor_entity_to_place,
+                                                       on_grid_x,
+                                                       on_grid_y,
+                                                       r)
+                    self.level_editor_entity_to_place = ''
+
+            elif touch.button == 'scrollup':
+                scale = self.ids.play_camera.camera_scale
+                if scale < 3:
+                    self.ids.play_camera.camera_scale = scale + 0.1
+
+            elif touch.button == 'scrolldown':
+                scale = self.ids.play_camera.camera_scale
+                if scale > 0.5:
+                    self.ids.play_camera.camera_scale = scale - 0.1
+
+            elif touch.button == 'middle':
+                self.ids.play_camera.focus_entity = False
+                self.ids.play_camera.do_scroll_lock = False
 
                 cam_pos = self.ids.play_camera.camera_pos
                 scale = self.ids.play_camera.camera_scale
-                pos = (touch.pos[0] * scale - cam_pos[0], touch.pos[1] * scale - cam_pos[1])
-
-                grid = self.ids.gamescreenmanager.ids.editor_screen.ids.grid
-
-                if not isinstance(grid, int):
-                    on_grid_x = int(round(pos[0]/10) * 10)
-                    on_grid_y = int(round(pos[1]/10) * 10)
-
-                else:
-                    on_grid_x = int(round(pos[0]/grid) * grid)
-                    on_grid_y = int(round(pos[1]/grid) * grid)
-
-                self.entity_factory.create_entity_at(self.level_editor_entity_to_place,
-                                                     on_grid_x,
-                                                     on_grid_y,
-                                                     self.level_editor_rotate)
-                self.level_editor_level.add_entity(self.level_editor_entity_to_place,
-                                                   on_grid_x,
-                                                   on_grid_y,
-                                                   self.level_editor_rotate)
-                self.level_editor_entity_to_place = ''
+                pos = (touch.pos[0] * scale - cam_pos[0],
+                       touch.pos[1] * scale - cam_pos[1])
+                self.ids.play_camera.look_at(pos)
 
         # For debug use only
         elif state == 'play':
