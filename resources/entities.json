@@ -11,8 +11,7 @@
                         {"radius": 30, "offset_x": 0, "offset_y": 0}],
                     "mass": 1, "friction": 1.0, "moment": 1, "shape": "circle"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "n", "strength": 1},
-                {"type": "animation", "animation": "neutral_idle", "looped": true}
+                {"type": "charge", "charge": "n", "strength": 1}
             ]
         },
 		{

@@ -75,7 +75,7 @@ class EntityFactory():
 
         elif component_data['type'] == 'animation':
             c_dict = {'animation': {'name': component_data['animation'],
-                                    'looped': component_data['looped']}}
+                                    'loop': component_data['looped']}}
 
         elif component_data['type'] == 'physics':
             col_shapes = []
