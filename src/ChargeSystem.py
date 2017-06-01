@@ -23,33 +23,30 @@ class ChargeSystem(GameSystem):
         attractor_id = App.get_running_app().game.attractor_id
         attractor = self.gameworld.entities[attractor_id]
 
-        if attractor.charge.charge == 'n':
-            return
+        if attractor.charge.charge != 'n':
+            for component in self.components:
+                if component is not None:
+                    entity_id = component.entity_id
+                    if entity_id == attractor_id:
+                        continue
 
-        for component in self.components:
-            if component is not None:
-                entity_id = component.entity_id
-                if entity_id == attractor_id:
-                    continue
+                    entity = self.gameworld.entities[entity_id]
 
-                entity = entities[entity_id]
-
-                if entity.charge.charge != 'n':
-                    if self.in_range(entity.position,
-                                     entity.charge.strength,
-                                     attractor.position):
-                        self.exert_force(entity.position,
+                    if entity.charge.charge != 'n':
+                        if self.in_range(entity.position,
                                          entity.charge.strength,
-                                         attractor)
+                                         attractor.position):
+                            self.exert_force(entity.position,
+                                             entity.charge.strength,
+                                             attractor)
 
     def in_range(self, pos, strength, attractor_pos):
         radius = strength * self.CHARGE_MOD
 
         # Initial rectangle-based check
-        if attractor_pos.x < (pos.x - radius) or (pos.x + radius) < attractor_pos.x or \
-             attractor_pos.y < (pos.y - radius) or (pos.y + radius) < attractor_pos.y:
+        if (attractor_pos.x < (pos.x - radius) or (pos.x + radius) < attractor_pos.x or
+                attractor_pos.y < (pos.y - radius) or (pos.y + radius) < attractor_pos.y):
             return False
-
 
         if ((attractor_pos.x - pos.x)**2 + (attractor_pos.y - pos.y)**2) < radius**2:
             return True

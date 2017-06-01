@@ -29,9 +29,10 @@ class Level():
             return False
 
     def pop_entity(self):
-        return self.names.pop(), self.points.pop(), self.rotations.pop()
+        return self.names.pop(), self.points.pop(), self.rotations.pop(), self.ids.pop()
 
     def clear(self):
         self.names.clear()
         self.points.clear()
         self.rotations.clear()
+        self.ids.clear()

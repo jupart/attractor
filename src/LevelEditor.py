@@ -43,12 +43,12 @@ class LevelEditorSystem(GameSystem):
             if ((pos[0] - FLUFF) < point.x) and ((point.x < pos[0] + FLUFF)) and \
                     ((pos[1] - FLUFF) < point.y) and ((point.y < pos[1] + FLUFF)):
 
-                self.level.names.pop(i)
+                name = self.level.names.pop(i)
                 self.level.points.pop(i)
                 self.level.rotations.pop(i)
-                self.level.ids.pop(i)
 
                 ent_id = self.level.ids.pop(i)
+                print(name, ent_id, App.get_running_app().game.attractor_id)
                 self.gameworld.remove_entity(ent_id)
 
     def handle_click(self, touch):
