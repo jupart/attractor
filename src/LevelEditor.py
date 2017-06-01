@@ -1,88 +1,105 @@
 from kivy.app import App
 from kivy.core.window import Window
-from kivent_core.systems.gamesystem import Component
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
-from kivy.clock import Clock
 
-
-class LevelEditorComponent(Component):
-
-    def __init__(self, **kwargs):
-        super(LevelEditorComponent, self).__init__(**kwargs)
-        self.asset = ''
-        self.previous_asset = 'None'
-        self.draw_id = -1
-        self.draw_renderer = 'renderer'
+from Level import Level
 
 
 class LevelEditorSystem(GameSystem):
-
     def __init__(self, **kwargs):
         super(LevelEditorSystem, self).__init__(**kwargs)
-        self.enabled = False
+        self.deleting = False
+        self.rotate = 0
+        self.level = Level()
+        self.asset_id = -1
+        self.screen = None
 
     def update(self, dt):
-        entities = self.gameworld.entities
-        for component in self.components:
-            if component is not None:
-                entity_id = component.entity_id
-                entity = entities[entity_id]
+        if self.asset_id != -1:
+            self.place_entity()
 
-                if not self.enabled:
-                    if entity.level_editor.draw_id != -1:
-                        self.gameworld.remove_entity(entity.level_editor.draw_id)
-                        entity.level_editor.draw_id = -1
-                        entity.level_editor.asset = ''
+    def place_entity(self):
+        app = App.get_running_app()
+        cam_pos = app.game.ids.play_camera.camera_pos
+        scale = app.game.ids.play_camera.camera_scale
+        pos = (Window.mouse_pos[0] * scale - cam_pos[0],
+               Window.mouse_pos[1] * scale - cam_pos[1])
+
+        try:
+            grid = int(app.game.grid.text)
+        except ValueError:
+            grid = 1
+
+        on_grid_x = int(round(pos[0]/grid) * grid)
+        on_grid_y = int(round(pos[1]/grid) * grid)
+
+        draw_ent = self.gameworld.entities[self.asset_id]
+        draw_ent.position.pos = (on_grid_x, on_grid_y)
+
+    def delete_at(self, pos):
+        FLUFF = 25
+        for i, point in enumerate(self.level.points):
+            if ((pos[0] - FLUFF) < point.x) and ((point.x < pos[0] + FLUFF)) and \
+                    ((pos[1] - FLUFF) < point.y) and ((point.y < pos[1] + FLUFF)):
+
+                self.level.names.pop(i)
+                self.level.points.pop(i)
+                self.level.rotations.pop(i)
+                self.level.ids.pop(i)
+
+                ent_id = self.level.ids.pop(i)
+                self.gameworld.remove_entity(ent_id)
+
+    def handle_click(self, touch):
+        app = App.get_running_app()
+        cam = app.game.ids.play_camera
+
+        cam_pos = cam.camera_pos
+        scale = cam.camera_scale
+        pos = (Window.mouse_pos[0] * scale - cam_pos[0],
+               Window.mouse_pos[1] * scale - cam_pos[1])
+
+        if touch.button == 'left':
+            if self.deleting:
+                self.delete_at(pos)
+
+            else:
+                if self.entity_to_place == '':
+                    return
+
+                grid = self.screen.ids.grid
+
+                if not isinstance(grid, int):
+                    on_grid_x = int(round(pos[0]/10) * 10)
+                    on_grid_y = int(round(pos[1]/10) * 10)
 
                 else:
-                    try:
-                        asset = entity.level_editor.asset
-                    except AttributeError:
-                        continue
-
-                    if entity.level_editor.previous_asset != asset:
-                        entity.level_editor.previous_asset = asset
-                        if asset == '':
-                            asset = entity.level_editor.asset = 'bullet0'
-                            entity.level_editor.previous_asset = asset
-
-                        if '_r' in asset:
-                            tex_name = asset[:-2]
-                        else:
-                            tex_name = asset
-
-                        if entity.level_editor.draw_id != -1:
-                            self.gameworld.remove_entity(entity.level_editor.draw_id)
-
-                        component_dict = {'position': (0, 0),
-                                          'renderer': {'texture': tex_name,
-                                                       'size': (100, 100),
-                                                       'model_key': asset,
-                                                       'render': True}}
-
-                        component_order = ['position', 'renderer']
-
-                        ent_id = self.gameworld.init_entity(component_dict,
-                                                            component_order)
-                        entity.level_editor.draw_id = ent_id
-
-                    app = App.get_running_app()
-                    cam_pos = app.game.ids.camera.camera_pos
-                    scale = app.game.ids.camera.camera_scale
-                    pos = (Window.mouse_pos[0] * scale - cam_pos[0],
-                           Window.mouse_pos[1] * scale - cam_pos[1])
-
-                    try:
-                        grid = int(app.game.grid.text)
-                    except ValueError:
-                        grid = 1
-
                     on_grid_x = int(round(pos[0]/grid) * grid)
                     on_grid_y = int(round(pos[1]/grid) * grid)
 
-                    draw_ent = self.gameworld.entities[entity.level_editor.draw_id]
-                    draw_ent.position.pos = (on_grid_x, on_grid_y)
+                r = int(self.screen.ids.rotation.text)
+                ids = app.game.entity_factory.create_entity_at(self.entity_to_place,
+                                                               on_grid_x,
+                                                               on_grid_y,
+                                                               r)
+                self.level.add_entity(self.entity_to_place,
+                                      on_grid_x,
+                                      on_grid_y,
+                                      r,
+                                      ids)
+                self.entity_to_place = ''
+
+        elif touch.button == 'scrollup':
+            cam.camera_scale = cam.camera_scale + 0.1
+
+        elif touch.button == 'scrolldown':
+            cam.camera_scale = cam.camera_scale - 0.1
+
+        elif touch.button == 'middle':
+            cam.focus_entity = False
+            cam.do_scroll_lock = False
+            cam.look_at(pos)
 
 
 Factory.register('LevelEditorSystem', cls=LevelEditorSystem)

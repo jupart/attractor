@@ -1,6 +1,5 @@
 import os
 import json
-from math import pi
 
 # Kivy visuals
 from kivy.uix.widget import Widget
@@ -21,6 +20,7 @@ import kivent_cymunk
 from kivent_core.managers.resource_managers import texture_manager
 
 from EntityFactory import EntityFactory
+from LevelEditor import LevelEditorSystem
 from ChargeSystem import ChargeSystem, ChargeComponent
 from TouchedTextBox import TouchedTextBox
 # from IconButton import IconButton
@@ -96,11 +96,6 @@ for root, dirs, files in os.walk("resources/png"):
 class AttractorGame(Widget):
     attractor_id = NumericProperty(-1)
 
-    level_editor_deleting = False
-    level_editor_entity_to_place = ''
-    level_editor_rotate = 0
-    level_editor_level = Level()
-
     def __init__(self, **kwargs):
         super(AttractorGame, self).__init__(**kwargs)
         self.gameworld.init_gameworld(['cymunk_physics',
@@ -119,6 +114,8 @@ class AttractorGame(Widget):
         self.load_animations()
 
         self.entity_factory = EntityFactory(self.gameworld.init_entity)
+        self.editor = self.gameworld.system_manager['editor']
+        self.editor.screen = self.ids.gamescreenmanager.ids.editor_screen
         self.clear_level()
 
     def setup_states(self):
@@ -254,49 +251,7 @@ class AttractorGame(Widget):
         state = self.gameworld.state
 
         if state == 'editor':
-            if touch.button == 'left':
-                if self.level_editor_deleting:
-                    self.delete_at(pos)
-                    print('deleting at {}'.format(pos))
-
-                else:
-                    if self.level_editor_entity_to_place == '':
-                        return
-
-                    grid = self.ids.gamescreenmanager.ids.editor_screen.ids.grid
-
-                    if not isinstance(grid, int):
-                        on_grid_x = int(round(pos[0]/10) * 10)
-                        on_grid_y = int(round(pos[1]/10) * 10)
-
-                    else:
-                        on_grid_x = int(round(pos[0]/grid) * grid)
-                        on_grid_y = int(round(pos[1]/grid) * grid)
-
-                    print('placing at {}'.format((on_grid_x, on_grid_y)))
-
-                    r = int(self.ids.gamescreenmanager.ids.editor_screen.ids.rotation.text)
-                    ids = self.entity_factory.create_entity_at(self.level_editor_entity_to_place,
-                                                               on_grid_x,
-                                                               on_grid_y,
-                                                               r)
-                    self.level_editor_level.add_entity(self.level_editor_entity_to_place,
-                                                       on_grid_x,
-                                                       on_grid_y,
-                                                       r,
-                                                       ids)
-                    self.level_editor_entity_to_place = ''
-
-            elif touch.button == 'scrollup':
-                cam.camera_scale = cam.camera_scale + 0.1
-
-            elif touch.button == 'scrolldown':
-                cam.camera_scale = cam.camera_scale - 0.1
-
-            elif touch.button == 'middle':
-                cam.focus_entity = False
-                cam.do_scroll_lock = False
-                cam.look_at(pos)
+            self.editor.handle_click(touch)
 
         # For debug use only
         elif state == 'play':
@@ -308,7 +263,7 @@ class AttractorGame(Widget):
                 self.ids.cymunk_physics.space.add_body(b)
 
     def toggle_editor_deleting(self):
-        self.level_editor_deleting = not self.level_editor_deleting
+        self.editor.deleting = not self.editor.deleting
 
     def toggle_level_editor(self):
         if self.gameworld.state == 'editor':
@@ -343,10 +298,10 @@ class AttractorGame(Widget):
 
     def grab_entity_to_place(self, instance):
         self.dd.dismiss()
-        self.level_editor_entity_to_place = instance.text
+        self.editor.entity_to_place = instance.text
 
     def save_level(self):
-        level = self.level_editor_level
+        level = self.editor.level
         level_file_name = self.ids.gamescreenmanager.ids.editor_screen.ids.level_name.text
 
         if level_file_name == '':
@@ -386,7 +341,7 @@ class AttractorGame(Widget):
             rot = ent['rotation']
 
             ids = self.entity_factory.create_entity_at(name, x, y, rot)
-            self.level_editor_level.add_entity(name, x, y, rot, ids)
+            self.editor.level.add_entity(name, x, y, rot, ids)
 
     def clear_level(self):
         self.gameworld.clear_entities()
@@ -394,23 +349,9 @@ class AttractorGame(Widget):
                                                                  200,
                                                                  200,
                                                                  0)
-        self.level_editor_level.add_entity('attractor',
-                                           200,
-                                           200,
-                                           0,
-                                           self.attractor_id)
-        self.level_editor_level.clear()
-
-    def delete_at(self, pos):
-        FLUFF = 25
-        for i, point in enumerate(self.level_editor_level.points):
-            if ((pos[0] - FLUFF) < point.x) and ((point.x < pos[0] + FLUFF)) and \
-                    ((pos[1] - FLUFF) < point.y) and ((point.y < pos[1] + FLUFF)):
-
-                self.level_editor_level.names.pop(i)
-                self.level_editor_level.points.pop(i)
-                self.level_editor_level.rotations.pop(i)
-                self.level_editor_level.ids.pop(i)
-
-                ent_id = self.level_editor_level.ids.pop(i)
-                self.gameworld.remove_entity(ent_id)
+        self.editor.level.add_entity('attractor',
+                                     200,
+                                     200,
+                                     0,
+                                     self.attractor_id)
+        self.editor.level.clear()
