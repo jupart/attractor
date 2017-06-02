@@ -58,7 +58,7 @@ AttractorGame:
             system_id: 'play_camera'
             gameworld: gameworld
             currentmap: gamemap
-            camera_scale: 2
+            camera_scale: 3
             size: root.size
             window_size: root.size
             pos: root.pos
@@ -129,6 +129,13 @@ AttractorGame:
         text: "Menu"
         on_release: app.game.go_to_menu_screen()
 
+    Button:
+        size_hint: None, None
+        size: 100, 40
+        pos: self.parent.height - 100, self.parent.height - 40
+        text: "Reset"
+        on_release: app.game.reset_attractor()
+
     FloatLayout:
         Button:
             text: '+'
@@ -159,6 +166,13 @@ AttractorGame:
         pos: 0, self.parent.height - 40
         text: "Menu"
         on_release: app.game.go_to_menu_screen()
+
+    Button:
+        size_hint: None, None
+        size: 100, 40
+        pos: self.parent.height - 100, self.parent.height - 40
+        text: "Reset"
+        on_release: app.game.reset_attractor()
 
     # Grid settings
     BoxLayout:

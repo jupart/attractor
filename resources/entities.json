@@ -66,7 +66,7 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "-", "strength": 1},
+                {"type": "charge", "charge": "-", "strength": -1},
                 {"type": "animation", "animation": "negapole_idle", "looped": true}
             ]
         },
@@ -84,7 +84,7 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "-", "strength": 1},
+                {"type": "charge", "charge": "-", "strength": -1},
                 {"type": "animation", "animation": "negapole_corner_idle", "looped": true}
             ]
         },

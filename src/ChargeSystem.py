@@ -1,16 +1,6 @@
 from kivy.app import App
-from kivent_core.systems.gamesystem import Component
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
-from kivy.graphics import Line, Color
-
-
-class ChargeComponent(Component):
-    def __init__(self, **kwargs):
-        pass
-
-    def update_charge(self, ent, change_to):
-        ent.charge.charge = change_to
 
 
 class ChargeSystem(GameSystem):
@@ -32,16 +22,15 @@ class ChargeSystem(GameSystem):
 
                     entity = self.gameworld.entities[entity_id]
 
-                    if entity.charge.charge != 'n':
-                        if self.in_range(entity.position,
+                    if self.in_range(entity.position,
+                                     entity.charge.strength,
+                                     attractor.position):
+                        self.exert_force(entity.position,
                                          entity.charge.strength,
-                                         attractor.position):
-                            self.exert_force(entity.position,
-                                             entity.charge.strength,
-                                             attractor)
+                                         attractor)
 
     def in_range(self, pos, strength, attractor_pos):
-        radius = strength * self.CHARGE_MOD
+        radius = abs(strength) * self.CHARGE_MOD
 
         # Initial rectangle-based check
         if (attractor_pos.x < (pos.x - radius) or (pos.x + radius) < attractor_pos.x or
@@ -56,8 +45,13 @@ class ChargeSystem(GameSystem):
     def exert_force(self, pos, strength, attractor):
         offset = (attractor.position.x - pos.x, attractor.position.y - pos.y)
 
+        if attractor.charge.charge == '+':
+            mod = 1
+        else:
+            mod = -1
+
         d = ((pos.x - attractor.position.x)**2 + (pos.y - attractor.position.y)**2)
-        f = (strength * 10000)/d
+        f = mod * (strength * 10000)/d
         force = (offset[0] * f, offset[1] * f)
 
         attractor.cymunk_physics.body.apply_impulse(force, offset)

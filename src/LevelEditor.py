@@ -1,3 +1,5 @@
+from math import radians
+
 from kivy.app import App
 from kivy.core.window import Window
 from kivent_core.systems.gamesystem import GameSystem
@@ -26,16 +28,17 @@ class LevelEditorSystem(GameSystem):
         pos = (Window.mouse_pos[0] * scale - cam_pos[0],
                Window.mouse_pos[1] * scale - cam_pos[1])
 
-        try:
-            grid = int(app.game.grid.text)
-        except ValueError:
-            grid = 1
+        grid = int(self.screen.ids.grid.text)
+        r = int(self.screen.ids.rotation.text)
 
         on_grid_x = int(round(pos[0]/grid) * grid)
         on_grid_y = int(round(pos[1]/grid) * grid)
 
         draw_ent = self.gameworld.entities[self.asset_id]
         draw_ent.position.pos = (on_grid_x, on_grid_y)
+        draw_ent.cymunk_physics.body.position = draw_ent.position.pos
+
+        draw_ent.cymunk_physics.body.angle = radians(r)
 
     def delete_at(self, pos):
         FLUFF = 25
@@ -43,12 +46,11 @@ class LevelEditorSystem(GameSystem):
             if ((pos[0] - FLUFF) < point.x) and ((point.x < pos[0] + FLUFF)) and \
                     ((pos[1] - FLUFF) < point.y) and ((point.y < pos[1] + FLUFF)):
 
-                name = self.level.names.pop(i)
-                self.level.points.pop(i)
-                self.level.rotations.pop(i)
+                del self.level.names[i]
+                del self.level.points[i]
+                del self.level.rotations[i]
 
                 ent_id = self.level.ids.pop(i)
-                print(name, ent_id, App.get_running_app().game.attractor_id)
                 self.gameworld.remove_entity(ent_id)
 
     def handle_click(self, touch):
@@ -68,17 +70,12 @@ class LevelEditorSystem(GameSystem):
                 if self.entity_to_place == '':
                     return
 
-                grid = self.screen.ids.grid
-
-                if not isinstance(grid, int):
-                    on_grid_x = int(round(pos[0]/10) * 10)
-                    on_grid_y = int(round(pos[1]/10) * 10)
-
-                else:
-                    on_grid_x = int(round(pos[0]/grid) * grid)
-                    on_grid_y = int(round(pos[1]/grid) * grid)
-
+                grid = int(self.screen.ids.grid.text)
                 r = int(self.screen.ids.rotation.text)
+
+                on_grid_x = int(round(pos[0]/grid) * grid)
+                on_grid_y = int(round(pos[1]/grid) * grid)
+
                 ids = app.game.entity_factory.create_entity_at(self.entity_to_place,
                                                                on_grid_x,
                                                                on_grid_y,
@@ -88,7 +85,6 @@ class LevelEditorSystem(GameSystem):
                                       on_grid_y,
                                       r,
                                       ids)
-                self.entity_to_place = ''
 
         elif touch.button == 'scrollup':
             cam.camera_scale = cam.camera_scale + 0.1
