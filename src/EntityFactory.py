@@ -17,12 +17,18 @@ class EntityFactory():
         for ent in self.entity_data:
             if ent['name'] == name:
                 new_ent_data = self.get_entity_data(ent)
-                new_ent_data[0]['cymunk_physics']['position'] = (x, y)
+
+                if 'cymunk_physics' in new_ent_data[0] :
+                    new_ent_data[0]['cymunk_physics']['position'] = (x, y)
+
                 new_ent_data[0]['position'] = (x, y)
                 if 'rotate' in new_ent_data[0]:
-                    new_ent_data[0]['cymunk_physics']['angle'] = radians(rot)
                     new_ent_data[0]['rotate'] = radians(rot)
                     new_ent_data[0]['rotate_renderer']['rotate'] = radians(rot)
+
+                    if 'cymunk_physics' in new_ent_data[0] :
+                        new_ent_data[0]['cymunk_physics']['angle'] = radians(rot)
+
                 return self.gameworld_init_entity(new_ent_data[0],
                                                   new_ent_data[1])
         else:

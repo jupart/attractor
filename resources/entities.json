@@ -33,16 +33,50 @@
             ]
         },
 		{
+            "name": "wall_inlay",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "wall_inlay", "size_x": 240, "size_y": 120},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -120, "ay": 60, "bx": -30, "by": 60, "radius": 1},
+                        {"ax": -30, "ay": 60, "bx": -30, "by": 40, "radius": 1},
+                        {"ax": -30, "ay": 40, "bx": 30, "by": 40, "radius": 1},
+                        {"ax": 30, "ay": 40, "bx": 30, "by": 60, "radius": 1},
+                        {"ax": 30, "ay": 60, "bx": 120, "by": 60, "radius": 1},
+                        {"ax": 120, "ay": 60, "bx": 120, "by": -60, "radius": 1},
+                        {"ax": 120, "ay": -60, "bx": -120, "by": 60, "radius": 1}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
+            "name": "wall_corner",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "wall_corner", "size_x": 120, "size_y": 120},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -60, "ay": 60, "bx": 60, "by": -60, "radius": 1}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
             "name": "posipole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "posipole-0", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "posipole-0", "size_x": 600, "size_y": 600},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -60, "ay": -60, "bx": -60, "by": 60, "radius": 1},
-                        {"ax": 60, "ay": -60, "bx": -60, "by": -60, "radius": 1},
-                        {"ax": -60, "ay": 60, "bx": 60, "by": 60, "radius": 1},
-                        {"ax": 60, "ay": 60, "bx": 60, "by": -60, "radius": 1}
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 1},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 1},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 1},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 1}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
