@@ -351,7 +351,7 @@ class AttractorGame(Widget):
                                            'y': point.y,
                                            'rotation': rotation})
 
-        if not len(level_data['entities']) == 0:
+        if len(level_data['entities']) is not 0:
             with open('resources/levels/' + level_file_name + '.json', 'w', encoding='utf-8') as f:
                 json.dump(level_data, f, indent=2)
 
