@@ -4,7 +4,8 @@ from kivy.factory import Factory
 
 
 class ChargeSystem(GameSystem):
-    CHARGE_MOD = 300
+    DISTANCE_MOD = 400
+    FORCE_MOD = 3000
 
     def __init__(self, **kwargs):
         super(ChargeSystem, self).__init__(**kwargs)
@@ -30,7 +31,7 @@ class ChargeSystem(GameSystem):
                                          attractor)
 
     def in_range(self, pos, strength, attractor_pos):
-        radius = abs(strength) * self.CHARGE_MOD
+        radius = abs(strength) * self.DISTANCE_MOD
 
         # Initial rectangle-based check
         if (attractor_pos.x < (pos.x - radius) or (pos.x + radius) < attractor_pos.x or
@@ -51,7 +52,7 @@ class ChargeSystem(GameSystem):
             mod = -1
 
         d = ((pos.x - attractor.position.x)**2 + (pos.y - attractor.position.y)**2)
-        f = mod * (strength * 10000)/d
+        f = mod * (strength * self.FORCE_MOD)/d
         force = (offset[0] * f, offset[1] * f)
 
         attractor.cymunk_physics.body.apply_impulse(force, offset)

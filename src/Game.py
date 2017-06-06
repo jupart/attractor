@@ -120,6 +120,7 @@ class AttractorGame(Widget):
         self.load_level('test')
         self.ids.play_camera.focus_entity = True
         self.ids.play_camera.entity_to_focus = self.attractor_id
+        self.ids.cymunk_physics.collision_slop = 2
 
     def setup_states(self):
         self.gameworld.add_state(state_name='menu',
