@@ -112,7 +112,7 @@ class AttractorGame(Widget):
         self.load_models()
         self.load_animations()
 
-        self.entity_factory = EntityFactory(self.gameworld.init_entity)
+        self.entity_factory = EntityFactory(self.gameworld, self.ids.cymunk_physics)
         self.editor = self.gameworld.system_manager['editor']
         self.editor.screen = self.ids.gamescreenmanager.ids.editor_screen
         self.clear_level()
@@ -251,7 +251,6 @@ class AttractorGame(Widget):
         if touch.button == 'left':
             if super(AttractorGame, self).on_touch_down(touch):
                 return True
-
 
         state = self.gameworld.state
 

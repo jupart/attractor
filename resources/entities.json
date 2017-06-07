@@ -87,6 +87,25 @@
             ]
         },
 		{
+            "name": "posipole_moveable",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "posipole-0", "size_x": 600, "size_y": 600},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                    ],
+                    "circles": [],
+                    "mass": 1, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0},
+                {"type": "charge", "charge": "+", "strength": 1},
+                {"type": "animation", "animation": "posipole_idle", "looped": true}
+            ]
+        },
+		{
             "name": "negapole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
@@ -106,39 +125,55 @@
             ]
         },
 		{
-            "name": "negapole_corner",
+            "name": "negapole_moveable",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "negapole_corner", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "negapole-0", "size_x": 120, "size_y": 120},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -60, "ay": -60, "bx": 60, "by": 60, "radius": 5},
-                        {"ax": 60, "ay": 60, "bx": 60, "by": -60, "radius": 5},
-                        {"ax": 60, "ay": -60, "bx": -60, "by": -60, "radius": 5}
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
                     ],
                     "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                    "mass": 1, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
                 {"type": "charge", "charge": "-", "strength": -1},
-                {"type": "animation", "animation": "negapole_corner_idle", "looped": true}
+                {"type": "animation", "animation": "negapole_idle", "looped": true}
             ]
         },
 		{
-            "name": "posipole_corner",
+            "name": "rotator_100_posipole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "posipole_corner", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
                 {"type": "physics",
-                    "segments": [
-                        {"ax": -60, "ay": -60, "bx": 60, "by": 60, "radius": 5},
-                        {"ax": 60, "ay": 60, "bx": 60, "by": -60, "radius": 5},
-                        {"ax": 60, "ay": -60, "bx": -60, "by": -60, "radius": 5}
+                    "segments": [],
+                    "circles": [
+                        {"radius": 30, "offset_x": 0, "offset_y": 0}
                     ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                    "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
+                    "angular_velocity": 1},
                 {"type": "rotate", "rotation": 0},
                 {"type": "charge", "charge": "+", "strength": 1},
-                {"type": "animation", "animation": "posipole_corner_idle", "looped": true}
+                {"type": "attach", "entity": "posipole_moveable", "distance": 100}
+            ]
+        },
+		{
+            "name": "rotator_100_negapole",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
+                {"type": "physics",
+                    "segments": [],
+                    "circles": [
+                        {"radius": 30, "offset_x": 0, "offset_y": 0}
+                    ],
+                    "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
+                    "angular_velocity": 1},
+                {"type": "rotate", "rotation": 0},
+                {"type": "attach", "entity": "negapole_moveable", "distance": 100}
             ]
         }
 	]

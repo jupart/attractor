@@ -1,10 +1,14 @@
 import json
-from math import radians
+from math import radians, pi
+
+from cymunk import Body
+from cymunk import PinJoint
 
 
 class EntityFactory():
-    def __init__(self, gameworld_init_entity, **kwargs):
-        self.gameworld_init_entity = gameworld_init_entity
+    def __init__(self, gameworld, physics, **kwargs):
+        self.gameworld = gameworld
+        self.physics = physics
         self.reload_entity_data()
 
     def reload_entity_data(self):
@@ -22,6 +26,7 @@ class EntityFactory():
                     new_ent_data[0]['cymunk_physics']['position'] = (x, y)
 
                 new_ent_data[0]['position'] = (x, y)
+
                 if 'rotate' in new_ent_data[0]:
                     new_ent_data[0]['rotate'] = radians(rot)
                     new_ent_data[0]['rotate_renderer']['rotate'] = radians(rot)
@@ -29,8 +34,25 @@ class EntityFactory():
                     if 'cymunk_physics' in new_ent_data[0] :
                         new_ent_data[0]['cymunk_physics']['angle'] = radians(rot)
 
-                return self.gameworld_init_entity(new_ent_data[0],
-                                                  new_ent_data[1])
+                if 'attach' in new_ent_data[0]:
+                    attach = new_ent_data[0].pop('attach')
+                    ids = self.gameworld.init_entity(new_ent_data[0], new_ent_data[1])
+                    ids2 = self.create_entity_at(attach['entity'],
+                                                 x,
+                                                 y + attach['distance'])
+
+                    rotator = self.gameworld.entities[ids]
+                    rotated = self.gameworld.entities[ids2]
+
+                    constraint = PinJoint(rotator.cymunk_physics.body,
+                                          rotated.cymunk_physics.body,
+                                          (0, 0),
+                                          (0, 0))
+                    self.physics.space.add_constraint(constraint)
+                    return ids
+
+                else:
+                    return self.gameworld.init_entity(new_ent_data[0], new_ent_data[1])
         else:
             return False
 
@@ -105,16 +127,30 @@ class EntityFactory():
                                                   'radius': seg['radius']},
                                    'friction': 1.0})
 
+            if 'angular_velocity' in component_data:
+                ang_vel = component_data['angular_velocity'] * 2 * pi
+            else:
+                ang_vel = 0
+
+            if component_data['moment'] == 'inf':
+                mom = float('inf')
+            else:
+                mom = component_data['moment']
+
             c_dict = {'cymunk_physics': {'main_shape': component_data['shape'],
                                          'velocity': (0, 0),
                                          'position': (0, 0),
                                          'angle': 0,
-                                         'angular_velocity': 0,
+                                         'angular_velocity': ang_vel,
                                          'vel_limit': 1000,
                                          'ang_vel_limit': radians(200),
                                          'mass': component_data['mass'],
-                                         'moment': component_data['moment'],
+                                         'moment': mom,
                                          'col_shapes': col_shapes}}
+
+        elif component_data['type'] == 'attach':
+            c_dict = {'attach': {'entity': component_data['entity'],
+                                 'distance': component_data['distance']}}
 
         else:
             return {}
@@ -127,5 +163,3 @@ class EntityFactory():
             names.append(ent['name'])
 
         return names
-
-

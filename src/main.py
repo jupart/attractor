@@ -1,4 +1,4 @@
-#!/home/jpartain/Code_Files/Py_Files/attractor/attractor/bin/python3
+#!/home/jpartain/Code/attractor/attractor/bin/python3
 
 from kivy.app import App
 from kivy.config import Config
