@@ -6,6 +6,7 @@ from cymunk import PinJoint
 
 
 class EntityFactory():
+    ROTATE_MOD = 1000
     def __init__(self, gameworld, physics, **kwargs):
         self.gameworld = gameworld
         self.physics = physics
@@ -43,6 +44,11 @@ class EntityFactory():
 
                     rotator = self.gameworld.entities[ids]
                     rotated = self.gameworld.entities[ids2]
+
+                    # Get started rotating
+                    rotated.cymunk_physics.body.apply_impulse(
+                            (self.ROTATE_MOD * new_ent_data[0]['cymunk_physics']['angular_velocity'], 0),
+                            (-10, 0))
 
                     constraint = PinJoint(rotator.cymunk_physics.body,
                                           rotated.cymunk_physics.body,
@@ -128,7 +134,7 @@ class EntityFactory():
                                    'friction': 1.0})
 
             if 'angular_velocity' in component_data:
-                ang_vel = component_data['angular_velocity'] * 2 * pi
+                ang_vel = component_data['angular_velocity']
             else:
                 ang_vel = 0
 
@@ -143,7 +149,7 @@ class EntityFactory():
                                          'angle': 0,
                                          'angular_velocity': ang_vel,
                                          'vel_limit': 1000,
-                                         'ang_vel_limit': radians(200),
+                                         'ang_vel_limit': radians(720),
                                          'mass': component_data['mass'],
                                          'moment': mom,
                                          'col_shapes': col_shapes}}
