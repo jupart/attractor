@@ -1,4 +1,6 @@
 from kivy.app import App
+from kivy.graphics import Color, Ellipse
+from kivy.animation import Animation
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
 
@@ -14,15 +16,43 @@ class ChargeSystem(GameSystem):
         attractor_id = App.get_running_app().game.attractor_id
         attractor = self.gameworld.entities[attractor_id]
 
-        if attractor.charge.charge != 'n':
-            for component in self.components:
-                if component is not None:
-                    entity_id = component.entity_id
-                    if entity_id == attractor_id:
-                        continue
+        for component in self.components:
+            if component is not None:
+                entity_id = component.entity_id
+                if entity_id == attractor_id:
+                    continue
 
-                    entity = self.gameworld.entities[entity_id]
+                entity = self.gameworld.entities[entity_id]
 
+                if not entity.charge.drawn:
+                    screen_pos = entity.position.pos
+                    radius = self.DISTANCE_MOD * abs(entity.charge.strength)
+
+                    if entity.charge.charge == '+':
+                        r, g, b = 0xe4, 0x3e, 0x48
+                    elif entity.charge.charge == '-':
+                        r, g, b = 0x1e, 0x7d, 0xb1
+
+                    with App.get_running_app().game.canvas:
+                        color = Color(r, g, b, 0.06)
+                        entity.charge.ellipse = Ellipse(size=(radius * 2 + 40, radius * 2),
+                                                        pos=screen_pos)
+
+                    anim = Animation(a=0.5) + Animation(a=0.06, duration=1.)
+                    anim.repeat = True
+                    anim.start(color)
+                    entity.charge.drawn = True
+
+                else:
+                    cam = App.get_running_app().game.ids.play_camera
+                    cam_pos = cam.camera_pos
+                    cam_scale = cam.camera_scale
+
+                    screen_pos = ((entity.position.pos[0] + cam_pos[0]) / cam_scale,
+                                  (entity.position.pos[1] + cam_pos[1]) / cam_scale)
+                    entity.charge.ellipse.pos = screen_pos
+
+                if attractor.charge.charge != 'n':
                     if self.in_range(entity.position,
                                      entity.charge.strength,
                                      attractor.position):

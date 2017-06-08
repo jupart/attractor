@@ -71,7 +71,7 @@
             "name": "posipole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "posipole-0", "size_x": 600, "size_y": 600},
+                {"type": "render", "texture": "posipole", "size_x": 60, "size_y": 20},
                 {"type": "physics",
                     "segments": [
                         {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
@@ -82,8 +82,7 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "+", "strength": 1},
-                {"type": "animation", "animation": "posipole_idle", "looped": true}
+                {"type": "charge", "charge": "+", "strength": 1}
             ]
         },
 		{
@@ -156,7 +155,6 @@
                     "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
                     "angular_velocity": 1},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "+", "strength": 1},
                 {"type": "attach", "entity": "posipole_moveable", "distance": 100}
             ]
         },
@@ -189,7 +187,6 @@
                     "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
                     "angular_velocity": 1},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "+", "strength": 1},
                 {"type": "attach", "entity": "posipole_moveable", "distance": 200}
             ]
         },
@@ -207,6 +204,34 @@
                     "angular_velocity": 1},
                 {"type": "rotate", "rotation": 0},
                 {"type": "attach", "entity": "negapole_moveable", "distance": 200}
+            ]
+        },
+		{
+            "name": "negative_toggle_switch",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "negative_toggle_switch", "size_x": 300, "size_y": 120},
+                {"type": "physics",
+                    "segments": [],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box",
+                    "angular_velocity": 1},
+                {"type": "rotate", "rotation": 0},
+                {"type": "switch", "charge": "negative"}
+            ]
+        },
+		{
+            "name": "positive_toggle_switch",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "positive_toggle_switch", "size_x": 300, "size_y": 120},
+                {"type": "physics",
+                    "segments": [],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box",
+                    "angular_velocity": 1},
+                {"type": "rotate", "rotation": 0},
+                {"type": "switch", "charge": "negative"}
             ]
         }
 	]
