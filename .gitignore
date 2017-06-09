@@ -1,6 +1,5 @@
 .coverage
-src/__pycache__
-test/__pycache__
 attractor
 bin/
 .buildozer/
+*.pyc

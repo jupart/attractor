@@ -10,19 +10,19 @@ package.name = attractor
 package.domain = org.attractor
 
 # (str) Source code where the main.py live
-source.dir = src/
+source.dir = ./
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py, png, kv, atlas, glsl, json
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = resources/png/*,src/*
+source.include_patterns = resources/png/*, src/*, resources/shaders/*, resources/levels/*, resources/*
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin
+source.exclude_dirs = tests, bin, resources/src
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
@@ -36,7 +36,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = python3crystax,kivy,kivent_core
+requirements = python2,kivy,kivent_core,kivent_cymunk
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -81,16 +81,16 @@ fullscreen = 1
 #android.minapi = 9
 
 # (int) Android SDK version to use
-#android.sdk = 20
+android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 10.3.2
+#android.ndk = 10.3.2
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
 #android.private_storage = True
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
-android.ndk_path = /home/jpartain/.buildozer/crystal-ndk/crystax-ndk-10.3.2
+#android.ndk_path = /home/jpartain/.buildozer/crystal-ndk/crystax-ndk-10.3.2
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 #android.sdk_path =
@@ -99,7 +99,7 @@ android.ndk_path = /home/jpartain/.buildozer/crystal-ndk/crystax-ndk-10.3.2
 #android.ant_path =
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
-android.p4a_dir = ~/.buildozer/p4a
+#android.p4a_dir = ~/.buildozer/p4a
 
 # (list) python-for-android whitelist
 #android.p4a_whitelist =
@@ -177,7 +177,7 @@ android.p4a_dir = ~/.buildozer/p4a
 [buildozer]
 
 # (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
-log_level = 2
+log_level = 1
 
 # (int) Display warning if buildozer is run as root (0 = False, 1 = True)
 warn_on_root = 1
