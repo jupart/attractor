@@ -40,7 +40,7 @@ requirements = python2,kivy,kivent_core,kivent_cymunk
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
-# requirements.source.kivy = ../../kivy
+requirements.source.kivent_core = /home/jpartain/Tools/kivent
 
 # (list) Garden requirements
 #garden_requirements =
@@ -177,7 +177,7 @@ android.sdk = 20
 [buildozer]
 
 # (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
-log_level = 1
+log_level = 2
 
 # (int) Display warning if buildozer is run as root (0 = False, 1 = True)
 warn_on_root = 1

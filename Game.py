@@ -222,9 +222,8 @@ class AttractorGame(Widget):
         attractor.charge.charge = change_to
 
     def on_touch_down(self, touch):
-        if touch.button == 'left':
-            if super(AttractorGame, self).on_touch_down(touch):
-                return True
+        if super(AttractorGame, self).on_touch_down(touch):
+            return True
 
         state = self.gameworld.state
 

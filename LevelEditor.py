@@ -62,40 +62,40 @@ class LevelEditorSystem(GameSystem):
         pos = (Window.mouse_pos[0] * scale - cam_pos[0],
                Window.mouse_pos[1] * scale - cam_pos[1])
 
-        if touch.button == 'left':
-            if self.deleting:
-                self.delete_at(pos)
+        # if touch.button == 'left':
+        if self.deleting:
+            self.delete_at(pos)
 
-            else:
-                if self.entity_to_place == '':
-                    return
+        else:
+            if self.entity_to_place == '':
+                return
 
-                grid = int(self.screen.ids.grid.text)
-                r = int(self.screen.ids.rotation.text)
+            grid = int(self.screen.ids.grid.text)
+            r = int(self.screen.ids.rotation.text)
 
-                on_grid_x = int(round(pos[0]/grid) * grid)
-                on_grid_y = int(round(pos[1]/grid) * grid)
+            on_grid_x = int(round(pos[0]/grid) * grid)
+            on_grid_y = int(round(pos[1]/grid) * grid)
 
-                ids = app.game.entity_factory.create_entity_at(self.entity_to_place,
-                                                               on_grid_x,
-                                                               on_grid_y,
-                                                               r)
-                self.level.add_entity(self.entity_to_place,
-                                      on_grid_x,
-                                      on_grid_y,
-                                      r,
-                                      ids)
+            ids = app.game.entity_factory.create_entity_at(self.entity_to_place,
+                                                           on_grid_x,
+                                                           on_grid_y,
+                                                           r)
+            self.level.add_entity(self.entity_to_place,
+                                  on_grid_x,
+                                  on_grid_y,
+                                  r,
+                                  ids)
 
-        elif touch.button == 'scrollup':
-            cam.camera_scale = cam.camera_scale + 0.1
+        # elif touch.button == 'scrollup':
+            # cam.camera_scale = cam.camera_scale + 0.1
 
-        elif touch.button == 'scrolldown':
-            cam.camera_scale = cam.camera_scale - 0.1
+        # elif touch.button == 'scrolldown':
+            # cam.camera_scale = cam.camera_scale - 0.1
 
-        elif touch.button == 'middle':
-            cam.focus_entity = False
-            cam.do_scroll_lock = False
-            cam.look_at(pos)
+        # elif touch.button == 'middle':
+            # cam.focus_entity = False
+            # cam.do_scroll_lock = False
+            # cam.look_at(pos)
 
 
 Factory.register('LevelEditorSystem', cls=LevelEditorSystem)
