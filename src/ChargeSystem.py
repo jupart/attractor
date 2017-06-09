@@ -3,6 +3,7 @@ from kivy.graphics import Color, Ellipse
 from kivy.animation import Animation
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
+from kivy.core.window import Window
 
 
 class ChargeSystem(GameSystem):
@@ -25,32 +26,31 @@ class ChargeSystem(GameSystem):
                 entity = self.gameworld.entities[entity_id]
 
                 if not entity.charge.drawn:
-                    screen_pos = entity.position.pos
                     radius = self.DISTANCE_MOD * abs(entity.charge.strength)
 
                     if entity.charge.charge == '+':
-                        r, g, b = 0xe4, 0x3e, 0x48
+                        r, g, b = 0.894, 0.243, 0.282
                     elif entity.charge.charge == '-':
-                        r, g, b = 0x1e, 0x7d, 0xb1
+                        r, g, b = 0.118, 0.490, 0.694
 
-                    with App.get_running_app().game.canvas:
-                        color = Color(r, g, b, 0.06)
-                        entity.charge.ellipse = Ellipse(size=(radius * 2 + 40, radius * 2),
-                                                        pos=screen_pos)
+                    with App.get_running_app().game.ids.play_camera.canvas:
+                        color = Color(r, g, b, -0.05)
+                        entity.charge.ellipse = Ellipse(size=(radius * 2,
+                                                              radius * 2),
+                                                        pos=(entity.position.x - radius,
+                                                             entity.position.y - radius))
 
-                    anim = Animation(a=0.5) + Animation(a=0.06, duration=1.)
+                    anim = Animation(a=0.1) + Animation(a=-0.05, duration=1)
                     anim.repeat = True
                     anim.start(color)
                     entity.charge.drawn = True
 
                 else:
-                    cam = App.get_running_app().game.ids.play_camera
-                    cam_pos = cam.camera_pos
-                    cam_scale = cam.camera_scale
-
-                    screen_pos = ((entity.position.pos[0] + cam_pos[0]) / cam_scale,
-                                  (entity.position.pos[1] + cam_pos[1]) / cam_scale)
-                    entity.charge.ellipse.pos = screen_pos
+                    radius = self.DISTANCE_MOD * abs(entity.charge.strength)
+                    entity.charge.ellipse.size = (radius * 2,
+                                                  radius * 2)
+                    entity.charge.ellipse.pos = (entity.position.x - radius,
+                                                 entity.position.y - radius)
 
                 if attractor.charge.charge != 'n':
                     if self.in_range(entity.position,

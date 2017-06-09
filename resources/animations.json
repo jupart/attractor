@@ -30,34 +30,6 @@
             {"frame": "attractor_positive_idle_09"},
             {"frame": "attractor_positive_idle_10"},
             {"frame": "attractor_positive_idle_11"}
-        ]},
-        {"name": "negapole_idle", "duration": 100, "frames": [
-            {"frame": "negapole_idle_00"},
-            {"frame": "negapole_idle_01"},
-            {"frame": "negapole_idle_02"},
-            {"frame": "negapole_idle_03"},
-            {"frame": "negapole_idle_04"},
-            {"frame": "negapole_idle_05"},
-            {"frame": "negapole_idle_06"},
-            {"frame": "negapole_idle_07"},
-            {"frame": "negapole_idle_08"},
-            {"frame": "negapole_idle_09"},
-            {"frame": "negapole_idle_10"},
-            {"frame": "negapole_idle_11"}
-        ]},
-        {"name": "posipole_idle", "duration": 100, "frames": [
-            {"frame": "posipole_idle_00"},
-            {"frame": "posipole_idle_01"},
-            {"frame": "posipole_idle_02"},
-            {"frame": "posipole_idle_03"},
-            {"frame": "posipole_idle_04"},
-            {"frame": "posipole_idle_05"},
-            {"frame": "posipole_idle_06"},
-            {"frame": "posipole_idle_07"},
-            {"frame": "posipole_idle_08"},
-            {"frame": "posipole_idle_09"},
-            {"frame": "posipole_idle_10"},
-            {"frame": "posipole_idle_11"}
         ]}
     ]
 }

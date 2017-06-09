@@ -89,7 +89,7 @@
             "name": "posipole_moveable",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "posipole-0", "size_x": 600, "size_y": 600},
+                {"type": "render", "texture": "posipole", "size_x": 600, "size_y": 600},
                 {"type": "physics",
                     "segments": [
                         {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
@@ -100,15 +100,14 @@
                     "circles": [],
                     "mass": 1, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "+", "strength": 1},
-                {"type": "animation", "animation": "posipole_idle", "looped": true}
+                {"type": "charge", "charge": "+", "strength": 1}
             ]
         },
 		{
             "name": "negapole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "negapole-0", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "negapole", "size_x": 120, "size_y": 120},
                 {"type": "physics",
                     "segments": [
                         {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
@@ -119,15 +118,14 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "-", "strength": -1},
-                {"type": "animation", "animation": "negapole_idle", "looped": true}
+                {"type": "charge", "charge": "-", "strength": -1}
             ]
         },
 		{
             "name": "negapole_moveable",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "negapole-0", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "negapole", "size_x": 120, "size_y": 120},
                 {"type": "physics",
                     "segments": [
                         {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
@@ -138,8 +136,7 @@
                     "circles": [],
                     "mass": 1, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "-", "strength": -1},
-                {"type": "animation", "animation": "negapole_idle", "looped": true}
+                {"type": "charge", "charge": "-", "strength": -1}
             ]
         },
 		{
