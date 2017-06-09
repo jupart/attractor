@@ -89,7 +89,7 @@ class EntityFactory():
             c_dict = {'rotate_renderer': {'texture': component_data['texture'],
                                           'size': (component_data['size_x'],
                                                    component_data['size_y']),
-                                          'model_key': component_data['texture'],
+                                          'model_key': component_data['texture'].encode('utf-8'),
                                           'render': True}}
 
         elif component_data['type'] == 'rotate':

@@ -32,7 +32,7 @@ class Level():
         return self.names.pop(), self.points.pop(), self.rotations.pop(), self.ids.pop()
 
     def clear(self):
-        self.names.clear()
-        self.points.clear()
-        self.rotations.clear()
-        self.ids.clear()
+        del self.names[:]
+        del self.points[:]
+        del self.rotations[:]
+        del self.ids[:]

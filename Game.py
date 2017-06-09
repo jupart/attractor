@@ -222,9 +222,8 @@ class AttractorGame(Widget):
         attractor.charge.charge = change_to
 
     def on_touch_down(self, touch):
-        if touch.button == 'left':
-            if super(AttractorGame, self).on_touch_down(touch):
-                return True
+        if super(AttractorGame, self).on_touch_down(touch):
+            return True
 
         state = self.gameworld.state
 
@@ -326,7 +325,7 @@ class AttractorGame(Widget):
                                            'rotation': rotation})
 
         if len(level_data['entities']) is not 0:
-            with open('resources/levels/' + level_file_name + '.json', 'w', encoding='utf-8') as f:
+            with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
                 json.dump(level_data, f, indent=2)
 
     def load_level(self, level_file_name=''):
@@ -338,7 +337,7 @@ class AttractorGame(Widget):
 
         self.clear_level()
 
-        with open('resources/levels/' + level_file_name + '.json', 'r', encoding='utf-8') as f:
+        with open('resources/levels/' + level_file_name + '.json', 'rb') as f:
             level_data = json.load(f)
 
         if 'entities' not in level_data:

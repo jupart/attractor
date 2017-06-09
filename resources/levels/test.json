@@ -1,190 +1,196 @@
 {
   "entities": [
     {
-      "name": "rotator_200_posipole",
-      "x": 750,
-      "y": 700,
-      "rotation": 0
-    },
+      "y": 1020, 
+      "x": 580, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
     {
-      "name": "wall_inlay",
-      "x": 120,
-      "y": 1020,
-      "rotation": 180
-    },
+      "y": 700, 
+      "x": 750, 
+      "rotation": 0, 
+      "name": "rotator_200_posipole"
+    }, 
     {
-      "name": "wall",
-      "x": 1020,
-      "y": 820,
-      "rotation": 90
-    },
+      "y": 1020, 
+      "x": 120, 
+      "rotation": 180, 
+      "name": "wall_inlay"
+    }, 
     {
-      "name": "wall",
-      "x": 740,
-      "y": 1020,
-      "rotation": 0
-    },
+      "y": 820, 
+      "x": 1020, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
     {
-      "name": "wall_corner",
-      "x": 960,
-      "y": 960,
-      "rotation": 0
-    },
+      "y": 1020, 
+      "x": 740, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
     {
-      "name": "wall",
-      "x": 1020,
-      "y": 600,
-      "rotation": 90
-    },
+      "y": 960, 
+      "x": 960, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
     {
-      "name": "wall",
-      "x": -180,
-      "y": 720,
-      "rotation": 270
-    },
+      "y": 600, 
+      "x": 1020, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
     {
-      "name": "wall_inlay",
-      "x": 1020,
-      "y": 360,
-      "rotation": 90
-    },
+      "y": 720, 
+      "x": -180, 
+      "rotation": 270, 
+      "name": "wall"
+    }, 
     {
-      "name": "posipole",
-      "x": 971,
-      "y": 361,
-      "rotation": 90
-    },
+      "y": 360, 
+      "x": 1020, 
+      "rotation": 90, 
+      "name": "wall_inlay"
+    }, 
     {
-      "name": "negapole",
-      "x": 358,
-      "y": 970,
-      "rotation": 0
-    },
+      "y": 361, 
+      "x": 971, 
+      "rotation": 90, 
+      "name": "posipole"
+    }, 
     {
-      "name": "negapole",
-      "x": 118,
-      "y": 970,
-      "rotation": 0
-    },
+      "y": 970, 
+      "x": 358, 
+      "rotation": 0, 
+      "name": "negapole"
+    }, 
     {
-      "name": "wall_inlay",
-      "x": 360,
-      "y": 1020,
-      "rotation": 180
-    },
+      "y": 970, 
+      "x": 118, 
+      "rotation": 0, 
+      "name": "negapole"
+    }, 
     {
-      "name": "wall_inlay",
-      "x": 120,
-      "y": 1020,
-      "rotation": 180
-    },
+      "y": 1020, 
+      "x": 360, 
+      "rotation": 180, 
+      "name": "wall_inlay"
+    }, 
     {
-      "name": "wall_corner",
-      "x": -120,
-      "y": 960,
-      "rotation": 90
-    },
+      "y": 1020, 
+      "x": 120, 
+      "rotation": 180, 
+      "name": "wall_inlay"
+    }, 
     {
-      "name": "wall",
-      "x": -180,
-      "y": 720,
-      "rotation": 90
-    },
+      "y": 960, 
+      "x": -120, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
     {
-      "name": "wall",
-      "x": -180,
-      "y": 490,
-      "rotation": 90
-    },
+      "y": 720, 
+      "x": -180, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
     {
-      "name": "wall",
-      "x": -180,
-      "y": 250,
-      "rotation": 90
-    },
+      "y": 490, 
+      "x": -180, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
     {
-      "name": "wall_inlay",
-      "x": -180,
-      "y": 10,
-      "rotation": 270
-    },
+      "y": 250, 
+      "x": -180, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
     {
-      "name": "posipole",
-      "x": -130,
-      "y": 10,
-      "rotation": 270
-    },
+      "y": 10, 
+      "x": -180, 
+      "rotation": 270, 
+      "name": "wall_inlay"
+    }, 
     {
-      "name": "wall_corner",
-      "x": -120,
-      "y": -230,
-      "rotation": 180
-    },
+      "y": 10, 
+      "x": -130, 
+      "rotation": 270, 
+      "name": "posipole"
+    }, 
     {
-      "name": "wall",
-      "x": 120,
-      "y": -290,
-      "rotation": 180
-    },
+      "y": -230, 
+      "x": -120, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
     {
-      "name": "wall_inlay",
-      "x": 360,
-      "y": -290,
-      "rotation": 0
-    },
+      "y": -290, 
+      "x": 120, 
+      "rotation": 180, 
+      "name": "wall"
+    }, 
     {
-      "name": "wall_inlay",
-      "x": 600,
-      "y": -290,
-      "rotation": 0
-    },
+      "y": -290, 
+      "x": 360, 
+      "rotation": 0, 
+      "name": "wall_inlay"
+    }, 
     {
-      "name": "wall_corner",
-      "x": 960,
-      "y": -230,
-      "rotation": 270
-    },
+      "y": -290, 
+      "x": 600, 
+      "rotation": 0, 
+      "name": "wall_inlay"
+    }, 
     {
-      "name": "wall",
-      "x": 840,
-      "y": -290,
-      "rotation": 0
-    },
+      "y": -230, 
+      "x": 960, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
     {
-      "name": "wall",
-      "x": 1020,
-      "y": 130,
-      "rotation": 90
-    },
+      "y": -290, 
+      "x": 840, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
     {
-      "name": "wall",
-      "x": 1020,
-      "y": 10,
-      "rotation": 90
-    },
+      "y": 130, 
+      "x": 1020, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
     {
-      "name": "posipole",
-      "x": 600,
-      "y": -240,
-      "rotation": 180
-    },
+      "y": 10, 
+      "x": 1020, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
     {
-      "name": "negapole",
-      "x": 360,
-      "y": -240,
-      "rotation": 180
-    },
+      "y": -240, 
+      "x": 600, 
+      "rotation": 180, 
+      "name": "posipole"
+    }, 
     {
-      "name": "wall",
-      "x": -180,
-      "y": 490,
-      "rotation": 90
-    },
+      "y": -240, 
+      "x": 360, 
+      "rotation": 180, 
+      "name": "negapole"
+    }, 
     {
-      "name": "rotator_100_posipole",
-      "x": 380,
-      "y": 370,
-      "rotation": 0
+      "y": 490, 
+      "x": -180, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": 370, 
+      "x": 380, 
+      "rotation": 0, 
+      "name": "rotator_100_posipole"
     }
   ]
 }
