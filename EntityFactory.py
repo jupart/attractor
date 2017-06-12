@@ -104,7 +104,7 @@ class EntityFactory():
                                    'y': component_data['y']}}
 
         elif component_data['type'] == 'charge':
-            c_dict = {'charge': {'charge': component_data['charge'],
+            c_dict = {'charge': {'charge': component_data['charge'].encode('utf-8'),
                                  'strength': component_data['strength'],
                                  'drawn': False,
                                  'ellipse': None}}

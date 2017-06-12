@@ -5,6 +5,7 @@ import json
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
+from kivy.animation import Animation
 
 # Properties
 from kivy.properties import NumericProperty
@@ -13,8 +14,8 @@ from kivy.properties import NumericProperty
 import kivent_core
 import kivent_cymunk
 
-# from cymunk import Body
-# from cymunk import PivotJoint
+# Plyer
+import plyer
 
 # Managers
 from kivent_core.managers.resource_managers import texture_manager
@@ -206,7 +207,12 @@ class AttractorGame(Widget):
     def go_to_editor_screen(self):
         self.toggle_level_editor()
 
-    def change_attractor_charge(self, change_to):
+    def change_attractor_charge(self, button, change_to):
+        button.background_color[3] = 0.15
+        c = button.background_color
+        anim = Animation(background_color=[c[0], c[1], c[2], 0], d=0.75, t='out_circ')
+        anim.start(button)
+
         if change_to != '+' and change_to != '-' and change_to != 'n':
             return
 
@@ -215,11 +221,16 @@ class AttractorGame(Widget):
         new_anim = 'attractor_neutral_idle'
         if change_to == '+':
             new_anim = 'attractor_positive_idle'
+
         elif change_to == '-':
             new_anim = 'attractor_negative_idle'
+        else:
+            pass
 
         attractor.animation.animation = new_anim
         attractor.charge.charge = change_to
+
+        plyer.vibrator.vibrate(0.1)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):
