@@ -230,7 +230,8 @@ class AttractorGame(Widget):
         attractor.animation.animation = new_anim
         attractor.charge.charge = change_to
 
-        plyer.vibrator.vibrate(0.1)
+        if plyer.vibrator.exists:
+            plyer.vibrator.vibrate(0.05)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):
