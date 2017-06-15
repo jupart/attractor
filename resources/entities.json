@@ -230,6 +230,14 @@
                 {"type": "rotate", "rotation": 0},
                 {"type": "switch", "charge": "negative"}
             ]
+        },
+		{
+            "name": "finish",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "finish", "size_x": 120, "size_y": 120},
+                {"type": "finish", "size_x": 120, "size_y": 120}
+            ]
         }
 	]
 }

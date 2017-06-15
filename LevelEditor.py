@@ -16,6 +16,7 @@ class LevelEditorSystem(GameSystem):
         self.level = Level()
         self.asset_id = -1
         self.screen = None
+        self.entity_to_place = ''
 
     def update(self, dt):
         if self.asset_id != -1:
@@ -62,7 +63,6 @@ class LevelEditorSystem(GameSystem):
         pos = (Window.mouse_pos[0] * scale - cam_pos[0],
                Window.mouse_pos[1] * scale - cam_pos[1])
 
-        # if touch.button == 'left':
         if self.deleting:
             self.delete_at(pos)
 

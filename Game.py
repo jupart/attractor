@@ -15,7 +15,7 @@ import kivent_core
 import kivent_cymunk
 
 # Plyer
-import plyer
+# import plyer
 
 # Managers
 from kivent_core.managers.resource_managers import texture_manager
@@ -23,6 +23,7 @@ from kivent_core.managers.resource_managers import texture_manager
 from EntityFactory import EntityFactory
 from LevelEditor import LevelEditorSystem
 from ChargeSystem import ChargeSystem
+from FinishSystem import FinishSystem
 from TouchedTextBox import TouchedTextBox
 
 
@@ -78,6 +79,7 @@ class AttractorGame(Widget):
                                        'animation',
                                        'rotate_renderer',
                                        'play_camera',
+                                       'finish',
                                        'charge'],
                                       callback=self.init_game)
 
@@ -230,8 +232,8 @@ class AttractorGame(Widget):
         attractor.animation.animation = new_anim
         attractor.charge.charge = change_to
 
-        if plyer.vibrator.exists:
-            plyer.vibrator.vibrate(0.05)
+        # if plyer.vibrator.exists:
+            # plyer.vibrator.vibrate(0.05)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):

@@ -7,6 +7,7 @@ from cymunk import PinJoint
 
 class EntityFactory():
     ROTATE_MOD = 1000
+
     def __init__(self, gameworld, physics, **kwargs):
         self.gameworld = gameworld
         self.physics = physics
@@ -23,16 +24,18 @@ class EntityFactory():
             if ent['name'] == name:
                 new_ent_data = self.get_entity_data(ent)
 
-                if 'cymunk_physics' in new_ent_data[0] :
+                if 'cymunk_physics' in new_ent_data[0]:
                     new_ent_data[0]['cymunk_physics']['position'] = (x, y)
 
                 new_ent_data[0]['position'] = (x, y)
 
                 if 'rotate' in new_ent_data[0]:
                     new_ent_data[0]['rotate'] = radians(rot)
-                    new_ent_data[0]['rotate_renderer']['rotate'] = radians(rot)
 
-                    if 'cymunk_physics' in new_ent_data[0] :
+                    if 'rotate_renderer' in new_ent_data[0]:
+                        new_ent_data[0]['rotate_renderer']['rotate'] = radians(rot)
+
+                    if 'cymunk_physics' in new_ent_data[0]:
                         new_ent_data[0]['cymunk_physics']['angle'] = radians(rot)
 
                 if 'attach' in new_ent_data[0]:
@@ -159,6 +162,10 @@ class EntityFactory():
         elif component_data['type'] == 'attach':
             c_dict = {'attach': {'entity': component_data['entity'],
                                  'distance': component_data['distance']}}
+
+        elif component_data['type'] == 'finish':
+            c_dict = {'finish': {'size': (component_data['size_x'],
+                                          component_data['size_y'])}}
 
         else:
             return {}
