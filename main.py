@@ -12,6 +12,7 @@ class AttractorApp(App):
         Config.set('kivy', 'exit_on_escape', '0')
         Config.set('graphics', 'width', '300')
         Config.set('graphics', 'height', '200')
+        Config.set('input', 'mouse', 'mouse,disable_multitouch')
 
         Window.set_title('Attractor')
         Window.clearcolor = (0.17, 0.17, 0.17, 1)

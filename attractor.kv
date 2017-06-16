@@ -1,5 +1,6 @@
 #: kivy 1.10.0
 
+
 AttractorGame:
 
 
@@ -224,3 +225,4 @@ AttractorGame:
         TouchedTextBox:
             id: rotation
             text: '0'
+            on_text: app.game.update_editor_rotation(self.text)

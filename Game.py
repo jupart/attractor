@@ -6,6 +6,7 @@ from kivy.uix.widget import Widget
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.animation import Animation
+from kivy.core.window import Window
 
 # Properties
 from kivy.properties import NumericProperty
@@ -84,6 +85,10 @@ class AttractorGame(Widget):
                                       callback=self.init_game)
 
     def init_game(self):
+        self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
+        self._keyboard.bind(on_key_down=self._on_keyboard_down)
+        self._keyboard.bind(on_key_up=self._on_keyboard_up)
+
         self.setup_states()
         self.gameworld.state = 'menu'
         self.load_models()
@@ -99,6 +104,15 @@ class AttractorGame(Widget):
         self.ids.play_camera.entity_to_focus = self.attractor_id
         self.ids.cymunk_physics.collision_slop = 2
 
+    def _keyboard_closed(self):
+        pass
+
+    def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
+        self.editor.handle_key_down(keycode[1])
+
+    def _on_keyboard_up(self, keyboard, keycode):
+        pass
+
     def setup_states(self):
         self.gameworld.add_state(state_name='menu',
                                  systems_added=[],
@@ -109,6 +123,7 @@ class AttractorGame(Widget):
                                                  'rotate_renderer',
                                                  'cymunk_physics',
                                                  'play_camera',
+                                                 'finish',
                                                  'charge'],
                                  systems_unpaused=[],
                                  screenmanager_screen='menu_screen')
@@ -119,6 +134,7 @@ class AttractorGame(Widget):
                                                 'rotate_renderer',
                                                 'cymunk_physics',
                                                 'play_camera',
+                                                'finish',
                                                 'charge'],
                                  systems_removed=[],
                                  systems_paused=[],
@@ -128,6 +144,7 @@ class AttractorGame(Widget):
                                                    'animation',
                                                    'cymunk_physics',
                                                    'play_camera',
+                                                   'finish',
                                                    'charge'],
                                  screenmanager_screen='play_screen')
         self.gameworld.add_state(state_name='editor',
@@ -137,6 +154,7 @@ class AttractorGame(Widget):
                                                 'rotate_renderer',
                                                 'cymunk_physics',
                                                 'play_camera',
+                                                'finish',
                                                 'charge'],
                                  systems_removed=[],
                                  systems_paused=[],
@@ -146,6 +164,7 @@ class AttractorGame(Widget):
                                                    'animation',
                                                    'cymunk_physics',
                                                    'play_camera',
+                                                   'finish',
                                                    'charge'],
                                  screenmanager_screen='editor_screen')
 
@@ -294,16 +313,15 @@ class AttractorGame(Widget):
                 names = self.entity_factory.get_entity_names()
                 for ent_name in names:
                     butt = Button(text=ent_name,
-                                  size_hint_y=None,
-                                  width=150,
+                                  size_hint=(None, None),
+                                  width=175,
                                   height=40)
                     butt.bind(on_release=self.grab_entity_to_place)
                     self.dd.add_widget(butt)
 
                 main_butt = Button(text='Select',
-                                   size_hint=(None, None),
-                                   width=150,
-                                   height=30)
+                                   size_hint_x=None,
+                                   width=175)
 
                 main_butt.bind(on_release=self.dd.open)
                 self.dd.bind(on_select=self.dd.dismiss)
@@ -321,6 +339,19 @@ class AttractorGame(Widget):
                     0,
                     0,
                     int(self.editor.screen.ids.rotation.text))
+
+    def update_editor_rotation(self, r):
+        asset_id = self.editor.asset_id
+        name = self.editor.entity_to_place
+
+        try:
+            r_int = int(r)
+        except ValueError:
+            r_int = 0
+
+        if asset_id != -1:
+            self.gameworld.remove_entity(self.editor.asset_id)
+            self.asset_id = self.entity_factory.create_entity_at(name, 0, 0, r_int)
 
     def save_level(self):
         level = self.editor.level
