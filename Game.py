@@ -81,6 +81,8 @@ class AttractorGame(Widget):
                                        'rotate_renderer',
                                        'play_camera',
                                        'finish',
+                                       'pole_changer',
+                                       'alternating_pole',
                                        'charge'],
                                       callback=self.init_game)
 
@@ -123,6 +125,8 @@ class AttractorGame(Widget):
                                                  'rotate_renderer',
                                                  'cymunk_physics',
                                                  'play_camera',
+                                                 'pole_changer',
+                                                 'alternating_pole',
                                                  'finish',
                                                  'charge'],
                                  systems_unpaused=[],
@@ -134,6 +138,8 @@ class AttractorGame(Widget):
                                                 'rotate_renderer',
                                                 'cymunk_physics',
                                                 'play_camera',
+                                                'pole_changer',
+                                                'alternating_pole',
                                                 'finish',
                                                 'charge'],
                                  systems_removed=[],
@@ -144,6 +150,8 @@ class AttractorGame(Widget):
                                                    'animation',
                                                    'cymunk_physics',
                                                    'play_camera',
+                                                   'pole_changer',
+                                                   'alternating_pole',
                                                    'finish',
                                                    'charge'],
                                  screenmanager_screen='play_screen')
@@ -154,6 +162,8 @@ class AttractorGame(Widget):
                                                 'rotate_renderer',
                                                 'cymunk_physics',
                                                 'play_camera',
+                                                'pole_changer',
+                                                'alternating_pole',
                                                 'finish',
                                                 'charge'],
                                  systems_removed=[],
@@ -164,6 +174,8 @@ class AttractorGame(Widget):
                                                    'animation',
                                                    'cymunk_physics',
                                                    'play_camera',
+                                                   'pole_changer',
+                                                   'alternating_pole',
                                                    'finish',
                                                    'charge'],
                                  screenmanager_screen='editor_screen')

@@ -1,16 +1,13 @@
 from kivy.app import App
-from kivy.graphics import Color, Ellipse
+from kivy.graphics import Color, Rectangle
 from kivy.animation import Animation
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
 
 
-class ChargeSystem(GameSystem):
-    DISTANCE_MOD = 400
-    FORCE_MOD = 3000
-
+class PoleChangerSystem(GameSystem):
     def __init__(self, **kwargs):
-        super(ChargeSystem, self).__init__(**kwargs)
+        super(PoleChangerSystem, self).__init__(**kwargs)
 
     def update(self, dt):
         attractor_id = App.get_running_app().game.attractor_id
@@ -72,19 +69,5 @@ class ChargeSystem(GameSystem):
         else:
             return False
 
-    def exert_force(self, pos, strength, attractor):
-        offset = (attractor.position.x - pos.x, attractor.position.y - pos.y)
 
-        if attractor.charge.charge == '+':
-            mod = 1
-        else:
-            mod = -1
-
-        d = ((pos.x - attractor.position.x)**2 + (pos.y - attractor.position.y)**2)
-        f = mod * (strength * self.FORCE_MOD)/d
-        force = (offset[0] * f, offset[1] * f)
-
-        attractor.cymunk_physics.body.apply_impulse(force, offset)
-
-
-Factory.register('ChargeSystem', cls=ChargeSystem)
+Factory.register('PoleChangerSystem', cls=PoleChangerSystem)
