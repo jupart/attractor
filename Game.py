@@ -25,6 +25,9 @@ from EntityFactory import EntityFactory
 from LevelEditor import LevelEditorSystem
 from ChargeSystem import ChargeSystem
 from FinishSystem import FinishSystem
+from PoleChangerSystem import PoleChangerSystem
+from AlternatingPoleSystem import AlternatingPoleSystem
+
 from TouchedTextBox import TouchedTextBox
 
 

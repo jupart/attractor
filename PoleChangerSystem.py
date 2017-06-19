@@ -16,55 +16,44 @@ class PoleChangerSystem(GameSystem):
         for component in self.components:
             if component is not None:
                 entity_id = component.entity_id
-                if entity_id == attractor_id:
-                    continue
-
                 entity = self.gameworld.entities[entity_id]
 
-                if not entity.charge.drawn:
-                    radius = self.DISTANCE_MOD * abs(entity.charge.strength)
+                pos = entity.position
+                size = entity.pole_changer.size
+                to_charge = entity.pole_changer.to
+                attractor_pos = attractor.position
 
-                    if entity.charge.charge == '+':
+                if entity.pole_changer.rect is None:
+                    if to_charge == '+':
                         r, g, b = 0.894, 0.243, 0.282
-                    elif entity.charge.charge == '-':
+                    elif to_charge == '-':
                         r, g, b = 0.118, 0.490, 0.694
+                    else:
+                        r, g, b = 0.33, 0.33, 0.33
 
                     with App.get_running_app().game.ids.play_camera.canvas:
                         color = Color(r, g, b, -0.05)
-                        entity.charge.ellipse = Ellipse(size=(radius * 2,
-                                                              radius * 2),
-                                                        pos=(entity.position.x - radius,
-                                                             entity.position.y - radius))
+                        entity.pole_changer.rect = Rectangle(size=size,
+                                                             pos=(pos.x - size.x/2,
+                                                                  pos.y - size.y/2))
 
                     anim = Animation(a=0.1) + Animation(a=-0.05, duration=1)
                     anim.repeat = True
                     anim.start(color)
-                    entity.charge.drawn = True
 
-                else:
-                    radius = self.DISTANCE_MOD * abs(entity.charge.strength)
-                    entity.charge.ellipse.size = (radius * 2,
-                                                  radius * 2)
-                    entity.charge.ellipse.pos = (entity.position.x - radius,
-                                                 entity.position.y - radius)
+                if self.in_range(pos, size, attractor_pos):
+                    attractor.charge.charge = to_charge
 
-                if attractor.charge.charge != 'n':
-                    if self.in_range(entity.position,
-                                     entity.charge.strength,
-                                     attractor.position):
-                        self.exert_force(entity.position,
-                                         entity.charge.strength,
-                                         attractor)
+    def in_range(self, pos, size, attractor_pos):
+        left = pos.x - size.x/2
+        right = pos.x + size.x/2
+        top = pos.y + size.y/2
+        bottom = pos.y - size.y/2
 
-    def in_range(self, pos, strength, attractor_pos):
-        radius = abs(strength) * self.DISTANCE_MOD
+        x = attractor_pos.x
+        y = attractor_pos.y
 
-        # Initial rectangle-based check
-        if (attractor_pos.x < (pos.x - radius) or (pos.x + radius) < attractor_pos.x or
-                attractor_pos.y < (pos.y - radius) or (pos.y + radius) < attractor_pos.y):
-            return False
-
-        if ((attractor_pos.x - pos.x)**2 + (attractor_pos.y - pos.y)**2) < radius**2:
+        if (left < x) and (x < right) and (bottom < y) and (y < top):
             return True
         else:
             return False

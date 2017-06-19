@@ -1,7 +1,6 @@
 import json
-from math import radians, pi
+from math import radians
 
-from cymunk import Body
 from cymunk import PinJoint
 
 
@@ -49,9 +48,9 @@ class EntityFactory():
                     rotated = self.gameworld.entities[ids2]
 
                     # Get started rotating
-                    rotated.cymunk_physics.body.apply_impulse(
-                            (self.ROTATE_MOD * new_ent_data[0]['cymunk_physics']['angular_velocity'], 0),
-                            (-10, 0))
+                    body = rotated.cymunk_physics.body
+                    force = new_ent_data[0]['cymunk_physics']['angular_velocity']
+                    body.apply_impulse((self.ROTATE_MOD * force, 0), (-10, 0))
 
                     constraint = PinJoint(rotator.cymunk_physics.body,
                                           rotated.cymunk_physics.body,
@@ -87,6 +86,7 @@ class EntityFactory():
 
         return [c_data, c_order]
 
+    # TODO could be a lookup instead of if branches
     def get_component_data(self, component_data):
         if component_data['type'] == 'render':
             c_dict = {'rotate_renderer': {'texture': component_data['texture'],
@@ -166,6 +166,18 @@ class EntityFactory():
         elif component_data['type'] == 'finish':
             c_dict = {'finish': {'size': (component_data['size_x'],
                                           component_data['size_y'])}}
+
+        elif component_data['type'] == 'alternating_pole':
+            c_dict = {'alternating_pole': {'time': 0,
+                                           'timeout': 1/component_data['speed'],
+                                           'pole1': component_data['pole1'],
+                                           'pole2': component_data['pole2']}}
+
+        elif component_data['type'] == 'pole_changer':
+            c_dict = {'pole_changer': {'size': {'x': component_data['size_x'],
+                                                'y': component_data['size_y']},
+                                       'to': component_data['to'],
+                                       'rect': None}}
 
         else:
             return {}

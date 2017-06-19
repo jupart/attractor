@@ -15,7 +15,23 @@ class AlternatingPoleSystem(GameSystem):
                 entity = self.gameworld.entities[entity_id]
 
                 time = entity.alternating_pole.time
-                timeout = entity.alternating_pole.speed
+                timeout = entity.alternating_pole.timeout
 
-                if entity.alternating_pole.time > 
+                if time > timeout:
+                    time = 0
+                    self.change_charge(entity)
+                else:
+                    time = time + dt
+
+    def change_charge(self, ent):
+        charge = ent.charge.charge
+        pole1 = ent.alternating_pole.pole1
+        pole2 = ent.alternating_pole.pole2
+
+        if charge == pole1:
+            charge = pole2
+        else:
+            charge = pole1
+
+
 Factory.register('AlternatingPoleSystem', cls=AlternatingPoleSystem)

@@ -13,6 +13,7 @@ AttractorGame:
         gamescreenmanager: gamescreenmanager
         size_of_gameworld: 200 * 1024
         zones: {'general': 20000, 'touch': 1000}
+        system_count: 11
 
         PositionSystem2D:
             system_id: 'position'
@@ -79,6 +80,12 @@ AttractorGame:
 
         PoleChangerSystem:
             system_id: 'pole_changer'
+            gameworld: gameworld
+            zones: ['general']
+            updateable: True
+
+        AlternatingPoleSystem:
+            system_id: 'alternating_pole'
             gameworld: gameworld
             zones: ['general']
             updateable: True
