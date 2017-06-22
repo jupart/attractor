@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.graphics import Color, Rectangle
+from kivy.graphics import Color, Ellipse
 from kivy.animation import Animation
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
@@ -33,22 +33,31 @@ class PoleChangerSystem(GameSystem):
 
                     with App.get_running_app().game.ids.play_camera.canvas:
                         color = Color(r, g, b, -0.05)
-                        entity.pole_changer.rect = Rectangle(size=size,
-                                                             pos=(pos.x - size.x/2,
-                                                                  pos.y - size.y/2))
+                        entity.pole_changer.rect = Ellipse(size=(size[0],
+                                                                 size[1]),
+                                                           pos=(pos.x - size[0]/2,
+                                                                pos.y - size[1]/2))
 
                     anim = Animation(a=0.1) + Animation(a=-0.05, duration=1)
                     anim.repeat = True
                     anim.start(color)
 
                 if self.in_range(pos, size, attractor_pos):
+                    if to_charge == '+':
+                        new_anim = 'attractor_positive_idle'
+                    elif to_charge == '-':
+                        new_anim = 'attractor_negative_idle'
+                    else:
+                        new_anim = 'attractor_neutral_idle'
+
+                    attractor.animation.animation = new_anim
                     attractor.charge.charge = to_charge
 
     def in_range(self, pos, size, attractor_pos):
-        left = pos.x - size.x/2
-        right = pos.x + size.x/2
-        top = pos.y + size.y/2
-        bottom = pos.y - size.y/2
+        left = pos.x - size[0]/2
+        right = pos.x + size[0]/2
+        top = pos.y + size[1]/2
+        bottom = pos.y - size[1]/2
 
         x = attractor_pos.x
         y = attractor_pos.y

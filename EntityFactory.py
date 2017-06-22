@@ -83,6 +83,10 @@ class EntityFactory():
             c_order.append('charge')
         if 'cymunk_physics' in c_data:
             c_order.append('cymunk_physics')
+        if 'pole_changer' in c_data:
+            c_order.append('pole_changer')
+        if 'alternating_pole' in c_data:
+            c_order.append('alternating_pole')
 
         return [c_data, c_order]
 
@@ -103,8 +107,8 @@ class EntityFactory():
                                    'y': component_data['y']}}
 
         elif component_data['type'] == 'position':
-            c_dict = {'position': {'x': component_data['x'],
-                                   'y': component_data['y']}}
+            c_dict = {'position': (component_data['x'],
+                                   component_data['y'])}
 
         elif component_data['type'] == 'charge':
             c_dict = {'charge': {'charge': component_data['charge'].encode('utf-8'),
@@ -174,8 +178,8 @@ class EntityFactory():
                                            'pole2': component_data['pole2']}}
 
         elif component_data['type'] == 'pole_changer':
-            c_dict = {'pole_changer': {'size': {'x': component_data['size_x'],
-                                                'y': component_data['size_y']},
+            c_dict = {'pole_changer': {'size': (component_data['size_x'],
+                                                component_data['size_y']),
                                        'to': component_data['to'],
                                        'rect': None}}
 

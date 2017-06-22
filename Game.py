@@ -257,7 +257,6 @@ class AttractorGame(Widget):
         new_anim = 'attractor_neutral_idle'
         if change_to == '+':
             new_anim = 'attractor_positive_idle'
-
         elif change_to == '-':
             new_anim = 'attractor_negative_idle'
         else:
