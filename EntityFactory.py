@@ -85,8 +85,6 @@ class EntityFactory():
             c_order.append('cymunk_physics')
         if 'pole_changer' in c_data:
             c_order.append('pole_changer')
-        if 'alternating_pole' in c_data:
-            c_order.append('alternating_pole')
 
         return [c_data, c_order]
 
@@ -170,12 +168,6 @@ class EntityFactory():
         elif component_data['type'] == 'finish':
             c_dict = {'finish': {'size': (component_data['size_x'],
                                           component_data['size_y'])}}
-
-        elif component_data['type'] == 'alternating_pole':
-            c_dict = {'alternating_pole': {'time': 0,
-                                           'timeout': 1/component_data['speed'],
-                                           'pole1': component_data['pole1'],
-                                           'pole2': component_data['pole2']}}
 
         elif component_data['type'] == 'pole_changer':
             c_dict = {'pole_changer': {'size': (component_data['size_x'],
