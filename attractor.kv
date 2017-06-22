@@ -84,12 +84,6 @@ AttractorGame:
             zones: ['general']
             updateable: True
 
-        AlternatingPoleSystem:
-            system_id: 'alternating_pole'
-            gameworld: gameworld
-            zones: ['general']
-            updateable: True
-
         FinishSystem:
             system_id: 'finish'
             gameworld: gameworld
@@ -150,7 +144,7 @@ AttractorGame:
 
     Button:
         size_hint: 0.1, 0.035
-        pos: self.parent.width - self.width, self.parent.height - self.height
+        pos: self.parent.width - self.height, self.parent.height - self.width
         text: "Reset"
         on_release: app.game.reset_attractor()
 
