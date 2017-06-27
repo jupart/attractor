@@ -67,5 +67,16 @@ class PoleChangerSystem(GameSystem):
         else:
             return False
 
+    def clear_component(self, component_index):
+        entity_id = self.components[component_index].entity_id
+        entity = self.gameworld.entities[entity_id]
+
+        insruction = entity.pole_changer.rect
+        if insruction is None:
+            return
+
+        canvas = App.get_running_app().game.ids.play_camera.canvas
+        canvas.remove(insruction)
+
 
 Factory.register('PoleChangerSystem', cls=PoleChangerSystem)

@@ -86,5 +86,16 @@ class ChargeSystem(GameSystem):
 
         attractor.cymunk_physics.body.apply_impulse(force, offset)
 
+    def clear_component(self, component_index):
+        entity_id = self.components[component_index].entity_id
+        entity = self.gameworld.entities[entity_id]
+
+        insruction = entity.charge.ellipse
+        if insruction is None:
+            return
+
+        canvas = App.get_running_app().game.ids.play_camera.canvas
+        canvas.remove(insruction)
+
 
 Factory.register('ChargeSystem', cls=ChargeSystem)

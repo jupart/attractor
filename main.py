@@ -1,5 +1,7 @@
 #!/home/jpartain/Code/attractor/attractor/bin/python
 
+import sys
+
 from kivy.app import App
 from kivy.config import Config
 from kivy.core.window import Window
@@ -22,4 +24,5 @@ class AttractorApp(App):
 
 
 if __name__ == "__main__":
+    sys.dont_write_bytecode = True
     AttractorApp().run()

@@ -387,9 +387,15 @@ class AttractorGame(Widget):
             if level_file_name == '':
                 return
 
+        path = 'resources/levels/' + level_file_name + '.json'
+
+        if not os.path.isfile(path):
+            print path, " does not exist!"
+            return
+
         self.clear_level()
 
-        with open('resources/levels/' + level_file_name + '.json', 'rb') as f:
+        with open(path, 'rb') as f:
             level_data = json.load(f)
 
         if 'entities' not in level_data:
