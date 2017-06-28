@@ -277,7 +277,7 @@
             "name": "nega_posi_pole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "alternating_pole", "size_x": 60, "size_y": 20},
+                {"type": "render", "texture": "negapole", "size_x": 60, "size_y": 20},
                 {"type": "physics",
                     "segments": [
                         {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
@@ -288,42 +288,6 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "alternating_pole", "speed": 1, "pole1": "-", "pole2": "+"}
-            ]
-        },
-		{
-            "name": "nega_neutral_pole",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "alternating_pole", "size_x": 60, "size_y": 20},
-                {"type": "physics",
-                    "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
-                    ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
-                {"type": "rotate", "rotation": 0},
-                {"type": "alternating_pole", "speed": 1, "pole1": "-", "pole2": "n"}
-            ]
-        },
-		{
-            "name": "posi_neutral_pole",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "alternating_pole", "size_x": 60, "size_y": 20},
-                {"type": "physics",
-                    "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
-                    ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
-                {"type": "rotate", "rotation": 0},
-                {"type": "alternating_pole", "speed": 1, "pole1": "+", "pole2": "n"}
             ]
         }
 	]
