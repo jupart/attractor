@@ -3,3 +3,4 @@ attractor
 bin/
 .buildozer/
 *.pyc
+tags

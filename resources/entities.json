@@ -252,7 +252,7 @@
                 {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "pole_changer", "size_x": 120, "size_y": 120},
                 {"type": "rotate", "rotation": 0},
-                {"type": "pole_changer", "size_x": 120, "size_y": 120, "to": "-"}
+                {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "-"}
             ]
         },
 		{
@@ -261,7 +261,7 @@
                 {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "pole_changer", "size_x": 120, "size_y": 120},
                 {"type": "rotate", "rotation": 0},
-                {"type": "pole_changer", "size_x": 120, "size_y": 120, "to": "+"}
+                {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "+"}
             ]
         },
 		{
@@ -270,24 +270,7 @@
                 {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "pole_changer", "size_x": 120, "size_y": 120},
                 {"type": "rotate", "rotation": 0},
-                {"type": "pole_changer", "size_x": 120, "size_y": 120, "to": "n"}
-            ]
-        },
-		{
-            "name": "nega_posi_pole",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "negapole", "size_x": 60, "size_y": 20},
-                {"type": "physics",
-                    "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
-                    ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
-                {"type": "alternating_pole", "speed": 1, "pole1": "-", "pole2": "+"}
+                {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "n"}
             ]
         }
 	]
