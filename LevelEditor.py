@@ -29,8 +29,15 @@ class LevelEditorSystem(GameSystem):
         pos = (Window.mouse_pos[0] * scale - cam_pos[0],
                Window.mouse_pos[1] * scale - cam_pos[1])
 
-        grid = int(self.screen.ids.grid.text)
-        r = int(self.screen.ids.rotation.text)
+        try:
+            grid = int(self.screen.ids.grid.text)
+        except ValueError:
+            grid = 10
+
+        try:
+            r = int(self.screen.ids.rotation.text)
+        except ValueError:
+            r = 0
 
         on_grid_x = int(round(pos[0]/grid) * grid)
         on_grid_y = int(round(pos[1]/grid) * grid)
@@ -72,8 +79,15 @@ class LevelEditorSystem(GameSystem):
                 if self.entity_to_place == '':
                     return
 
-                grid = int(self.screen.ids.grid.text)
-                r = int(self.screen.ids.rotation.text)
+                try:
+                    grid = int(self.screen.ids.grid.text)
+                except ValueError:
+                    grid = 10
+
+                try:
+                    r = int(self.screen.ids.rotation.text)
+                except ValueError:
+                    r = 0
 
                 on_grid_x = int(round(pos[0]/grid) * grid)
                 on_grid_y = int(round(pos[1]/grid) * grid)
@@ -108,6 +122,27 @@ class LevelEditorSystem(GameSystem):
     def handle_key_down(self, key):
         if key == 'r':
             self.rotate_entity_to_place()
+        elif key == 'd':
+            self.toggle_deleting()
+
+    def toggle_deleting(self):
+        if not self.deleting:
+            self.deleting = True
+
+            if self.asset_id != -1:
+                self.gameworld.remove_entity(self.asset_id)
+                self.asset_id = -1
+
+        else:
+            self.deleting = False
+
+            if self.entity_to_place != '':
+                factory = App.get_running_app().game.entity_factory
+                self.asset_id = factory.create_entity_at(
+                            self.entity_to_place,
+                            0,
+                            0,
+                            int(self.screen.ids.rotation.text))
 
     def rotate_entity_to_place(self):
         r = int(self.screen.ids.rotation.text)

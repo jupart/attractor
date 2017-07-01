@@ -1,0 +1,166 @@
+{
+  "entities": [
+    {
+      "y": 480, 
+      "x": 1200, 
+      "rotation": 90, 
+      "name": "thin_wall_small"
+    }, 
+    {
+      "y": 540, 
+      "x": 1200, 
+      "rotation": 90, 
+      "name": "thin_wall_small"
+    }, 
+    {
+      "y": 510, 
+      "x": 690, 
+      "rotation": 180, 
+      "name": "negapole"
+    }, 
+    {
+      "y": 510, 
+      "x": 1110, 
+      "rotation": 90, 
+      "name": "finish"
+    }, 
+    {
+      "y": 420, 
+      "x": 1050, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 600, 
+      "x": 1050, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 880, 
+      "x": 512, 
+      "rotation": 180, 
+      "name": "posipole"
+    }, 
+    {
+      "y": 900, 
+      "x": 510, 
+      "rotation": 180, 
+      "name": "thin_wall_inlay"
+    }, 
+    {
+      "y": 140, 
+      "x": 508, 
+      "rotation": 0, 
+      "name": "posipole"
+    }, 
+    {
+      "y": 120, 
+      "x": 510, 
+      "rotation": 0, 
+      "name": "thin_wall_inlay"
+    }, 
+    {
+      "y": 270, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 750, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 900, 
+      "x": 750, 
+      "rotation": 180, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 900, 
+      "x": 270, 
+      "rotation": 180, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 750, 
+      "x": 120, 
+      "rotation": 90, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 120, 
+      "x": 750, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 510, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 120, 
+      "x": 270, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 270, 
+      "x": 120, 
+      "rotation": 90, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 900, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 900, 
+      "x": 900, 
+      "rotation": 180, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 600, 
+      "x": 900, 
+      "rotation": 0, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 420, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 120, 
+      "x": 900, 
+      "rotation": 90, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 120, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 600, 
+      "x": 1200, 
+      "rotation": 180, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 420, 
+      "x": 1200, 
+      "rotation": 90, 
+      "name": "thin_wall_corner"
+    }
+  ]
+}

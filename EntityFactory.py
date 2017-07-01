@@ -122,7 +122,7 @@ class EntityFactory():
             col_shapes = []
             for circle in component_data['circles']:
                 col_shapes.append({'shape_type': 'circle',
-                                   'elasticity': 0,
+                                   'elasticity': 0.6,
                                    'collision_type': 1,
                                    'shape_info': {'inner_radius': 0,
                                                   'outer_radius': circle['radius'],
@@ -132,7 +132,7 @@ class EntityFactory():
                                    'friction': 1.0})
             for seg in component_data['segments']:
                 col_shapes.append({'shape_type': 'segment',
-                                   'elasticity': 0,
+                                   'elasticity': 0.6,
                                    'collision_type': 1,
                                    'shape_info': {'a': (seg['ax'], seg['ay']),
                                                   'b': (seg['bx'], seg['by']),

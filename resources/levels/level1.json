@@ -1,202 +1,118 @@
 {
   "entities": [
     {
-      "y": 1020, 
-      "x": 580, 
-      "rotation": 0, 
-      "name": "wall"
+      "y": 120, 
+      "x": 900, 
+      "rotation": 90, 
+      "name": "thin_wall_corner"
     }, 
     {
-      "y": 700, 
+      "y": 900, 
+      "x": 900, 
+      "rotation": 180, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 900, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 120, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 270, 
+      "x": 120, 
+      "rotation": 90, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 120, 
+      "x": 270, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 510, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 120, 
       "x": 750, 
       "rotation": 0, 
-      "name": "rotator_200_posipole"
+      "name": "thin_wall"
     }, 
     {
-      "y": 1020, 
+      "y": 750, 
       "x": 120, 
+      "rotation": 90, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 900, 
+      "x": 270, 
       "rotation": 180, 
-      "name": "wall_inlay"
+      "name": "thin_wall"
     }, 
     {
-      "y": 820, 
-      "x": 1020, 
-      "rotation": 90, 
-      "name": "wall"
+      "y": 900, 
+      "x": 750, 
+      "rotation": 180, 
+      "name": "thin_wall"
     }, 
     {
-      "y": 1020, 
-      "x": 740, 
-      "rotation": 0, 
-      "name": "wall"
-    }, 
-    {
-      "y": 960, 
-      "x": 960, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 600, 
-      "x": 1020, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": 720, 
-      "x": -180, 
+      "y": 750, 
+      "x": 900, 
       "rotation": 270, 
-      "name": "wall"
+      "name": "thin_wall"
     }, 
     {
-      "y": 360, 
-      "x": 1020, 
-      "rotation": 90, 
-      "name": "wall_inlay"
+      "y": 510, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall"
     }, 
     {
-      "y": 361, 
-      "x": 971, 
-      "rotation": 90, 
+      "y": 270, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 810, 
+      "x": 810, 
+      "rotation": 270, 
+      "name": "finish"
+    }, 
+    {
+      "y": 120, 
+      "x": 510, 
+      "rotation": 0, 
+      "name": "thin_wall_inlay"
+    }, 
+    {
+      "y": 140, 
+      "x": 508, 
+      "rotation": 0, 
       "name": "posipole"
     }, 
     {
-      "y": 970, 
-      "x": 358, 
-      "rotation": 0, 
-      "name": "negapole"
-    }, 
-    {
-      "y": 970, 
-      "x": 118, 
-      "rotation": 0, 
-      "name": "negapole"
-    }, 
-    {
-      "y": 1020, 
-      "x": 360, 
+      "y": 900, 
+      "x": 510, 
       "rotation": 180, 
-      "name": "wall_inlay"
+      "name": "thin_wall_inlay"
     }, 
     {
-      "y": 1020, 
-      "x": 120, 
-      "rotation": 180, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": 960, 
-      "x": -120, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 720, 
-      "x": -180, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": 490, 
-      "x": -180, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": 250, 
-      "x": -180, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": 10, 
-      "x": -180, 
-      "rotation": 270, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": 10, 
-      "x": -130, 
-      "rotation": 270, 
-      "name": "posipole"
-    }, 
-    {
-      "y": -230, 
-      "x": -120, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -290, 
-      "x": 120, 
-      "rotation": 180, 
-      "name": "wall"
-    }, 
-    {
-      "y": -290, 
-      "x": 360, 
-      "rotation": 0, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": -290, 
-      "x": 600, 
-      "rotation": 0, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": -230, 
-      "x": 960, 
-      "rotation": 270, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -290, 
-      "x": 840, 
-      "rotation": 0, 
-      "name": "wall"
-    }, 
-    {
-      "y": 130, 
-      "x": 1020, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": 10, 
-      "x": 1020, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": -240, 
-      "x": 600, 
+      "y": 880, 
+      "x": 512, 
       "rotation": 180, 
       "name": "posipole"
-    }, 
-    {
-      "y": -240, 
-      "x": 360, 
-      "rotation": 180, 
-      "name": "negapole"
-    }, 
-    {
-      "y": 490, 
-      "x": -180, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": 370, 
-      "x": 380, 
-      "rotation": 0, 
-      "name": "rotator_100_posipole"
-    }, 
-    {
-      "y": 210, 
-      "x": 370, 
-      "rotation": 0, 
-      "name": "to_negative_pole_changer"
     }
   ]
 }

@@ -144,7 +144,7 @@ AttractorGame:
 
     Button:
         size_hint: 0.1, 0.035
-        pos: self.parent.width - self.height, self.parent.height - self.width
+        pos: self.parent.width - self.width, self.parent.height - self.height
         text: "Reset"
         on_release: app.game.reset_attractor()
 
@@ -179,7 +179,13 @@ AttractorGame:
 
     Button:
         size_hint: 0.1, 0.035
-        pos: self.parent.height - self.width, self.parent.height - self.height
+        pos: self.parent.width/2 - self.width/2, self.parent.height - self.height
+        text: "Clear"
+        on_release: app.game.clear_level()
+
+    Button:
+        size_hint: 0.1, 0.035
+        pos: self.parent.width - self.width, self.parent.height - self.height
         text: "Reset"
         on_release: app.game.reset_attractor()
 
@@ -209,7 +215,7 @@ AttractorGame:
 
         ToggleButton:
             text: 'Delete'
-            on_release: app.game.toggle_editor_deleting()
+            on_release: app.game.editor.toggle_deleting()
 
         Label:
             text: 'Level'

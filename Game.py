@@ -106,6 +106,7 @@ class AttractorGame(Widget):
         self.ids.play_camera.focus_entity = True
         self.ids.play_camera.entity_to_focus = self.attractor_id
         self.ids.cymunk_physics.collision_slop = 2
+        # self.gameworld.system_manager['cymunk_physics'].damping = 0.5
 
     def _keyboard_closed(self):
         pass
@@ -225,6 +226,7 @@ class AttractorGame(Widget):
 
     def go_to_menu_screen(self):
         if self.gameworld.state == 'editor':
+            self.toggle_level_editor()
             if self.editor.asset_id != -1:
                 self.gameworld.remove_entity(self.editor.asset_id)
                 self.editor.asset_id = -1
@@ -285,30 +287,13 @@ class AttractorGame(Widget):
             # if b not in bodies:
                 # self.ids.cymunk_physics.space.add_body(b)
 
-    def toggle_editor_deleting(self):
-        if not self.editor.deleting:
-            self.editor.deleting = True
-
-            if self.editor.asset_id != -1:
-                self.gameworld.remove_entity(self.editor.asset_id)
-                self.editor.asset_id = -1
-
-        else:
-            self.editor.deleting = False
-
-            if self.editor.entity_to_place != '':
-                self.editor.asset_id = self.entity_factory.create_entity_at(
-                            self.editor.entity_to_place,
-                            0,
-                            0,
-                            int(self.editor.screen.ids.rotation.text))
-
     def toggle_level_editor(self):
         if self.gameworld.state == 'editor':
-            self.gameworld.state = 'play'
+            self.gameworld.state = 'menu'
 
             self.ids.play_camera.focus_entity = True
             self.ids.rotate_renderer.gameview = 'play_camera'
+            self.ids.play_camera.entity_to_focus = self.attractor_id
 
         else:
             self.gameworld.state = 'editor'
@@ -341,11 +326,13 @@ class AttractorGame(Widget):
             self.gameworld.remove_entity(self.editor.asset_id)
 
         self.editor.entity_to_place = instance.text
-        self.editor.asset_id = self.entity_factory.create_entity_at(
-                    instance.text,
-                    0,
-                    0,
-                    int(self.editor.screen.ids.rotation.text))
+
+        if not self.editor.deleting:
+            self.editor.asset_id = self.entity_factory.create_entity_at(
+                        instance.text,
+                        0,
+                        0,
+                        int(self.editor.screen.ids.rotation.text))
 
     def update_editor_rotation(self, r):
         asset_id = self.editor.asset_id
@@ -376,9 +363,8 @@ class AttractorGame(Widget):
                                            'y': point.y,
                                            'rotation': rotation})
 
-        if len(level_data['entities']) is not 0:
-            with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
-                json.dump(level_data, f, indent=2)
+        with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
+            json.dump(level_data, f, indent=2)
 
     def load_level(self, level_file_name=''):
         if level_file_name == '':
@@ -390,7 +376,6 @@ class AttractorGame(Widget):
         path = 'resources/levels/' + level_file_name + '.json'
 
         if not os.path.isfile(path):
-            print path, " does not exist!"
             return
 
         self.clear_level()
