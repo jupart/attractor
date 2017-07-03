@@ -95,7 +95,7 @@ class ChargeSystem(GameSystem):
             return
 
         canvas = App.get_running_app().game.ids.play_camera.canvas
-        canvas.remove(insruction)
+        canvas.before.remove(insruction)
 
 
 Factory.register('ChargeSystem', cls=ChargeSystem)

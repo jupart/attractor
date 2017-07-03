@@ -18,6 +18,7 @@ class LevelEditorSystem(GameSystem):
         self.asset_id = -1
         self.screen = None
         self.entity_to_place = ''
+        self.anchors = []
 
     def update(self, dt):
         if self.asset_id != -1:
@@ -155,7 +156,7 @@ class LevelEditorSystem(GameSystem):
         self.screen.ids.rotation.text = str(r)
 
     def draw_anchors(self):
-        anchors = self.anchors = []
+        anchors = self.anchors
         s = 4
         canvas = App.get_running_app().game.ids.play_camera.canvas
         with canvas.after:
@@ -165,6 +166,7 @@ class LevelEditorSystem(GameSystem):
                 x3, y3 = p.x, p.y
                 x4, y4 = p.x, p.y + s
                 x5, y5 = p.x, p.y - s
+                Color(1, 1, 1, 1)
                 anchors.append(Line(points=[x1, y1,
                                             x2, y2,
                                             x3, y3,
@@ -172,10 +174,15 @@ class LevelEditorSystem(GameSystem):
                                             x5, y5],
                                     width=1))
 
+    def redraw_anchors(self):
+        self.remove_anchors()
+        self.draw_anchors()
+
     def remove_anchors(self):
         canvas = App.get_running_app().game.ids.play_camera.canvas
         for anchor in self.anchors:
             canvas.after.remove(anchor)
+        del self.anchors[:]
 
 
 Factory.register('LevelEditorSystem', cls=LevelEditorSystem)

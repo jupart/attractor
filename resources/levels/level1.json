@@ -1,6 +1,18 @@
 {
   "entities": [
     {
+      "y": 1160, 
+      "x": 790, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1150, 
+      "x": 310, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
       "y": 120, 
       "x": 900, 
       "rotation": 90, 
@@ -113,6 +125,24 @@
       "x": 512, 
       "rotation": 180, 
       "name": "posipole"
+    }, 
+    {
+      "y": -150, 
+      "x": 480, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -150, 
+      "x": 0, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -150, 
+      "x": 960, 
+      "rotation": 0, 
+      "name": "big_black"
     }
   ]
 }
