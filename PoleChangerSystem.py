@@ -31,7 +31,7 @@ class PoleChangerSystem(GameSystem):
                     else:
                         r, g, b = 0.33, 0.33, 0.33
 
-                    with App.get_running_app().game.ids.play_camera.canvas:
+                    with App.get_running_app().game.ids.play_camera.canvas.before:
                         color = Color(r, g, b, -0.05)
                         entity.pole_changer.rect = Ellipse(size=(size[0],
                                                                  size[1]),

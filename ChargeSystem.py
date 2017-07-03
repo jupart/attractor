@@ -32,7 +32,7 @@ class ChargeSystem(GameSystem):
                     elif entity.charge.charge == '-':
                         r, g, b = 0.118, 0.490, 0.694
 
-                    with App.get_running_app().game.ids.play_camera.canvas:
+                    with App.get_running_app().game.ids.play_camera.canvas.before:
                         color = Color(r, g, b, -0.05)
                         entity.charge.ellipse = Ellipse(size=(radius * 2,
                                                               radius * 2),
