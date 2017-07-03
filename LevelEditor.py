@@ -51,7 +51,7 @@ class LevelEditorSystem(GameSystem):
             draw_ent.cymunk_physics.body.angle = radians(r)
 
     def delete_at(self, pos):
-        FLUFF = 50
+        FLUFF = 4
         for i, point in enumerate(self.level.points):
             if ((pos[0] - FLUFF) < point.x) and ((point.x < pos[0] + FLUFF)) and \
                     ((pos[1] - FLUFF) < point.y) and ((point.y < pos[1] + FLUFF)):
@@ -111,13 +111,13 @@ class LevelEditorSystem(GameSystem):
 
         elif touch.button == 'scrollup':
             cam.camera_scale = cam.camera_scale + 0.1
+            cam.look_at(pos)
 
         elif touch.button == 'scrolldown':
             cam.camera_scale = cam.camera_scale - 0.1
+            cam.look_at(pos)
 
         elif touch.button == 'middle':
-            cam.focus_entity = False
-            cam.do_scroll_lock = False
             cam.look_at(pos)
 
     def handle_key_down(self, key):
@@ -156,16 +156,15 @@ class LevelEditorSystem(GameSystem):
 
     def draw_anchors(self):
         anchors = self.anchors = []
-        size = 4
+        s = 4
         canvas = App.get_running_app().game.ids.play_camera.canvas
         with canvas.after:
             for p in self.level.points:
-                x1, y1 = p.x - size, p.y
-                x2, y2 = p.x + size, p.y
+                x1, y1 = p.x - s, p.y
+                x2, y2 = p.x + s, p.y
                 x3, y3 = p.x, p.y
-                x4, y4 = p.x, p.y + size
-                x5, y5 = p.x, p.y - size
-                Color(1, 1, 1, 1)
+                x4, y4 = p.x, p.y + s
+                x5, y5 = p.x, p.y - s
                 anchors.append(Line(points=[x1, y1,
                                             x2, y2,
                                             x3, y3,

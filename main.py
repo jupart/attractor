@@ -17,7 +17,7 @@ class AttractorApp(App):
         Config.set('input', 'mouse', 'mouse,disable_multitouch')
 
         Window.set_title('Attractor')
-        Window.clearcolor = (0.17, 0.17, 0.17, 1)
+        Window.clearcolor = (0.157, 0.157, 0.157, 1)
 
         self.game = Game.AttractorGame()
         return self.game

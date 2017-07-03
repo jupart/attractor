@@ -305,6 +305,22 @@
                 {"type": "rotate", "rotation": 0},
                 {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "n"}
             ]
+        },
+		{
+            "name": "big_black",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "big_black", "size_x": 480, "size_y": 480},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
+            "name": "small_black",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "small_black", "size_x": 30, "size_y": 30},
+                {"type": "rotate", "rotation": 0}
+            ]
         }
 	]
 }
