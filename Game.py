@@ -132,6 +132,20 @@ class AttractorGame(Widget):
                                                  'charge'],
                                  systems_unpaused=[],
                                  screenmanager_screen='menu_screen')
+        self.gameworld.add_state(state_name='levelselect',
+                                 systems_added=[],
+                                 systems_removed=[],
+                                 systems_paused=['position',
+                                                 'rotate',
+                                                 'animation',
+                                                 'rotate_renderer',
+                                                 'cymunk_physics',
+                                                 'play_camera',
+                                                 'pole_changer',
+                                                 'finish',
+                                                 'charge'],
+                                 systems_unpaused=[],
+                                 screenmanager_screen='levelselect_screen')
         self.gameworld.add_state(state_name='play',
                                  systems_added=['position',
                                                 'rotate',
@@ -231,6 +245,16 @@ class AttractorGame(Widget):
                 self.gameworld.remove_entity(self.editor.asset_id)
                 self.editor.asset_id = -1
         self.gameworld.state = 'menu'
+
+    def go_to_levelselect_screen(self):
+        scr = self.ids.gamescreenmanager.ids.levelselect_screen
+        for root, dirs, files in os.walk("resources/levels"):
+            for level in files:
+                button = Button(text=level[:-5])
+                button.bind(on_release=self.load_level(button.text))
+                scr.buttons.append(button)
+
+        self.gameworld.state = 'levelselect'
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
@@ -366,6 +390,9 @@ class AttractorGame(Widget):
         with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
             json.dump(level_data, f, indent=2)
 
+    def play_level(self, level_file_name):
+        pass
+
     def load_level(self, level_file_name=''):
         if level_file_name == '':
             level_file_name = self.editor.screen.ids.level_name.text
@@ -412,3 +439,7 @@ class AttractorGame(Widget):
         attractor = self.gameworld.entities[self.attractor_id]
         attractor.position.pos = (200, 200)
         attractor.cymunk_physics.body.position = (200, 200)
+        attractor.cymunk_physics.body.velocity = (0, 0)
+
+        attractor.charge.charge = 'n'
+        attractor.animation.animation = 'attractor_neutral_idle'
