@@ -133,6 +133,19 @@ AttractorGame:
             on_release: app.game.go_to_editor_screen()
 
 
+<LevelSelectScreen@GameScreen>:
+    id: levelselect_screen
+    name: 'levelselect_screen'
+
+    BoxLayout:
+        id: buttons
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.2, 0.15
+
+
 <PlayScreen@GameScreen>:
     name: 'play_screen'
 
