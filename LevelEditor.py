@@ -4,6 +4,7 @@ from kivy.app import App
 from kivy.core.window import Window
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
+from kivy.graphics import Color, Line
 
 from Level import Level
 
@@ -152,6 +153,30 @@ class LevelEditorSystem(GameSystem):
             r = r - 360
 
         self.screen.ids.rotation.text = str(r)
+
+    def draw_anchors(self):
+        anchors = self.anchors = []
+        size = 4
+        canvas = App.get_running_app().game.ids.play_camera.canvas
+        with canvas.after:
+            for p in self.level.points:
+                x1, y1 = p.x - size, p.y
+                x2, y2 = p.x + size, p.y
+                x3, y3 = p.x, p.y
+                x4, y4 = p.x, p.y + size
+                x5, y5 = p.x, p.y - size
+                Color(1, 1, 1, 1)
+                anchors.append(Line(points=[x1, y1,
+                                            x2, y2,
+                                            x3, y3,
+                                            x4, y4,
+                                            x5, y5],
+                                    width=1))
+
+    def remove_anchors(self):
+        canvas = App.get_running_app().game.ids.play_camera.canvas
+        for anchor in self.anchors:
+            canvas.after.remove(anchor)
 
 
 Factory.register('LevelEditorSystem', cls=LevelEditorSystem)

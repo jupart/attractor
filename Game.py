@@ -318,10 +318,12 @@ class AttractorGame(Widget):
             self.ids.play_camera.focus_entity = True
             self.ids.rotate_renderer.gameview = 'play_camera'
             self.ids.play_camera.entity_to_focus = self.attractor_id
+            self.editor.remove_anchors()
 
         else:
             self.gameworld.state = 'editor'
             self.ids.play_camera.focus_entity = False
+            self.editor.draw_anchors()
 
             if self.dd is None:
                 self.dd = DropDown()
