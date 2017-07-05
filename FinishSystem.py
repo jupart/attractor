@@ -14,8 +14,10 @@ class FinishSystem(GameSystem):
         for component in self.components:
             if component is not None:
                 attractor_pos = attractor.position.pos
+                entity_id = component.entity_id
+                finish = self.gameworld.entities[entity_id]
 
-                if self.pos_is_in_finish(attractor_pos, component):
+                if self.pos_is_in_finish(attractor_pos, finish):
                     App.get_running_app().game.finish_level()
 
     def pos_is_in_finish(self, pos, finish):

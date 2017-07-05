@@ -132,7 +132,7 @@ class AttractorGame(Widget):
                                                  'charge'],
                                  systems_unpaused=[],
                                  screenmanager_screen='menu_screen')
-        self.gameworld.add_state(state_name='levelselect',
+        self.gameworld.add_state(state_name='level_select',
                                  systems_added=[],
                                  systems_removed=[],
                                  systems_paused=['position',
@@ -145,7 +145,7 @@ class AttractorGame(Widget):
                                                  'finish',
                                                  'charge'],
                                  systems_unpaused=[],
-                                 screenmanager_screen='levelselect_screen')
+                                 screenmanager_screen='level_select_screen')
         self.gameworld.add_state(state_name='play',
                                  systems_added=['position',
                                                 'rotate',
@@ -246,15 +246,15 @@ class AttractorGame(Widget):
                 self.editor.asset_id = -1
         self.gameworld.state = 'menu'
 
-    def go_to_levelselect_screen(self):
-        scr = self.ids.gamescreenmanager.ids.levelselect_screen
+    def go_to_level_select_screen(self):
+        scr = self.ids.gamescreenmanager.ids.level_select_screen
         for root, dirs, files in os.walk("resources/levels"):
             for level in files:
                 button = Button(text=level[:-5])
-                button.bind(on_release=self.load_level(button.text))
-                scr.buttons.append(button)
+                button.bind(on_release=self.play_level)
+                scr.ids.buttons.add_widget(button)
 
-        self.gameworld.state = 'levelselect'
+        self.gameworld.state = 'level_select'
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
@@ -382,8 +382,8 @@ class AttractorGame(Widget):
 
         level_data = {'entities': []}
 
-        while not level.empty():
-            name, point, rotation, ids = level.pop_entity()
+        for name, point, rotation, ids in zip(level.names, level.points,
+                                              level.rotations, level.ids):
             level_data['entities'].append({'name': name,
                                            'x': point.x,
                                            'y': point.y,
@@ -392,8 +392,11 @@ class AttractorGame(Widget):
         with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
             json.dump(level_data, f, indent=2)
 
-    def play_level(self, level_file_name):
-        pass
+    def play_level(self, button):
+        level_file_name = button.text
+
+        self.load_level(level_file_name)
+        self.gameworld.state = 'play'
 
     def load_level(self, level_file_name=''):
         if level_file_name == '':
@@ -423,6 +426,9 @@ class AttractorGame(Widget):
 
             ids = self.entity_factory.create_entity_at(name, x, y, rot)
             self.editor.level.add_entity(name, x, y, rot, ids)
+
+    def finish_level(self):
+        self.gameworld.state = 'level_select'
 
     def clear_level(self):
         self.gameworld.clear_entities()

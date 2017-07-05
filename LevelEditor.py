@@ -52,7 +52,7 @@ class LevelEditorSystem(GameSystem):
             draw_ent.cymunk_physics.body.angle = radians(r)
 
     def delete_at(self, pos):
-        FLUFF = 4
+        FLUFF = 20
         for i, point in enumerate(self.level.points):
             if ((pos[0] - FLUFF) < point.x) and ((point.x < pos[0] + FLUFF)) and \
                     ((pos[1] - FLUFF) < point.y) and ((point.y < pos[1] + FLUFF)):

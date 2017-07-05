@@ -1,0 +1,244 @@
+{
+  "entities": [
+    {
+      "y": -200, 
+      "x": 512, 
+      "rotation": 180, 
+      "name": "negapole"
+    }, 
+    {
+      "y": 141, 
+      "x": 508, 
+      "rotation": 180, 
+      "name": "negapole"
+    }, 
+    {
+      "y": -28, 
+      "x": 680, 
+      "rotation": 90, 
+      "name": "posipole"
+    }, 
+    {
+      "y": 120, 
+      "x": 270, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 270, 
+      "x": 120, 
+      "rotation": 90, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 420, 
+      "x": 270, 
+      "rotation": 180, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 420, 
+      "x": 510, 
+      "rotation": 180, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 420, 
+      "x": 750, 
+      "rotation": 180, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 270, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": 120, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall_small"
+    }, 
+    {
+      "y": -30, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": -270, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": -420, 
+      "x": 750, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": -420, 
+      "x": 510, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": -420, 
+      "x": 270, 
+      "rotation": 0, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": -180, 
+      "x": 270, 
+      "rotation": 180, 
+      "name": "thin_wall"
+    }, 
+    {
+      "y": -180, 
+      "x": 510, 
+      "rotation": 180, 
+      "name": "thin_wall_inlay"
+    }, 
+    {
+      "y": -30, 
+      "x": 660, 
+      "rotation": 270, 
+      "name": "thin_wall_inlay"
+    }, 
+    {
+      "y": 120, 
+      "x": 510, 
+      "rotation": 0, 
+      "name": "thin_wall_inlay"
+    }, 
+    {
+      "y": 120, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": -420, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": -420, 
+      "x": 900, 
+      "rotation": 90, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": -180, 
+      "x": 660, 
+      "rotation": 90, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 120, 
+      "x": 660, 
+      "rotation": 180, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 420, 
+      "x": 900, 
+      "rotation": 180, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 420, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": -180, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": -240, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall_small"
+    }, 
+    {
+      "y": -300, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall_small"
+    }, 
+    {
+      "y": -360, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "thin_wall_small"
+    }, 
+    {
+      "y": 30, 
+      "x": 570, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": -90, 
+      "x": 570, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": -90, 
+      "x": 450, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": 30, 
+      "x": 450, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": 30, 
+      "x": 330, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": -90, 
+      "x": 330, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": -90, 
+      "x": 210, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": 30, 
+      "x": 210, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": 30, 
+      "x": 90, 
+      "rotation": 0, 
+      "name": "black"
+    }, 
+    {
+      "y": -90, 
+      "x": 90, 
+      "rotation": 0, 
+      "name": "black"
+    }
+  ]
+}

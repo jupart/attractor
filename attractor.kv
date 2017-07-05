@@ -113,6 +113,9 @@ AttractorGame:
     EditorScreen:
         id: editor_screen
 
+    LevelSelectScreen:
+        id: level_select_screen
+
 
 <MenuScreen@GameScreen>:
     name: 'menu_screen'
@@ -125,17 +128,16 @@ AttractorGame:
         size_hint: 0.2, 0.15
 
         Button:
-            text: 'play'
-            on_release: app.game.go_to_play_screen()
+            text: 'Levels'
+            on_release: app.game.go_to_level_select_screen()
 
         Button:
-            text: 'editor'
+            text: 'Editor'
             on_release: app.game.go_to_editor_screen()
 
 
 <LevelSelectScreen@GameScreen>:
-    id: levelselect_screen
-    name: 'levelselect_screen'
+    name: 'level_select_screen'
 
     BoxLayout:
         id: buttons
@@ -181,7 +183,6 @@ AttractorGame:
             background_normal: ''
 
 <EditorScreen@GameScreen>:
-    id: editor_screen
     name: 'editor_screen'
 
     Button:

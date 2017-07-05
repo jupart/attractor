@@ -85,6 +85,8 @@ class EntityFactory():
             c_order.append('cymunk_physics')
         if 'pole_changer' in c_data:
             c_order.append('pole_changer')
+        if 'finish' in c_data:
+            c_order.append('finish')
 
         return [c_data, c_order]
 
