@@ -1,6 +1,8 @@
 import os
 import json
 
+from kivy.utils import platform
+
 # Kivy visuals
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
@@ -16,7 +18,8 @@ import kivent_core
 import kivent_cymunk
 
 # Plyer
-# import plyer
+if platform == 'android' or platform == 'ios':
+    import plyer
 
 # Managers
 from kivent_core.managers.resource_managers import texture_manager
@@ -88,9 +91,10 @@ class AttractorGame(Widget):
                                       callback=self.init_game)
 
     def init_game(self):
-        self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
-        self._keyboard.bind(on_key_down=self._on_keyboard_down)
-        self._keyboard.bind(on_key_up=self._on_keyboard_up)
+        if not(platform == 'android' or platform == 'ios'):
+            self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
+            self._keyboard.bind(on_key_down=self._on_keyboard_down)
+            self._keyboard.bind(on_key_up=self._on_keyboard_up)
 
         self.setup_states()
         self.gameworld.state = 'menu'
@@ -107,6 +111,10 @@ class AttractorGame(Widget):
         self.ids.play_camera.entity_to_focus = self.attractor_id
         self.ids.cymunk_physics.collision_slop = 2
         # self.gameworld.system_manager['cymunk_physics'].damping = 0.5
+
+        if platform == 'android' or platform == 'ios':
+            if plyer.vibrator.exists:
+                plyer.vibrator.vibrate(0.05)
 
     def _keyboard_closed(self):
         pass
@@ -247,12 +255,20 @@ class AttractorGame(Widget):
         self.gameworld.state = 'menu'
 
     def go_to_level_select_screen(self):
+        h = 40
         scr = self.ids.gamescreenmanager.ids.level_select_screen
+        buttons = scr.ids.buttons
+
         for root, dirs, files in os.walk("resources/levels"):
             for level in files:
-                button = Button(text=level[:-5])
+                button = Button(text=level[:-5],
+                                size_hint_y=None,
+                                height=h)
                 button.bind(on_release=self.play_level)
-                scr.ids.buttons.add_widget(button)
+                buttons.add_widget(button)
+
+        buttons.size_y = len(buttons.children) * h
+        buttons.bind(minimum_height=buttons.setter('height'))
 
         self.gameworld.state = 'level_select'
 
@@ -284,8 +300,9 @@ class AttractorGame(Widget):
         attractor.animation.animation = new_anim
         attractor.charge.charge = change_to
 
-        # if plyer.vibrator.exists:
-            # plyer.vibrator.vibrate(0.05)
+        if platform == 'android' or platform == 'ios':
+            if plyer.vibrator.exists:
+                plyer.vibrator.vibrate(0.05)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):

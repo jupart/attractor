@@ -83,6 +83,22 @@
             ]
         },
 		{
+            "name": "thin_wall_corner_t",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "thin_wall_corner_transparent", "size_x": 60, "size_y": 60},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -30, "ay": -6, "bx": -6, "by": -30, "radius": 5},
+                        {"ax": -6, "ay": -30, "bx": 30, "by": -30, "radius": 5},
+                        {"ax": -30, "ay": -6, "bx": -30, "by": 30, "radius": 5}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
             "name": "wall_inlay",
             "components": [
                 {"type": "position", "x": 0, "y": 0},

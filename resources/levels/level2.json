@@ -61,18 +61,6 @@
       "name": "thin_wall_corner"
     }, 
     {
-      "y": 420, 
-      "x": 900, 
-      "rotation": 270, 
-      "name": "thin_wall_corner"
-    }, 
-    {
-      "y": 600, 
-      "x": 900, 
-      "rotation": 0, 
-      "name": "thin_wall_corner"
-    }, 
-    {
       "y": 900, 
       "x": 900, 
       "rotation": 180, 
@@ -197,6 +185,18 @@
       "x": 1200, 
       "rotation": 90, 
       "name": "thin_wall_small"
+    }, 
+    {
+      "y": 600, 
+      "x": 900, 
+      "rotation": 0, 
+      "name": "thin_wall_corner_t"
+    }, 
+    {
+      "y": 420, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall_corner_t"
     }
   ]
 }

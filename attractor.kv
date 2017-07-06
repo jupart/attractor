@@ -139,26 +139,31 @@ AttractorGame:
 <LevelSelectScreen@GameScreen>:
     name: 'level_select_screen'
 
-    BoxLayout:
-        id: buttons
-        orientation: 'vertical'
-        padding: 10
-        spacing: 10
+    ScrollView:
+        id: scroll
+        size_hint: 0.3, 0.7
+        do_scroll_x: False
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        size_hint: 0.2, 0.15
+
+        BoxLayout:
+            id: buttons
+            orientation: 'vertical'
+            padding: 10
+            spacing: 10
+            size_hint: 1, None
 
 
 <PlayScreen@GameScreen>:
     name: 'play_screen'
 
     Button:
-        size_hint: 0.1, 0.035
+        size_hint: 0.15, 0.04
         pos: 0, self.parent.height - self.height
         text: "Menu"
         on_release: app.game.go_to_menu_screen()
 
     Button:
-        size_hint: 0.1, 0.035
+        size_hint: 0.15, 0.04
         pos: self.parent.width - self.width, self.parent.height - self.height
         text: "Reset"
         on_release: app.game.reset_attractor()
