@@ -62,13 +62,6 @@ class LevelEditorSystem(GameSystem):
                 del self.level.rotations[i]
 
                 ent_id = self.level.ids.pop(i)
-                ent = self.gameworld.entities[ent_id]
-
-                if 'attach' in ent.load_order:
-                    rot_id = ent.attach.entity_id
-                    if rot_id != -1:
-                        self.gameworld.remove_entity(rot_id)
-
                 self.gameworld.remove_entity(ent_id)
 
     def handle_click(self, touch):

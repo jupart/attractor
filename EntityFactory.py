@@ -47,8 +47,6 @@ class EntityFactory():
                     rotator = self.gameworld.entities[ids]
                     rotated = self.gameworld.entities[ids2]
 
-                    rotator.attach.entity_id = ids2
-
                     # Get started rotating
                     body = rotated.cymunk_physics.body
                     force = new_ent_data[0]['cymunk_physics']['angular_velocity']
@@ -167,8 +165,7 @@ class EntityFactory():
 
         elif component_data['type'] == 'attach':
             c_dict = {'attach': {'entity': component_data['entity'],
-                                 'distance': component_data['distance'],
-                                 'entity_id': -1}}
+                                 'distance': component_data['distance']}}
 
         elif component_data['type'] == 'finish':
             c_dict = {'finish': {'size': (component_data['size_x'],

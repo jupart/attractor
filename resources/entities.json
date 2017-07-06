@@ -287,6 +287,38 @@
             ]
         },
 		{
+            "name": "rotator_1000_posipole",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
+                {"type": "physics",
+                    "segments": [],
+                    "circles": [
+                        {"radius": 30, "offset_x": 0, "offset_y": 0}
+                    ],
+                    "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
+                    "angular_velocity": 1},
+                {"type": "rotate", "rotation": 0},
+                {"type": "attach", "entity": "posipole_moveable", "distance": 1000}
+            ]
+        },
+		{
+            "name": "rotator_1000_negapole",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
+                {"type": "physics",
+                    "segments": [],
+                    "circles": [
+                        {"radius": 30, "offset_x": 0, "offset_y": 0}
+                    ],
+                    "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
+                    "angular_velocity": 1},
+                {"type": "rotate", "rotation": 0},
+                {"type": "attach", "entity": "negapole_moveable", "distance": 1000}
+            ]
+        },
+		{
             "name": "finish",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
