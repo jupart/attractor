@@ -258,6 +258,8 @@ class AttractorGame(Widget):
         h = 40
         scr = self.ids.gamescreenmanager.ids.level_select_screen
         buttons = scr.ids.buttons
+        for child in buttons.children:
+            buttons.remove_widget(child)
 
         for root, dirs, files in os.walk("resources/levels"):
             for level in files:

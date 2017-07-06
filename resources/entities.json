@@ -70,22 +70,6 @@
             "name": "thin_wall_corner",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "thin_wall_corner", "size_x": 60, "size_y": 60},
-                {"type": "physics",
-                    "segments": [
-                        {"ax": -30, "ay": -6, "bx": -6, "by": -30, "radius": 5},
-                        {"ax": -6, "ay": -30, "bx": 30, "by": -30, "radius": 5},
-                        {"ax": -30, "ay": -6, "bx": -30, "by": 30, "radius": 5}
-                    ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
-                {"type": "rotate", "rotation": 0}
-            ]
-        },
-		{
-            "name": "thin_wall_corner_t",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "thin_wall_corner_transparent", "size_x": 60, "size_y": 60},
                 {"type": "physics",
                     "segments": [
@@ -169,6 +153,24 @@
             ]
         },
 		{
+            "name": "posipole_weak",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "posipole", "size_x": 60, "size_y": 20},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0},
+                {"type": "charge", "charge": "+", "strength": 0.5}
+            ]
+        },
+		{
             "name": "posipole_moveable",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
@@ -202,6 +204,24 @@
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
                 {"type": "charge", "charge": "-", "strength": -1}
+            ]
+        },
+		{
+            "name": "negapole_weak",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "negapole", "size_x": 120, "size_y": 120},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0},
+                {"type": "charge", "charge": "-", "strength": -0.5}
             ]
         },
 		{
@@ -352,30 +372,6 @@
                 {"type": "render", "texture": "pole_changer", "size_x": 120, "size_y": 120},
                 {"type": "rotate", "rotation": 0},
                 {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "n"}
-            ]
-        },
-		{
-            "name": "big_black",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "big_black", "size_x": 480, "size_y": 480},
-                {"type": "rotate", "rotation": 0}
-            ]
-        },
-		{
-            "name": "black",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "black", "size_x": 120, "size_y": 120},
-                {"type": "rotate", "rotation": 0}
-            ]
-        },
-		{
-            "name": "small_black",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "small_black", "size_x": 30, "size_y": 30},
-                {"type": "rotate", "rotation": 0}
             ]
         }
 	]

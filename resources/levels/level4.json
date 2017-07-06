@@ -181,64 +181,10 @@
       "name": "thin_wall_small"
     }, 
     {
-      "y": 30, 
-      "x": 570, 
-      "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": -90, 
-      "x": 570, 
-      "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": -90, 
-      "x": 450, 
-      "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": 30, 
-      "x": 450, 
-      "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": 30, 
-      "x": 330, 
-      "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": -90, 
-      "x": 330, 
-      "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": -90, 
+      "y": -300, 
       "x": 210, 
       "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": 30, 
-      "x": 210, 
-      "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": 30, 
-      "x": 90, 
-      "rotation": 0, 
-      "name": "black"
-    }, 
-    {
-      "y": -90, 
-      "x": 90, 
-      "rotation": 0, 
-      "name": "black"
+      "name": "finish"
     }
   ]
 }

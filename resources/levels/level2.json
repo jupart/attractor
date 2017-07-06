@@ -7,36 +7,6 @@
       "name": "big_black"
     }, 
     {
-      "y": 870, 
-      "x": 1170, 
-      "rotation": 0, 
-      "name": "big_black"
-    }, 
-    {
-      "y": 1170, 
-      "x": 720, 
-      "rotation": 0, 
-      "name": "big_black"
-    }, 
-    {
-      "y": 1170, 
-      "x": 260, 
-      "rotation": 0, 
-      "name": "big_black"
-    }, 
-    {
-      "y": -150, 
-      "x": 220, 
-      "rotation": 0, 
-      "name": "big_black"
-    }, 
-    {
-      "y": -150, 
-      "x": 690, 
-      "rotation": 0, 
-      "name": "big_black"
-    }, 
-    {
       "y": 420, 
       "x": 1200, 
       "rotation": 90, 
@@ -197,6 +167,18 @@
       "x": 900, 
       "rotation": 270, 
       "name": "thin_wall_corner_t"
+    }, 
+    {
+      "y": 600, 
+      "x": 900, 
+      "rotation": 0, 
+      "name": "thin_wall_corner"
+    }, 
+    {
+      "y": 420, 
+      "x": 900, 
+      "rotation": 270, 
+      "name": "thin_wall_corner"
     }
   ]
 }
