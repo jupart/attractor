@@ -155,6 +155,39 @@ AttractorGame:
 
 <PlayScreen@GameScreen>:
     name: 'play_screen'
+    id: scr
+
+    canvas:
+        #:set alpha 0.25
+        #:set w 10
+
+        # Red
+        Color:
+            rgba: 0.894, 0.243, 0.282, alpha
+        
+        Line:
+            width: w
+            points: [0.3 * scr.width, 0, 0, 0, 0, scr.height, 0.3 * scr.width, scr.height]
+            
+        # Gray
+        Color:
+            rgba: 0.314, 0.376, 0.412, alpha
+        
+        Line:
+            width: w
+            points: [0.325 * scr.width, 0, (1 - 0.325) * scr.width, 0]
+        
+        Line:
+            width: w
+            points: [0.325 * scr.width, scr.height, (1 - 0.325) * scr.width, scr.height]
+        
+        # Blue
+        Color:
+            rgba: 0.118, 0.490, 0.694, alpha
+        
+        Line:
+            width: w
+            points: [(1 - 0.3) * scr.width, 0, scr.width, 0, scr.width, scr.height, (1 - 0.3) * scr.width, scr.height]
 
     Button:
         size_hint: 0.15, 0.04
