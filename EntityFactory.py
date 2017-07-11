@@ -48,9 +48,11 @@ class EntityFactory():
                     rotated = self.gameworld.entities[ids2]
 
                     # Get started rotating
+                    direction = -1 if attach['direction'] == 'cw' else 1
+
                     body = rotated.cymunk_physics.body
                     force = new_ent_data[0]['cymunk_physics']['angular_velocity']
-                    body.apply_impulse((self.ROTATE_MOD * force, 0), (-10, 0))
+                    body.apply_impulse((direction * self.ROTATE_MOD * force, 0), (-10, 0))
 
                     constraint = PinJoint(rotator.cymunk_physics.body,
                                           rotated.cymunk_physics.body,
@@ -165,7 +167,8 @@ class EntityFactory():
 
         elif component_data['type'] == 'attach':
             c_dict = {'attach': {'entity': component_data['entity'],
-                                 'distance': component_data['distance']}}
+                                 'distance': component_data['distance'],
+                                 'direction': component_data['direction']}}
 
         elif component_data['type'] == 'finish':
             c_dict = {'finish': {'size': (component_data['size_x'],
