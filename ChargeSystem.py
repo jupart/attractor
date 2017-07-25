@@ -24,6 +24,9 @@ class ChargeSystem(GameSystem):
 
                 entity = self.gameworld.entities[entity_id]
 
+                if entity.charge.skip:
+                    continue
+
                 if not entity.charge.drawn:
                     radius = self.DISTANCE_MOD * abs(entity.charge.strength)
 

@@ -19,23 +19,6 @@
             "name": "wall",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "wall", "size_x": 240, "size_y": 120},
-                {"type": "physics",
-                    "segments": [
-                        {"ax": -120, "ay": -60, "bx": -120, "by": 60, "radius": 5},
-                        {"ax": 120, "ay": -60, "bx": -120, "by": -60, "radius": 5},
-                        {"ax": -120, "ay": 60, "bx": 120, "by": 60, "radius": 5},
-                        {"ax": 120, "ay": 60, "bx": 120, "by": -60, "radius": 5}
-                    ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
-                {"type": "rotate", "rotation": 0}
-            ]
-        },
-		{
-            "name": "thin_wall",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "thin_wall", "size_x": 240, "size_y": 60},
                 {"type": "physics",
                     "segments": [
@@ -50,7 +33,7 @@
             ]
         },
 		{
-            "name": "thin_wall_small",
+            "name": "wall_small",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "thin_wall_small", "size_x": 240, "size_y": 60},
@@ -67,7 +50,7 @@
             ]
         },
 		{
-            "name": "thin_wall_corner",
+            "name": "wall_corner",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "thin_wall_corner_transparent", "size_x": 60, "size_y": 60},
@@ -86,23 +69,6 @@
             "name": "wall_inlay",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "wall_inlay", "size_x": 240, "size_y": 120},
-                {"type": "physics",
-                    "segments": [
-                        {"ax": -120, "ay": -60, "bx": -120, "by": 60, "radius": 5},
-                        {"ax": 120, "ay": -60, "bx": -120, "by": -60, "radius": 5},
-                        {"ax": -120, "ay": 60, "bx": 120, "by": 60, "radius": 5},
-                        {"ax": 120, "ay": 60, "bx": 120, "by": -60, "radius": 5}
-                    ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
-                {"type": "rotate", "rotation": 0}
-            ]
-        },
-		{
-            "name": "thin_wall_inlay",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "thin_wall_inlay", "size_x": 240, "size_y": 60},
                 {"type": "physics",
                     "segments": [
@@ -110,24 +76,6 @@
                         {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
                         {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
                         {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
-                    ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
-                {"type": "rotate", "rotation": 0}
-            ]
-        },
-		{
-            "name": "wall_corner",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "wall_corner", "size_x": 240, "size_y": 240},
-                {"type": "physics",
-                    "segments": [
-                        {"ax": -120, "ay": 0, "bx": -76, "by": -8, "radius": 5},
-                        {"ax": -76, "ay": -8, "bx": -57, "by": -18, "radius": 5},
-                        {"ax": -57, "ay": -18, "bx": -34, "by": -37, "radius": 5},
-                        {"ax": -34, "ay": -37, "bx": -10, "by": -73, "radius": 5},
-                        {"ax": -10, "ay": -73, "bx": 0, "by": -120, "radius": 5}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -307,38 +255,6 @@
             ]
         },
 		{
-            "name": "rotator_1000_posipole",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
-                {"type": "physics",
-                    "segments": [],
-                    "circles": [
-                        {"radius": 30, "offset_x": 0, "offset_y": 0}
-                    ],
-                    "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
-                    "angular_velocity": 1},
-                {"type": "rotate", "rotation": 0},
-                {"type": "attach", "entity": "posipole_moveable", "distance": 1000, "direction": "cw"}
-            ]
-        },
-		{
-            "name": "rotator_1000_negapole",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
-                {"type": "physics",
-                    "segments": [],
-                    "circles": [
-                        {"radius": 30, "offset_x": 0, "offset_y": 0}
-                    ],
-                    "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
-                    "angular_velocity": 1},
-                {"type": "rotate", "rotation": 0},
-                {"type": "attach", "entity": "negapole_moveable", "distance": 1000, "direction": "cw"}
-            ]
-        },
-		{
             "name": "finish",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
@@ -372,6 +288,60 @@
                 {"type": "render", "texture": "pole_changer", "size_x": 120, "size_y": 120},
                 {"type": "rotate", "rotation": 0},
                 {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "n"}
+            ]
+        },
+		{
+            "name": "posimembrane",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "posimembrane", "size_x": 240, "size_y": 60},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 5},
+                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
+                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
+                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0},
+                {"type": "membrane", "pole": "+"}
+            ]
+        },
+		{
+            "name": "negamembrane",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "negamembrane", "size_x": 240, "size_y": 60},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 5},
+                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
+                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
+                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0},
+                {"type": "membrane", "pole": "-"}
+            ]
+        },
+		{
+            "name": "neutral_membrane",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "neutral_membrane", "size_x": 240, "size_y": 60},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 5},
+                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
+                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
+                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0},
+                {"type": "membrane", "pole": "n"}
             ]
         }
 	]

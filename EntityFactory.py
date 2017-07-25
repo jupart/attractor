@@ -61,6 +61,15 @@ class EntityFactory():
                     self.physics.space.add_constraint(constraint)
                     return ids
 
+                if 'membrane' in new_ent_data[0]:
+                    membrane = new_ent_data[0].pop('membrane')
+
+                    # Change their collision group to 2
+                    shapes = new_ent_data[0]['cymunk_physics']['col_shapes']
+                    for shape in shapes:
+                        shape['collision_type'] = 2
+
+
                 else:
                     return self.gameworld.init_entity(new_ent_data[0], new_ent_data[1])
         else:
@@ -114,6 +123,7 @@ class EntityFactory():
 
         elif component_data['type'] == 'charge':
             c_dict = {'charge': {'charge': component_data['charge'].encode('utf-8'),
+                                 'skip': False,
                                  'strength': component_data['strength'],
                                  'drawn': False,
                                  'ellipse': None}}
@@ -179,6 +189,13 @@ class EntityFactory():
                                                 component_data['size_y']),
                                        'to': component_data['to'],
                                        'rect': None}}
+
+        elif component_data['type'] == 'membrane':
+            c_dict = {'charge': {'charge': component_data['pole'].encode('utf-8'),
+                                 'skip': True,
+                                 'strength': 1,
+                                 'drawn': False,
+                                 'ellipse': None}}
 
         else:
             return {}

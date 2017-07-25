@@ -38,3 +38,12 @@ Idea Sketchpad
   * neutral, north, or south based
   * maybe it should be simply charged-based (positive, negative, neutral)
   * level is laid out statically, so player only changes the attractor's charge
+
+* improve level menu
+* display the time it took to finish level
+* display # of Attractor changes it took
+* metrics: time/level and time/pole/level
+* implement membrane
+* magnet show needs alpha gradient to edge or some other design
+* continue to next level on completion, only show selector from menu
+* horizontal levels in which magnets only affect v_y (flappy bird?)

@@ -112,6 +112,9 @@ class AttractorGame(Widget):
         self.ids.cymunk_physics.collision_slop = 2
         # self.gameworld.system_manager['cymunk_physics'].damping = 0.5
 
+        physics = self.gameworld.system_manager['cymunk_physics']
+        physics.add_collision_handler(1, 2, self.membrane_solver)
+
         if platform == 'android' or platform == 'ios':
             if plyer.vibrator.exists:
                 plyer.vibrator.vibrate(0.05)
@@ -124,6 +127,18 @@ class AttractorGame(Widget):
 
     def _on_keyboard_up(self, keyboard, keycode):
         pass
+
+    def membrane_solver(self, space, arbiter):
+        attractor_id = arbiter.shapes[0].body.data
+        membrane_id = arbiter.shapes[0].body.data
+
+        attractor = self.gameworld.entities[attractor_id]
+        membrane = self.gameworld.entities[membrane_id]
+
+        if attractor.charge.charge == membrane.charge.charge:
+            return False
+        else:
+            return True
 
     def setup_states(self):
         self.gameworld.add_state(state_name='menu',
