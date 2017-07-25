@@ -22,7 +22,7 @@ Features
 ###################
 Project checkpoints
 ###################
-1. First level, navigating attractor through obstacles using magnets
+√ 1. First level, navigating attractor through obstacles using magnets
 2. Decide on visual aesthetic
 3. First set of 10 levels, sound effects
 4. Decide on aural aesthetic, music for first set
