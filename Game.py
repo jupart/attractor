@@ -9,6 +9,8 @@ from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.animation import Animation
 from kivy.core.window import Window
+from kivy.animation import Animation
+from kivy.clock import Clock
 
 # Properties
 from kivy.properties import NumericProperty
@@ -31,6 +33,7 @@ from FinishSystem import FinishSystem
 from PoleChangerSystem import PoleChangerSystem
 
 from TouchedTextBox import TouchedTextBox
+from CircularButton import CircularButton
 
 
 # Load all .png in resources/png
@@ -75,6 +78,7 @@ for root, dirs, files in os.walk("resources/png"):
 
 class AttractorGame(Widget):
     attractor_id = NumericProperty(-1)
+    current_level = 0
     dd = None
 
     def __init__(self, **kwargs):
@@ -155,20 +159,6 @@ class AttractorGame(Widget):
                                                  'charge'],
                                  systems_unpaused=[],
                                  screenmanager_screen='menu_screen')
-        self.gameworld.add_state(state_name='level_select',
-                                 systems_added=[],
-                                 systems_removed=[],
-                                 systems_paused=['position',
-                                                 'rotate',
-                                                 'animation',
-                                                 'rotate_renderer',
-                                                 'cymunk_physics',
-                                                 'play_camera',
-                                                 'pole_changer',
-                                                 'finish',
-                                                 'charge'],
-                                 systems_unpaused=[],
-                                 screenmanager_screen='level_select_screen')
         self.gameworld.add_state(state_name='play',
                                  systems_added=['position',
                                                 'rotate',
@@ -269,25 +259,25 @@ class AttractorGame(Widget):
                 self.editor.asset_id = -1
         self.gameworld.state = 'menu'
 
-    def go_to_level_select_screen(self):
+    def open_level_select_menu(self):
         h = 40
-        scr = self.ids.gamescreenmanager.ids.level_select_screen
-        buttons = scr.ids.buttons
-        for child in buttons.children:
-            buttons.remove_widget(child)
+        scr = self.ids.gamescreenmanager.ids.menu_screen
+        buttons = scr.level_buttons
 
-        for root, dirs, files in os.walk("resources/levels"):
-            for level in files:
-                button = Button(text=level[:-5],
-                                size_hint_y=None,
-                                height=h)
-                button.bind(on_release=self.play_level)
-                buttons.add_widget(button)
+        if buttons.children == []:
+            for root, dirs, files in os.walk("resources/levels"):
+                for level in files:
+                    button = Button(text=level[:-5].replace('level', ''),
+                                    size_hint_y=None,
+                                    height=h)
+                    button.bind(on_release=self.play_level)
+                    buttons.add_widget(button)
 
-        buttons.size_y = len(buttons.children) * h
+        buttons.size_y = len(buttons.children) * h + h/2
         buttons.bind(minimum_height=buttons.setter('height'))
 
-        self.gameworld.state = 'level_select'
+        anim = Animation(x=scr.width - scr.scroll_container.width, duration=0.25)
+        anim.start(scr.scroll_container)
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
@@ -427,10 +417,17 @@ class AttractorGame(Widget):
             json.dump(level_data, f, indent=2)
 
     def play_level(self, button):
-        level_file_name = button.text
+        level_file_name = 'level' + button.text
+        self.current_level = button.text
 
         self.load_level(level_file_name)
         self.gameworld.state = 'play'
+
+        Clock.schedule_once(lambda dt: self.hide_level_menu(), 1)
+
+    def hide_level_menu(self):
+        scr = self.ids.gamescreenmanager.ids.menu_screen
+        scr.scroll_container.x = scr.width
 
     def load_level(self, level_file_name=''):
         if level_file_name == '':
@@ -462,7 +459,7 @@ class AttractorGame(Widget):
             self.editor.level.add_entity(name, x, y, rot, ids)
 
     def finish_level(self):
-        self.gameworld.state = 'level_select'
+        self.load_level(str(self.current_level + 1))
 
     def clear_level(self):
         self.gameworld.clear_entities()

@@ -113,45 +113,51 @@ AttractorGame:
     EditorScreen:
         id: editor_screen
 
-    LevelSelectScreen:
-        id: level_select_screen
-
 
 <MenuScreen@GameScreen>:
+    level_buttons: buttons
+    scroll_container: scroll_buttons
     name: 'menu_screen'
 
-    BoxLayout:
-        orientation: 'vertical'
-        padding: 10
-        spacing: 10
-        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        size_hint: 0.2, 0.15
-
-        Button:
-            text: 'Levels'
-            on_release: app.game.go_to_level_select_screen()
-
-        Button:
-            text: 'Editor'
-            on_release: app.game.go_to_editor_screen()
-
-
-<LevelSelectScreen@GameScreen>:
-    name: 'level_select_screen'
-
-    ScrollView:
-        id: scroll
-        size_hint: 0.3, 0.7
-        do_scroll_x: False
-        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    FloatLayout:
 
         BoxLayout:
-            id: buttons
             orientation: 'vertical'
             padding: 10
             spacing: 10
-            size_hint: 1, None
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint: 0.2, 0.15
 
+            Button:
+                text: 'Levels'
+                on_release: app.game.open_level_select_menu()
+
+            Button:
+                text: 'Editor'
+                on_release: app.game.go_to_editor_screen()
+
+        ScrollView:
+            id: scroll_buttons
+            size_hint: 0.25, 1
+            pos: self.parent.width, 0
+            do_scroll_x: False
+
+            canvas.before:
+                Color:
+                    rgb: 0.1, 0.1, 0.1
+
+                Rectangle:
+                    size: self.parent.size
+                    pos: self.parent.pos
+
+            GridLayout:
+                id: buttons
+                cols: 2
+                padding: 5, 5
+                spacing: 5, 5
+                row_default_height: '40dp'
+                row_force_default: True
+                size_hint_y: None
 
 <PlayScreen@GameScreen>:
     name: 'play_screen'
@@ -164,27 +170,27 @@ AttractorGame:
         # Red
         Color:
             rgba: 0.894, 0.243, 0.282, alpha
-        
+
         Line:
             width: w
             points: [0.3 * scr.width, 0, 0, 0, 0, scr.height, 0.3 * scr.width, scr.height]
-            
+
         # Gray
         Color:
             rgba: 0.314, 0.376, 0.412, alpha
-        
+
         Line:
             width: w
             points: [0.325 * scr.width, 0, (1 - 0.325) * scr.width, 0]
-        
+
         Line:
             width: w
             points: [0.325 * scr.width, scr.height, (1 - 0.325) * scr.width, scr.height]
-        
+
         # Blue
         Color:
             rgba: 0.118, 0.490, 0.694, alpha
-        
+
         Line:
             width: w
             points: [(1 - 0.3) * scr.width, 0, scr.width, 0, scr.width, scr.height, (1 - 0.3) * scr.width, scr.height]
