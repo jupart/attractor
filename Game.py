@@ -7,6 +7,7 @@ from kivy.utils import platform
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
+from kivy.uix.label import Label
 from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy.animation import Animation
@@ -265,13 +266,48 @@ class AttractorGame(Widget):
         buttons = scr.level_buttons
 
         if buttons.children == []:
-            for root, dirs, files in os.walk("resources/levels"):
-                for level in files:
-                    button = Button(text=level[:-5].replace('level', ''),
-                                    size_hint_y=None,
-                                    height=h)
-                    button.bind(on_release=self.play_level)
-                    buttons.add_widget(button)
+            # for root, dirs, files in os.walk("resources/levels"):
+                # for level in files:
+                    # button = Button(text=level[:-5].replace('level', ''),
+                                    # size_hint_y=None,
+                                    # height=h)
+                    # button.bind(on_release=self.play_level)
+                    # buttons.add_widget(button)
+            buttons.add_widget(Label(text='Magnet'))
+            buttons.add_widget(Label())
+            for i in range(1, 5):
+                button = Button(text=str(i),
+                                size_hint_y=None,
+                                height=h)
+                button.bind(on_release=self.play_level)
+                buttons.add_widget(button)
+
+            buttons.add_widget(Label(text='Rotator'))
+            buttons.add_widget(Label())
+            for i in range(5, 9):
+                button = Button(text=str(i),
+                                size_hint_y=None,
+                                height=h)
+                button.bind(on_release=self.play_level)
+                buttons.add_widget(button)
+
+            buttons.add_widget(Label(text='Changer'))
+            buttons.add_widget(Label())
+            for i in range(9, 13):
+                button = Button(text=str(i),
+                                size_hint_y=None,
+                                height=h)
+                button.bind(on_release=self.play_level)
+                buttons.add_widget(button)
+
+            buttons.add_widget(Label(text='Membrane'))
+            buttons.add_widget(Label())
+            for i in range(13, 17):
+                button = Button(text=str(i),
+                                size_hint_y=None,
+                                height=h)
+                button.bind(on_release=self.play_level)
+                buttons.add_widget(button)
 
         buttons.size_y = len(buttons.children) * h + h/2
         buttons.bind(minimum_height=buttons.setter('height'))
