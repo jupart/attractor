@@ -8,8 +8,8 @@
                 {"type": "physics",
                     "segments": [],
                     "circles": [
-                        {"radius": 30, "offset_x": 0, "offset_y": 0}],
-                    "mass": 1, "friction": 1.0, "moment": 1, "shape": "circle"},
+                        {"radius": 25, "offset_x": 0, "offset_y": 0}],
+                    "mass": 1, "friction": 1.0, "moment": 5, "shape": "circle"},
                 {"type": "rotate", "rotation": 0},
                 {"type": "charge", "charge": "n", "strength": 1},
                 {"type": "animation", "animation": "attractor_neutral_idle", "looped": true}
@@ -22,10 +22,10 @@
                 {"type": "render", "texture": "thin_wall", "size_x": 240, "size_y": 60},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
-                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
+                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 3},
+                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -39,10 +39,10 @@
                 {"type": "render", "texture": "thin_wall_small", "size_x": 240, "size_y": 60},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -30, "ay": -30, "bx": -30, "by": 30, "radius": 5},
-                        {"ax": 30, "ay": -30, "bx": -30, "by": -30, "radius": 5},
-                        {"ax": -30, "ay": 30, "bx": 30, "by": 30, "radius": 5},
-                        {"ax": 30, "ay": 30, "bx": 30, "by": -30, "radius": 5}
+                        {"ax": -30, "ay": -30, "bx": -30, "by": 30, "radius": 3},
+                        {"ax": 30, "ay": -30, "bx": -30, "by": -30, "radius": 3},
+                        {"ax": -30, "ay": 30, "bx": 30, "by": 30, "radius": 3},
+                        {"ax": 30, "ay": 30, "bx": 30, "by": -30, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -56,9 +56,9 @@
                 {"type": "render", "texture": "thin_wall_corner_transparent", "size_x": 60, "size_y": 60},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -30, "ay": -6, "bx": -6, "by": -30, "radius": 5},
-                        {"ax": -6, "ay": -30, "bx": 30, "by": -30, "radius": 5},
-                        {"ax": -30, "ay": -6, "bx": -30, "by": 30, "radius": 5}
+                        {"ax": -30, "ay": -6, "bx": -6, "by": -30, "radius": 3},
+                        {"ax": -6, "ay": -30, "bx": 30, "by": -30, "radius": 3},
+                        {"ax": -30, "ay": -6, "bx": -30, "by": 30, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -72,10 +72,10 @@
                 {"type": "render", "texture": "thin_wall_inlay", "size_x": 240, "size_y": 60},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
-                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
+                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 3},
+                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -89,10 +89,10 @@
                 {"type": "render", "texture": "posipole", "size_x": 60, "size_y": 20},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 3},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -107,10 +107,10 @@
                 {"type": "render", "texture": "posipole", "size_x": 60, "size_y": 20},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 3},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -125,10 +125,10 @@
                 {"type": "render", "texture": "posipole", "size_x": 600, "size_y": 600},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 3},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 1, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -143,10 +143,10 @@
                 {"type": "render", "texture": "negapole", "size_x": 120, "size_y": 120},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 3},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -161,10 +161,10 @@
                 {"type": "render", "texture": "negapole", "size_x": 120, "size_y": 120},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 3},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -179,10 +179,10 @@
                 {"type": "render", "texture": "negapole", "size_x": 120, "size_y": 120},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 5},
-                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 5},
-                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 5}
+                        {"ax": -30, "ay": -10, "bx": -30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": -10, "bx": -30, "by": -10, "radius": 3},
+                        {"ax": -30, "ay": 10, "bx": 30, "by": 10, "radius": 3},
+                        {"ax": 30, "ay": 10, "bx": 30, "by": -10, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 1, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -297,10 +297,10 @@
                 {"type": "render", "texture": "posimembrane", "size_x": 240, "size_y": 60},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
-                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
+                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 3},
+                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -315,10 +315,10 @@
                 {"type": "render", "texture": "negamembrane", "size_x": 240, "size_y": 60},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
-                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
+                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 3},
+                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
@@ -333,10 +333,10 @@
                 {"type": "render", "texture": "neutral_membrane", "size_x": 240, "size_y": 60},
                 {"type": "physics",
                     "segments": [
-                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 5},
-                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 5},
-                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 5}
+                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 3},
+                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 3},
+                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 3}
                     ],
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},

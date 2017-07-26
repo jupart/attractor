@@ -170,7 +170,7 @@ class EntityFactory():
                                          'angle': 0,
                                          'angular_velocity': ang_vel,
                                          'vel_limit': 1000,
-                                         'ang_vel_limit': radians(720),
+                                         'ang_vel_limit': radians(45),
                                          'mass': component_data['mass'],
                                          'moment': mom,
                                          'col_shapes': col_shapes}}

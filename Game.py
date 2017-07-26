@@ -322,9 +322,9 @@ class AttractorGame(Widget):
         self.toggle_level_editor()
 
     def change_attractor_charge(self, button, change_to):
-        button.background_color[3] = 0.15
+        button.background_color[3] = 0.1
         c = button.background_color
-        anim = Animation(background_color=[c[0], c[1], c[2], 0], d=0.75, t='out_circ')
+        anim = Animation(background_color=[c[0], c[1], c[2], 0], d=0.5, t='out_circ')
         anim.start(button)
 
         if change_to != '+' and change_to != '-' and change_to != 'n':
@@ -454,7 +454,7 @@ class AttractorGame(Widget):
 
     def play_level(self, button):
         level_file_name = 'level' + button.text
-        self.current_level = button.text
+        self.current_level = int(button.text)
 
         self.load_level(level_file_name)
         self.gameworld.state = 'play'
@@ -495,7 +495,7 @@ class AttractorGame(Widget):
             self.editor.level.add_entity(name, x, y, rot, ids)
 
     def finish_level(self):
-        self.load_level(str(self.current_level + 1))
+        self.load_level('level' + str(self.current_level + 1))
 
     def clear_level(self):
         self.gameworld.clear_entities()

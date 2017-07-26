@@ -4,10 +4,13 @@ from kivy.animation import Animation
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
 
+from cymunk import Vec2d
+
 
 class ChargeSystem(GameSystem):
     DISTANCE_MOD = 400
-    FORCE_MOD = 3000
+    FORCE_MOD = 2000
+    DAMPING = 1
 
     def __init__(self, **kwargs):
         super(ChargeSystem, self).__init__(**kwargs)
@@ -19,10 +22,14 @@ class ChargeSystem(GameSystem):
         for component in self.components:
             if component is not None:
                 entity_id = component.entity_id
-                if entity_id == attractor_id:
-                    continue
 
                 entity = self.gameworld.entities[entity_id]
+                if entity_id == attractor_id:
+                    vx = entity.cymunk_physics.body.velocity.x
+                    if vx != 0:
+                        entity.cymunk_physics.body.velocity.x = vx - (vx * self.DAMPING * dt)
+                        print entity.cymunk_physics.body.velocity.x
+                    continue
 
                 if entity.charge.skip:
                     continue
