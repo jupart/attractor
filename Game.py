@@ -495,7 +495,8 @@ class AttractorGame(Widget):
             self.editor.level.add_entity(name, x, y, rot, ids)
 
     def finish_level(self):
-        self.load_level('level' + str(self.current_level + 1))
+        self.current_level = self.current_level + 1
+        self.load_level('level' + str(self.current_level))
 
     def clear_level(self):
         self.gameworld.clear_entities()

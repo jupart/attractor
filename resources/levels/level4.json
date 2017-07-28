@@ -1,189 +1,315 @@
 {
   "entities": [
     {
-      "y": -200, 
-      "x": 512, 
-      "rotation": 180, 
-      "name": "negapole"
-    }, 
-    {
-      "y": 141, 
-      "x": 508, 
-      "rotation": 180, 
-      "name": "negapole"
-    }, 
-    {
-      "y": -28, 
-      "x": 680, 
-      "rotation": 90, 
-      "name": "posipole"
-    }, 
-    {
-      "y": 120, 
+      "y": 30, 
       "x": 270, 
       "rotation": 0, 
       "name": "wall"
     }, 
     {
-      "y": 270, 
+      "y": 180, 
       "x": 120, 
-      "rotation": 90, 
-      "name": "wall"
+      "rotation": 270, 
+      "name": "wall_inlay"
     }, 
     {
-      "y": 420, 
+      "y": 330, 
       "x": 270, 
-      "rotation": 180, 
+      "rotation": 0, 
       "name": "wall"
     }, 
     {
-      "y": 420, 
+      "y": 30, 
       "x": 510, 
-      "rotation": 180, 
+      "rotation": 0, 
       "name": "wall"
     }, 
     {
-      "y": 420, 
+      "y": 330, 
+      "x": 510, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
+    {
+      "y": 330, 
       "x": 750, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
+    {
+      "y": 210, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": 330, 
+      "x": 960, 
       "rotation": 180, 
-      "name": "wall"
+      "name": "wall_corner"
     }, 
     {
-      "y": 270, 
+      "y": 330, 
       "x": 900, 
-      "rotation": 270, 
-      "name": "wall"
-    }, 
-    {
-      "y": 120, 
-      "x": 900, 
-      "rotation": 270, 
+      "rotation": 180, 
       "name": "wall_small"
     }, 
     {
-      "y": -30, 
-      "x": 900, 
+      "y": 30, 
+      "x": 660, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 30, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 330, 
+      "x": 120, 
       "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 208, 
+      "x": 940, 
+      "rotation": 90, 
+      "name": "negapole_weak"
+    }, 
+    {
+      "y": 182, 
+      "x": 140, 
+      "rotation": 90, 
+      "name": "posipole_weak"
+    }, 
+    {
+      "y": -120, 
+      "x": 660, 
+      "rotation": 90, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": -270, 
+      "x": 510, 
+      "rotation": 180, 
       "name": "wall"
     }, 
     {
       "y": -270, 
-      "x": 900, 
+      "x": 270, 
+      "rotation": 180, 
+      "name": "wall"
+    }, 
+    {
+      "y": -420, 
+      "x": 120, 
       "rotation": 270, 
       "name": "wall"
-    }, 
-    {
-      "y": -420, 
-      "x": 750, 
-      "rotation": 0, 
-      "name": "wall"
-    }, 
-    {
-      "y": -420, 
-      "x": 510, 
-      "rotation": 0, 
-      "name": "wall"
-    }, 
-    {
-      "y": -420, 
-      "x": 270, 
-      "rotation": 0, 
-      "name": "wall"
-    }, 
-    {
-      "y": -180, 
-      "x": 270, 
-      "rotation": 180, 
-      "name": "wall"
-    }, 
-    {
-      "y": -180, 
-      "x": 510, 
-      "rotation": 180, 
-      "name": "wall_inlay"
     }, 
     {
       "y": -30, 
-      "x": 660, 
-      "rotation": 270, 
-      "name": "wall_inlay"
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
     }, 
     {
-      "y": 120, 
-      "x": 510, 
-      "rotation": 0, 
-      "name": "wall_inlay"
+      "y": -260, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
     }, 
     {
-      "y": 120, 
-      "x": 120, 
-      "rotation": 0, 
-      "name": "wall_corner"
+      "y": -570, 
+      "x": 710, 
+      "rotation": 180, 
+      "name": "wall"
     }, 
     {
-      "y": -420, 
-      "x": 120, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -420, 
-      "x": 900, 
+      "y": -570, 
+      "x": 960, 
       "rotation": 90, 
       "name": "wall_corner"
     }, 
     {
-      "y": -180, 
+      "y": -410, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -470, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -510, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -570, 
+      "x": 900, 
+      "rotation": 180, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -570, 
+      "x": 860, 
+      "rotation": 180, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -660, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "wall"
+    }, 
+    {
+      "y": -570, 
+      "x": 560, 
+      "rotation": 180, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -570, 
+      "x": 500, 
+      "rotation": 180, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -570, 
+      "x": 420, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -570, 
+      "x": 480, 
+      "rotation": 0, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -870, 
+      "x": 570, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
+    {
+      "y": -870, 
+      "x": 810, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
+    {
+      "y": -870, 
+      "x": 960, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -1020, 
+      "x": 960, 
+      "rotation": 270, 
+      "name": "wall"
+    }, 
+    {
+      "y": -1170, 
+      "x": 810, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
+    {
+      "y": -1170, 
+      "x": 570, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
+    {
+      "y": -1170, 
+      "x": 330, 
+      "rotation": 180, 
+      "name": "wall"
+    }, 
+    {
+      "y": -1170, 
+      "x": 180, 
+      "rotation": 180, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -1170, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -870, 
+      "x": 420, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -1170, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -270, 
       "x": 660, 
       "rotation": 90, 
       "name": "wall_corner"
     }, 
     {
-      "y": 120, 
-      "x": 660, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 420, 
-      "x": 900, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 420, 
+      "y": -270, 
       "x": 120, 
       "rotation": 270, 
       "name": "wall_corner"
     }, 
     {
-      "y": -180, 
-      "x": 120, 
+      "y": -720, 
+      "x": 420, 
       "rotation": 270, 
-      "name": "wall_corner"
+      "name": "wall_inlay"
     }, 
     {
-      "y": -240, 
-      "x": 120, 
+      "y": -122, 
+      "x": 640, 
       "rotation": 270, 
-      "name": "wall_small"
+      "name": "posipole"
     }, 
     {
-      "y": -300, 
-      "x": 120, 
+      "y": -718, 
+      "x": 440, 
       "rotation": 270, 
-      "name": "wall_small"
+      "name": "negapole"
     }, 
     {
-      "y": -360, 
+      "y": -1060, 
       "x": 120, 
       "rotation": 270, 
-      "name": "wall_small"
+      "name": "wall_inlay"
     }, 
     {
-      "y": -300, 
-      "x": 210, 
-      "rotation": 0, 
+      "y": -850, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "wall"
+    }, 
+    {
+      "y": -1058, 
+      "x": 140, 
+      "rotation": 270, 
+      "name": "posipole_weak"
+    }, 
+    {
+      "y": -1020, 
+      "x": 870, 
+      "rotation": 270, 
       "name": "finish"
     }
   ]

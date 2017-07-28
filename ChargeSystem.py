@@ -9,8 +9,8 @@ from cymunk import Vec2d
 
 class ChargeSystem(GameSystem):
     DISTANCE_MOD = 400
-    FORCE_MOD = 2000
-    DAMPING = 1
+    FORCE_MOD = 2500
+    DAMPING = 0.7
 
     def __init__(self, **kwargs):
         super(ChargeSystem, self).__init__(**kwargs)
@@ -24,11 +24,20 @@ class ChargeSystem(GameSystem):
                 entity_id = component.entity_id
 
                 entity = self.gameworld.entities[entity_id]
+
+                # Apply individual damping
                 if entity_id == attractor_id:
-                    vx = entity.cymunk_physics.body.velocity.x
-                    if vx != 0:
-                        entity.cymunk_physics.body.velocity.x = vx - (vx * self.DAMPING * dt)
-                        print entity.cymunk_physics.body.velocity.x
+                    vx, vy = entity.cymunk_physics.body.velocity
+                    if (vx, vy) != (0, 0):
+                        vx = vx - (vx * self.DAMPING * dt)
+                        vy = vy - (vy * self.DAMPING * dt)
+                        entity.cymunk_physics.body.velocity = (vx, vy)
+
+                    ry = entity.cymunk_physics.body.angular_velocity
+                    if ry != 0:
+                        ry = ry - (ry * self.DAMPING * dt)
+                        entity.cymunk_physics.body.angular_velocity = ry
+
                     continue
 
                 if entity.charge.skip:
