@@ -97,7 +97,7 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "+", "strength": 1}
+                {"type": "charge", "charge": "+", "strength": 0.9}
             ]
         },
 		{
@@ -115,7 +115,7 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "+", "strength": 0.5}
+                {"type": "charge", "charge": "+", "strength": 0.6}
             ]
         },
 		{
@@ -133,7 +133,7 @@
                     "circles": [],
                     "mass": 1, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "+", "strength": 1}
+                {"type": "charge", "charge": "+", "strength": 0.9}
             ]
         },
 		{
@@ -151,7 +151,7 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "-", "strength": -1}
+                {"type": "charge", "charge": "-", "strength": -0.9}
             ]
         },
 		{
@@ -169,7 +169,7 @@
                     "circles": [],
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "-", "strength": -0.5}
+                {"type": "charge", "charge": "-", "strength": -0.6}
             ]
         },
 		{
@@ -187,7 +187,7 @@
                     "circles": [],
                     "mass": 1, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "-", "strength": -1}
+                {"type": "charge", "charge": "-", "strength": -0.9}
             ]
         },
 		{

@@ -261,7 +261,7 @@ class AttractorGame(Widget):
         self.gameworld.state = 'menu'
 
     def open_level_select_menu(self):
-        h = 40
+        h = '40dp'
         scr = self.ids.gamescreenmanager.ids.menu_screen
         buttons = scr.level_buttons
 
