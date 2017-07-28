@@ -36,7 +36,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = python2,kivy,kivent_core,kivent_cymunk,plyer,android
+requirements = python2,kivy,kivent_core,kivent_cymunk,png,jpeg,pil,plyer,android
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes

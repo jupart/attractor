@@ -121,20 +121,34 @@ AttractorGame:
     name: 'menu_screen'
 
     FloatLayout:
-
         BoxLayout:
+
+            canvas.before:
+                Color:
+                    rgba: 0.1, 0.1, 0.1, 0.6
+
+                Rectangle:
+                    size: self.parent.size
+                    pos: self.parent.pos
+
             orientation: 'vertical'
-            padding: 10
+            padding: 30
             spacing: 10
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint: 0.2, 0.15
+            size_hint: 0.3, 0.25
 
-            Button:
+            MaterialButton:
                 text: 'Levels'
+                elevation: 3
+                raised_elevation: 3
+                press_elevation: 1
                 on_release: app.game.open_level_select_menu()
 
-            Button:
+            MaterialButton:
                 text: 'Editor'
+                elevation: 3
+                raised_elevation: 3
+                press_elevation: 1
                 on_release: app.game.go_to_editor_screen()
 
         ScrollView:
@@ -145,7 +159,7 @@ AttractorGame:
 
             canvas.before:
                 Color:
-                    rgb: 0.1, 0.1, 0.1
+                    rgba: 0.1, 0.1, 0.1, 0.75
 
                 Rectangle:
                     size: self.parent.size
@@ -166,8 +180,8 @@ AttractorGame:
     id: scr
 
     canvas:
-        #:set alpha 0.15
-        #:set w 5
+        #:set alpha 0.1
+        #:set w 6
 
         # Red
         Color:
@@ -197,16 +211,22 @@ AttractorGame:
             width: w
             points: [(1 - 0.3) * scr.width, 0, scr.width, 0, scr.width, scr.height, (1 - 0.3) * scr.width, scr.height]
 
-    Button:
+    MaterialButton:
         size_hint: 0.15, 0.04
-        pos: 0, self.parent.height - self.height
+        pos: 0 + w * 2, self.parent.height - self.height - w * 2
         text: "Menu"
+        elevation: 2
+        raised_elevation: 2
+        press_elevation: 1
         on_release: app.game.go_to_menu_screen()
 
-    Button:
+    MaterialButton:
         size_hint: 0.15, 0.04
-        pos: self.parent.width - self.width, self.parent.height - self.height
+        pos: self.parent.width - self.width - w * 2, self.parent.height - self.height - w * 2
         text: "Reset"
+        elevation: 2
+        raised_elevation: 2
+        press_elevation: 1
         on_release: app.game.reset_attractor()
 
     BoxLayout:
@@ -305,3 +325,23 @@ AttractorGame:
             id: rotation
             text: '0'
             on_text: app.game.update_editor_rotation(self.text)
+
+<MaterialButton>
+    color: 1, 1, 1, 1
+
+    canvas.before:
+        Color:
+            rgba: 0.175, 0.175, 0.175, 1
+        Rectangle:
+            size: self.shadow_size1
+            pos: self.shadow_pos1
+            texture: self.shadow_texture1
+        Rectangle:
+            size: self.shadow_size2
+            pos: self.shadow_pos2
+            texture: self.shadow_texture2
+        Color:
+            rgba: 0.175, 0.175, 0.175, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos

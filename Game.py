@@ -2,6 +2,7 @@ import os
 import json
 
 from kivy.utils import platform
+from kivy.clock import Clock
 
 # Kivy visuals
 from kivy.uix.widget import Widget
@@ -11,7 +12,7 @@ from kivy.uix.label import Label
 from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy.animation import Animation
-from kivy.clock import Clock
+from kivy.uix.screenmanager import FadeTransition
 
 # Properties
 from kivy.properties import NumericProperty
@@ -33,8 +34,10 @@ from ChargeSystem import ChargeSystem
 from FinishSystem import FinishSystem
 from PoleChangerSystem import PoleChangerSystem
 
+# Custom widgets
 from TouchedTextBox import TouchedTextBox
 from CircularButton import CircularButton
+from MaterialButton import MaterialButton
 
 
 # Load all .png in resources/png
@@ -258,10 +261,15 @@ class AttractorGame(Widget):
             if self.editor.asset_id != -1:
                 self.gameworld.remove_entity(self.editor.asset_id)
                 self.editor.asset_id = -1
+        self.gameworld.gamescreenmanager.transition.direction = 'right'
         self.gameworld.state = 'menu'
 
     def open_level_select_menu(self):
-        h = '40dp'
+        h_int = 40
+        h = str(h_int) + 'dp'
+        z1 = 2
+        z2 = 1
+
         scr = self.ids.gamescreenmanager.ids.menu_screen
         buttons = scr.level_buttons
 
@@ -273,45 +281,58 @@ class AttractorGame(Widget):
                                     # height=h)
                     # button.bind(on_release=self.play_level)
                     # buttons.add_widget(button)
-            buttons.add_widget(Label(text='Magnet'))
+            buttons.add_widget(Label(text='[b]Magnet[/b]', markup=True))
             buttons.add_widget(Label())
             for i in range(1, 5):
-                button = Button(text=str(i),
-                                size_hint_y=None,
-                                height=h)
+                button = MaterialButton(text=str(i),
+                                        size_hint_y=None,
+                                        elevation=z1,
+                                        raised_elevation=z1,
+                                        pressed_elevation=z2,
+                                        height=h)
                 button.bind(on_release=self.play_level)
                 buttons.add_widget(button)
 
-            buttons.add_widget(Label(text='Rotator'))
+            buttons.add_widget(Label(text='[b]Rotator[/b]', markup=True))
             buttons.add_widget(Label())
             for i in range(5, 9):
-                button = Button(text=str(i),
-                                size_hint_y=None,
-                                height=h)
+                button = MaterialButton(text=str(i),
+                                        size_hint_y=None,
+                                        elevation=z1,
+                                        raised_elevation=z1,
+                                        pressed_elevation=z2,
+                                        height=h)
                 button.bind(on_release=self.play_level)
                 buttons.add_widget(button)
 
-            buttons.add_widget(Label(text='Changer'))
+            buttons.add_widget(Label(text='[b]Changer[/b]', markup=True))
             buttons.add_widget(Label())
             for i in range(9, 13):
-                button = Button(text=str(i),
-                                size_hint_y=None,
-                                height=h)
+                button = MaterialButton(text=str(i),
+                                        size_hint_y=None,
+                                        elevation=z1,
+                                        raised_elevation=z1,
+                                        pressed_elevation=z2,
+                                        height=h)
                 button.bind(on_release=self.play_level)
                 buttons.add_widget(button)
 
-            buttons.add_widget(Label(text='Membrane'))
+            buttons.add_widget(Label(text='[b]Membrane[/b]', markup=True))
             buttons.add_widget(Label())
             for i in range(13, 17):
-                button = Button(text=str(i),
-                                size_hint_y=None,
-                                height=h)
+                button = MaterialButton(text=str(i),
+                                        size_hint_y=None,
+                                        elevation=z1,
+                                        raised_elevation=z1,
+                                        pressed_elevation=z2,
+                                        height=h)
                 button.bind(on_release=self.play_level)
                 buttons.add_widget(button)
 
-        buttons.size_y = len(buttons.children) * h + h/2
+        buttons.size_y = len(buttons.children) * h_int + h_int/2
         buttons.bind(minimum_height=buttons.setter('height'))
 
+        scr.scroll_container.x = scr.width
         anim = Animation(x=scr.width - scr.scroll_container.width, duration=0.25)
         anim.start(scr.scroll_container)
 
@@ -457,13 +478,14 @@ class AttractorGame(Widget):
         self.current_level = int(button.text)
 
         self.load_level(level_file_name)
+        self.gameworld.gamescreenmanager.transition.direction = 'left'
         self.gameworld.state = 'play'
 
         Clock.schedule_once(lambda dt: self.hide_level_menu(), 1)
 
     def hide_level_menu(self):
         scr = self.ids.gamescreenmanager.ids.menu_screen
-        scr.scroll_container.x = scr.width
+        scr.scroll_container.x = -scr.scroll_container.width
 
     def load_level(self, level_file_name=''):
         if level_file_name == '':
