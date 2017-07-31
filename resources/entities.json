@@ -343,6 +343,14 @@
                 {"type": "rotate", "rotation": 0},
                 {"type": "membrane", "pole": "n"}
             ]
+        },
+		{
+            "name": "tiles",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "tiles", "size_x": 640, "size_y": 640},
+                {"type": "rotate", "rotation": 0}
+            ]
         }
 	]
 }

@@ -490,24 +490,29 @@ class AttractorGame(Widget):
     def load_level(self, level_file_name=''):
         if level_file_name == '':
             level_file_name = self.editor.screen.ids.level_name.text
-
             if level_file_name == '':
                 return
-
         path = 'resources/levels/' + level_file_name + '.json'
-
         if not os.path.isfile(path):
+            return
+
+        with open(path, 'rb') as f:
+            level_data = json.load(f)
+        if 'entities' not in level_data:
             return
 
         self.clear_level()
 
-        with open(path, 'rb') as f:
-            level_data = json.load(f)
-
-        if 'entities' not in level_data:
-            return
-
+        # Order entities such that 'tiles' is always added first
+        ordered_ents = []
         for ent in level_data['entities']:
+            if ent['name'] != 'tiles':
+                ordered_ents.append(ent)
+            else:
+                ordered_ents = [ent] + ordered_ents
+
+        # Use those ordered entities to build the level
+        for ent in ordered_ents:
             name = ent['name']
             x = ent['x']
             y = ent['y']

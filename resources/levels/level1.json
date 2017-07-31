@@ -113,6 +113,12 @@
       "x": 512, 
       "rotation": 180, 
       "name": "posipole"
+    }, 
+    {
+      "y": 470, 
+      "x": 470, 
+      "rotation": 0, 
+      "name": "tiles"
     }
   ]
 }
