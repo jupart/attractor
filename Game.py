@@ -113,6 +113,7 @@ class AttractorGame(Widget):
         self.editor = self.gameworld.system_manager['editor']
         self.editor.screen = self.ids.gamescreenmanager.ids.editor_screen
         self.clear_level()
+        self.create_attractor()
 
         self.load_level('test')
         self.ids.play_camera.focus_entity = True
@@ -431,10 +432,11 @@ class AttractorGame(Widget):
 
         if self.editor.asset_id != -1:
             self.gameworld.remove_entity(self.editor.asset_id)
-
-        self.editor.entity_to_place = instance.text
+            self.editor.asset_id = -1
+            self.editor.entity_to_place = ''
 
         if not self.editor.deleting:
+            self.editor.entity_to_place = instance.text
             self.editor.asset_id = self.entity_factory.create_entity_at(
                         instance.text,
                         0,
@@ -521,12 +523,17 @@ class AttractorGame(Widget):
             ids = self.entity_factory.create_entity_at(name, x, y, rot)
             self.editor.level.add_entity(name, x, y, rot, ids)
 
+        self.create_attractor()
+
     def finish_level(self):
         self.current_level = self.current_level + 1
         self.load_level('level' + str(self.current_level))
 
     def clear_level(self):
         self.gameworld.clear_entities()
+        self.editor.level.clear()
+
+    def create_attractor(self):
         self.attractor_id = self.entity_factory.create_entity_at('attractor',
                                                                  200,
                                                                  200,
@@ -536,7 +543,6 @@ class AttractorGame(Widget):
                                      200,
                                      0,
                                      self.attractor_id)
-        self.editor.level.clear()
 
     def reset_attractor(self):
         attractor = self.gameworld.entities[self.attractor_id]

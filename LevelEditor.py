@@ -134,8 +134,10 @@ class LevelEditorSystem(GameSystem):
             if self.asset_id != -1:
                 self.gameworld.remove_entity(self.asset_id)
                 self.asset_id = -1
+                self.entity_to_place = ''
 
         else:
+            print self.entity_to_place
             self.deleting = False
 
             if self.entity_to_place != '':
