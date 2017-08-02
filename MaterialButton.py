@@ -99,9 +99,13 @@ class MaterialButton(ButtonBehavior, Label):
     def on_touch_down(self, touch):
         if self.collide_point(touch.x, touch.y):
             self.elevation = self.press_elevation
+            touch.grab(self)
+            return True
 
     def on_touch_up(self, touch):
-        if self.collide_point(touch.x, touch.y):
+        if touch.grab_current is self:
             self.dispatch('on_release')
+            touch.ungrab(self)
+            return True
 
         self.elevation = self.raised_elevation
