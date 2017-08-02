@@ -12,13 +12,13 @@ AttractorGame:
         id: gameworld
         gamescreenmanager: gamescreenmanager
         size_of_gameworld: 200 * 1024
-        zones: {'general': 20000, 'touch': 1000}
-        system_count: 11
+        zones: {'general': 40000}
+        system_count: 16
 
         PositionSystem2D:
             system_id: 'position'
             gameworld: gameworld
-            zones: ['general', 'touch']
+            zones: ['general']
 
         RotateSystem2D:
             system_id: 'rotate'
@@ -39,8 +39,27 @@ AttractorGame:
             zones: ['general']
 
         RotateRenderer:
-            id: rotate_renderer
             system_id: 'rotate_renderer'
+            gameworld: gameworld
+            frame_count: 2
+            updateable: True
+            force_update: False
+            gameview: 'play_camera'
+            shader_source: 'resources/shaders/p_r_shader.glsl'
+            zones: ['general']
+
+        RotateRenderer:
+            system_id: 'bg_renderer'
+            gameworld: gameworld
+            frame_count: 2
+            updateable: True
+            force_update: False
+            gameview: 'play_camera'
+            shader_source: 'resources/shaders/p_r_shader.glsl'
+            zones: ['general']
+
+        RotateRenderer:
+            system_id: 'mid_renderer'
             gameworld: gameworld
             frame_count: 2
             updateable: True
@@ -71,6 +90,7 @@ AttractorGame:
             focus_entity: True
             entity_to_focus: game.attractor_id
             touch_pass_through: True
+            render_system_order: ['bg_renderer', 'mid_renderer','rotate_renderer']
             zones: ['general']
 
         ChargeSystem:
@@ -135,7 +155,7 @@ AttractorGame:
             padding: 30
             spacing: 10
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint: 0.3, 0.25
+            size_hint: 0.4, 0.2
 
             MaterialButton:
                 text: 'Levels'
@@ -153,7 +173,7 @@ AttractorGame:
 
         ScrollView:
             id: scroll_buttons
-            size_hint: 0.4, 1
+            size_hint: 0.5, 1
             pos: self.parent.width, 0
             do_scroll_x: False
 
@@ -211,24 +231,6 @@ AttractorGame:
             width: w
             points: [(1 - 0.325) * scr.width, 0, scr.width, 0, scr.width, scr.height, (1 - 0.325) * scr.width, scr.height]
 
-    MaterialButton:
-        size_hint: 0.15, 0.04
-        pos: 0 + w * 2, self.parent.height - self.height - w * 2
-        text: "Menu"
-        elevation: 2
-        raised_elevation: 2
-        press_elevation: 1
-        on_release: app.game.go_to_menu_screen()
-
-    MaterialButton:
-        size_hint: 0.15, 0.04
-        pos: self.parent.width - self.width - w * 2, self.parent.height - self.height - w * 2
-        text: "Reset"
-        elevation: 2
-        raised_elevation: 2
-        press_elevation: 1
-        on_release: app.game.reset_attractor()
-
     BoxLayout:
         orientation: 'horizontal'
         padding: w
@@ -246,6 +248,24 @@ AttractorGame:
             on_press: app.game.change_attractor_charge(self, '-')
             background_color: [0.4, 0.4, 1, 0.]
             background_normal: ''
+
+    MaterialButton:
+        size_hint: 0.15, 0.04
+        pos: 0 + w * 2, self.parent.height - self.height - w * 2
+        text: "Menu"
+        elevation: 2
+        raised_elevation: 2
+        press_elevation: 1
+        on_release: app.game.go_to_menu_screen()
+
+    MaterialButton:
+        size_hint: 0.15, 0.04
+        pos: self.parent.width - self.width - w * 2, self.parent.height - self.height - w * 2
+        text: "Reset"
+        elevation: 2
+        raised_elevation: 2
+        press_elevation: 1
+        on_release: app.game.reset_attractor()
 
 <EditorScreen@GameScreen>:
     name: 'editor_screen'
