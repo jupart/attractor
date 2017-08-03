@@ -114,8 +114,6 @@ class AttractorGame(Widget):
         self.entity_factory = EntityFactory(self.gameworld, self.ids.cymunk_physics)
         self.editor = self.gameworld.system_manager['editor']
         self.editor.screen = self.ids.gamescreenmanager.ids.editor_screen
-        self.clear_level()
-        self.create_attractor()
 
         self.load_level('test')
         self.ids.play_camera.focus_entity = True

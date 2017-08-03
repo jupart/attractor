@@ -88,8 +88,10 @@ class EntityFactory():
             c_order.append('rotate')
         if 'rotate_renderer' in c_data:
             c_order.append('rotate_renderer')
-        if 'bg_renderer' in c_data:
-            c_order.append('bg_renderer')
+        # if 'mid_renderer' in c_data:
+            # c_order.append('mid_renderer')
+        # if 'bg_renderer' in c_data:
+            # c_order.append('bg_renderer')
         if 'animation' in c_data:
             c_order.append('animation')
         if 'charge' in c_data:
@@ -112,12 +114,12 @@ class EntityFactory():
                                           'model_key': component_data['texture'].encode('utf-8'),
                                           'render': True}}
 
-        if component_data['type'] == 'bg_render':
-            c_dict = {'bg_renderer': {'texture': component_data['texture'],
-                                      'size': (component_data['size_x'],
-                                               component_data['size_y']),
-                                      'model_key': component_data['texture'].encode('utf-8'),
-                                      'render': True}}
+        # if component_data['type'] == 'bg_render':
+            # c_dict = {'bg_renderer': {'texture': component_data['texture'],
+                                      # 'size': (component_data['size_x'],
+                                               # component_data['size_y']),
+                                      # 'model_key': component_data['texture'].encode('utf-8'),
+                                      # 'render': True}}
 
         elif component_data['type'] == 'rotate':
             c_dict = {'rotate': component_data['rotation']}
