@@ -120,5 +120,10 @@
       "rotation": 0, 
       "name": "tiles"
     }
-  ]
+  ],
+  "background": {
+      "source": "resources/png/tiles.png",
+      "x": 0,
+      "y": 0
+  }
 }

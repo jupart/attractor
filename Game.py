@@ -13,6 +13,7 @@ from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy.animation import Animation
 from kivy.uix.screenmanager import FadeTransition
+from kivy.graphics import Rectangle
 
 # Properties
 from kivy.properties import NumericProperty
@@ -515,6 +516,16 @@ class AttractorGame(Widget):
 
         self.clear_level()
 
+        # Draw background
+        try:
+            with self.ids.play_camera.canvas.before:
+                self.editor.level.background = Rectangle(pos=(level_data['background']['x'],
+                                                              level_data['background']['y']),
+                                                         size=(640,640),
+                                                         source=level_data['background']['source'])
+        except KeyError:
+            pass
+
         # Order entities such that 'tiles' is always added first
         ordered_ents = []
         for ent in level_data['entities']:
@@ -541,6 +552,7 @@ class AttractorGame(Widget):
 
     def clear_level(self):
         self.gameworld.clear_entities()
+        self.ids.play_camera.canvas.before.clear()
         self.editor.level.clear()
 
     def create_attractor(self):

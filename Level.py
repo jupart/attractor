@@ -12,6 +12,7 @@ class Level():
     points = []
     rotations = []
     ids = []
+    background = ''
 
     def __init__(self, **kwargs):
         pass

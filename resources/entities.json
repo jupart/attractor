@@ -345,11 +345,9 @@
             ]
         },
 		{
-            "name": "tiles",
+            "name": "bg1",
             "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "tiles", "size_x": 640, "size_y": 640},
-                {"type": "rotate", "rotation": 0}
+                {"type": "bg", "source": "tiles"}
             ]
         }
 	]
