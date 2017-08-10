@@ -122,8 +122,10 @@
     }
   ],
   "background": {
-      "source": "resources/png/tiles.png",
-      "x": 0,
-      "y": 0
+      "x": 100,
+      "y": 100,
+      "w": 800,
+      "h": 800,
+      "source": "resources/src/bg/level1.png"
   }
 }
