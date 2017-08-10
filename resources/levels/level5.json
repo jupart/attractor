@@ -25,12 +25,6 @@
       "name": "wall_corner"
     }, 
     {
-      "y": 420, 
-      "x": 300, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
       "y": -480, 
       "x": 570, 
       "rotation": 0, 
@@ -217,12 +211,6 @@
       "name": "wall_corner"
     }, 
     {
-      "y": 420, 
-      "x": 470, 
-      "rotation": 270, 
-      "name": "wall_corner"
-    }, 
-    {
       "y": 360, 
       "x": 470, 
       "rotation": 270, 
@@ -281,6 +269,103 @@
       "x": -180, 
       "rotation": 270, 
       "name": "negapole_weak"
+    }, 
+    {
+      "y": 420, 
+      "x": -200, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 420, 
+      "x": -200, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 330, 
+      "x": -470, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 690, 
+      "x": -50, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 40, 
+      "x": -470, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -270, 
+      "x": -470, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -450, 
+      "x": -470, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -750, 
+      "x": -30, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -750, 
+      "x": 450, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -750, 
+      "x": 570, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -350, 
+      "x": 1040, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 420, 
+      "x": 470, 
+      "rotation": 180, 
+      "name": "tri_wall_corner"
+    }, 
+    {
+      "y": 420, 
+      "x": 300, 
+      "rotation": 180, 
+      "name": "tri_wall_corner"
+    }, 
+    {
+      "y": 420, 
+      "x": 410, 
+      "rotation": 180, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": 420, 
+      "x": 350, 
+      "rotation": 180, 
+      "name": "wall_small"
     }
-  ]
+  ],
+  "background": {
+      "x": -250,
+      "y": -600,
+      "w": 1038,
+      "h": 1038,
+      "source": "resources/src/bg/level2.png"
+  }
 }

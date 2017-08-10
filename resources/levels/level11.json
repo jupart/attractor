@@ -73,72 +73,6 @@
       "name": "wall_corner"
     }, 
     {
-      "y": -360, 
-      "x": 660, 
-      "rotation": 270, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": -360, 
-      "x": 960, 
-      "rotation": 270, 
-      "name": "wall"
-    }, 
-    {
-      "y": -600, 
-      "x": 660, 
-      "rotation": 270, 
-      "name": "wall"
-    }, 
-    {
-      "y": -600, 
-      "x": 960, 
-      "rotation": 270, 
-      "name": "wall"
-    }, 
-    {
-      "y": -840, 
-      "x": 660, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": -840, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": -990, 
-      "x": 810, 
-      "rotation": 180, 
-      "name": "wall"
-    }, 
-    {
-      "y": -900, 
-      "x": 810, 
-      "rotation": 180, 
-      "name": "finish"
-    }, 
-    {
-      "y": -990, 
-      "x": 660, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -990, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -358, 
-      "x": 680, 
-      "rotation": 90, 
-      "name": "posipole_weak"
-    }, 
-    {
       "y": 182, 
       "x": 140, 
       "rotation": 90, 
@@ -275,20 +209,54 @@
       "x": 900, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": 180, 
+      "x": 500, 
+      "rotation": 90, 
+      "name": "negamembrane"
+    }, 
+    {
+      "y": -130, 
+      "x": 810, 
+      "rotation": 180, 
+      "name": "posimembrane"
+    }, 
+    {
+      "y": -360, 
+      "x": 660, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -360, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -510, 
+      "x": 810, 
+      "rotation": 180, 
+      "name": "wall"
+    }, 
+    {
+      "y": -510, 
+      "x": 660, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -510, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -420, 
+      "x": 810, 
+      "rotation": 90, 
+      "name": "finish"
     }
-  ],
-  "background": {
-    "x": 0,
-    "y": -1040,
-    "w": 1038,
-    "h": 1038,
-    "source": "resources/src/bg/level1.png"
-    },
-    "background2": {
-    "x": 0,
-    "y": 0,
-    "w": 1038,
-    "h": 1038,
-    "source": "resources/src/bg/level1.png"
-    }
+  ]
 }

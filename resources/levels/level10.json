@@ -275,20 +275,12 @@
       "x": 900, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": -690, 
+      "x": 810, 
+      "rotation": 0, 
+      "name": "negamembrane"
     }
-  ],
-  "background": {
-    "x": 0,
-    "y": -1040,
-    "w": 1038,
-    "h": 1038,
-    "source": "resources/src/bg/level1.png"
-    },
-    "background2": {
-    "x": 0,
-    "y": 0,
-    "w": 1038,
-    "h": 1038,
-    "source": "resources/src/bg/level1.png"
-    }
+  ]
 }

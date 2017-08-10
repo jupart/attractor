@@ -179,6 +179,61 @@
       "x": 900, 
       "rotation": 270, 
       "name": "wall_corner"
+    }, 
+    {
+      "y": -150, 
+      "x": 230, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -130, 
+      "x": 710, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 230, 
+      "x": -150, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 680, 
+      "x": -150, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1160, 
+      "x": 210, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1160, 
+      "x": 680, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 870, 
+      "x": 1160, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1230, 
+      "x": 1100, 
+      "rotation": 0, 
+      "name": "big_black"
     }
-  ]
+  ],
+  "background": {
+      "x": 0,
+      "y": 0,
+      "w": 1038,
+      "h": 1038,
+      "source": "resources/src/bg/level1.png"
+  }
 }

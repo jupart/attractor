@@ -66,6 +66,36 @@
             ]
         },
 		{
+            "name": "tri_wall_corner",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "tri_wall_corner", "size_x": 60, "size_y": 60},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -30, "ay": -30, "bx": 30, "by": -30, "radius": 3}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
+            "name": "wall_cap",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "wall_cap", "size_x": 60, "size_y": 60},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -30, "ay": -30, "bx": -30, "by": 30, "radius": 3},
+                        {"ax": -30, "ay": 30, "bx": 30, "by": 30, "radius": 3},
+                        {"ax": 30, "ay": 30, "bx": 30, "by": -30, "radius": 3}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
             "name": "wall_inlay",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
@@ -223,6 +253,38 @@
             ]
         },
 		{
+            "name": "rotator_100_posipole_ccw",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
+                {"type": "physics",
+                    "segments": [],
+                    "circles": [
+                        {"radius": 30, "offset_x": 0, "offset_y": 0}
+                    ],
+                    "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
+                    "angular_velocity": 1},
+                {"type": "rotate", "rotation": 0},
+                {"type": "attach", "entity": "posipole_moveable", "distance": 100, "direction": "ccw"}
+            ]
+        },
+		{
+            "name": "rotator_100_negapole_ccw",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
+                {"type": "physics",
+                    "segments": [],
+                    "circles": [
+                        {"radius": 30, "offset_x": 0, "offset_y": 0}
+                    ],
+                    "mass": 0, "friction": 1.0, "moment": "inf", "shape": "circle",
+                    "angular_velocity": 1},
+                {"type": "rotate", "rotation": 0},
+                {"type": "attach", "entity": "negapole_moveable", "distance": 100, "direction": "ccw"}
+            ]
+        },
+		{
             "name": "rotator_200_posipole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
@@ -345,9 +407,19 @@
             ]
         },
 		{
-            "name": "bg1",
+            "name": "big_black",
             "components": [
-                {"type": "bg", "source": "tiles"}
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "big_black", "size_x": 480, "size_y": 480},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
+            "name": "small_black",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "small_black", "size_x": 30, "size_y": 30},
+                {"type": "rotate", "rotation": 0}
             ]
         }
 	]
