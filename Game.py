@@ -140,7 +140,7 @@ class AttractorGame(Widget):
 
     def membrane_solver(self, space, arbiter):
         attractor_id = arbiter.shapes[0].body.data
-        membrane_id = arbiter.shapes[0].body.data
+        membrane_id = arbiter.shapes[1].body.data
 
         attractor = self.gameworld.entities[attractor_id]
         membrane = self.gameworld.entities[membrane_id]
