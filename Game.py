@@ -125,10 +125,6 @@ class AttractorGame(Widget):
         physics = self.ids.cymunk_physics
         physics.add_collision_handler(1, 2, self.membrane_solver)
 
-        if platform == 'android' or platform == 'ios':
-            if plyer.vibrator.exists:
-                plyer.vibrator.vibrate(0.05)
-
     def _keyboard_closed(self):
         pass
 
@@ -375,10 +371,6 @@ class AttractorGame(Widget):
 
         attractor.animation.animation = new_anim
         attractor.charge.charge = change_to
-
-        if platform == 'android' or platform == 'ios':
-            if plyer.vibrator.exists:
-                plyer.vibrator.vibrate(0.05)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):

@@ -1,6 +1,6 @@
 android-python2-sdl2		-- MIT
 chipmunk			-- MIT
-cymunk-python2
+cymunk-python2			-- MIT
 freetype			-- GPL2
 hostpython2                     -- Python license - GPL compatible
 jpeg                            -- BSD-style
