@@ -70,8 +70,7 @@ class EntityFactory():
                         shape['collision_type'] = 2
 
 
-                else:
-                    return self.gameworld.init_entity(new_ent_data[0], new_ent_data[1])
+                return self.gameworld.init_entity(new_ent_data[0], new_ent_data[1])
         else:
             return False
 
@@ -207,6 +206,8 @@ class EntityFactory():
                                  'strength': 1,
                                  'drawn': False,
                                  'ellipse': None}}
+            membrane_dict = {'membrane': None}
+            c_dict.update(membrane_dict)
 
         else:
             return {}

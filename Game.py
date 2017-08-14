@@ -122,7 +122,7 @@ class AttractorGame(Widget):
         self.ids.cymunk_physics.collision_slop = 2
         # self.gameworld.system_manager['cymunk_physics'].damping = 0.5
 
-        physics = self.gameworld.system_manager['cymunk_physics']
+        physics = self.ids.cymunk_physics
         physics.add_collision_handler(1, 2, self.membrane_solver)
 
         if platform == 'android' or platform == 'ios':
@@ -140,7 +140,7 @@ class AttractorGame(Widget):
 
     def membrane_solver(self, space, arbiter):
         attractor_id = arbiter.shapes[0].body.data
-        membrane_id = arbiter.shapes[0].body.data
+        membrane_id = arbiter.shapes[1].body.data
 
         attractor = self.gameworld.entities[attractor_id]
         membrane = self.gameworld.entities[membrane_id]
@@ -478,6 +478,9 @@ class AttractorGame(Widget):
 
         for name, point, rotation, ids in zip(level.names, level.points,
                                               level.rotations, level.ids):
+            if name == 'attractor':
+                continue
+
             level_data['entities'].append({'name': name,
                                            'x': point.x,
                                            'y': point.y,
@@ -521,8 +524,15 @@ class AttractorGame(Widget):
             with self.ids.play_camera.canvas.before:
                 self.editor.level.background = Rectangle(pos=(level_data['background']['x'],
                                                               level_data['background']['y']),
-                                                         size=(640,640),
+                                                         size=(level_data['background']['w'],
+                                                               level_data['background']['h']),
                                                          source=level_data['background']['source'])
+            with self.ids.play_camera.canvas.before:
+                self.editor.level.background = Rectangle(pos=(level_data['background2']['x'],
+                                                              level_data['background2']['y']),
+                                                         size=(level_data['background2']['w'],
+                                                               level_data['background2']['h']),
+                                                         source=level_data['background2']['source'])
         except KeyError:
             pass
 
