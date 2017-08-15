@@ -538,15 +538,8 @@
     "background": {                           
     "x": 150,                                 
     "y": -250,                             
-    "w": 1038,                              
-    "h": 1038,                              
-    "source": "resources/src/bg/level2.png" 
-    },
-    "background2": {                           
-    "x": 150,                                 
-    "y": 788,                             
-    "w": 1038,                              
-    "h": 1038,                              
+    "w": 2076,                              
+    "h": 2076,                              
     "source": "resources/src/bg/level2.png" 
     }
 }

@@ -182,10 +182,10 @@
     }
   ],
   "background": {
-      "x": 100,
-      "y": 100,
-      "w": 800,
-      "h": 800,
+      "x": 0,
+      "y": 0,
+      "w": 2076,
+      "h": 2076,
       "source": "resources/src/bg/level1.png"
   }
 }

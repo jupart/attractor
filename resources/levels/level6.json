@@ -421,18 +421,11 @@
       "name": "big_black"
     }
   ],
-    "background": {                           
-    "x": 0,                                 
-    "y": -1240,                             
-    "w": 1038,                              
-    "h": 1038,                              
-    "source": "resources/src/bg/level2.png" 
-    },                                      
-    "background2": {                        
-    "x": 0,                                 
-    "y": -400,                              
-    "w": 1038,                              
-    "h": 1038,                              
-    "source": "resources/src/bg/level2.png" 
-    }                                       
+  "background": {
+    "x": 0,
+    "y": -1240,
+    "w": 2076,
+    "h": 2076,
+    "source": "resources/src/bg/level2.png"
+    }
 }

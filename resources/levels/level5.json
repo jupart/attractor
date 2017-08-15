@@ -364,8 +364,8 @@
   "background": {
       "x": -250,
       "y": -600,
-      "w": 1038,
-      "h": 1038,
+      "w": 2076,
+      "h": 2076,
       "source": "resources/src/bg/level2.png"
   }
 }

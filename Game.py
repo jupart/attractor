@@ -112,6 +112,8 @@ class AttractorGame(Widget):
         self.load_models()
         self.load_animations()
 
+        self.populate_level_select_menu()
+
         self.entity_factory = EntityFactory(self.gameworld, self.ids.cymunk_physics)
         self.editor = self.gameworld.system_manager['editor']
         self.editor.screen = self.ids.gamescreenmanager.ids.editor_screen
@@ -273,6 +275,14 @@ class AttractorGame(Widget):
         self.gameworld.state = 'menu'
 
     def open_level_select_menu(self):
+        scr = self.ids.gamescreenmanager.ids.menu_screen
+        buttons = scr.level_buttons
+
+        scr.scroll_container.x = scr.width
+        anim = Animation(x=scr.width - scr.scroll_container.width, duration=0.25)
+        anim.start(scr.scroll_container)
+
+    def populate_level_select_menu(self):
         h_int = 40
         h = str(h_int) + 'dp'
         z1 = 2
@@ -281,68 +291,56 @@ class AttractorGame(Widget):
         scr = self.ids.gamescreenmanager.ids.menu_screen
         buttons = scr.level_buttons
 
-        if buttons.children == []:
-            # for root, dirs, files in os.walk("resources/levels"):
-                # for level in files:
-                    # button = Button(text=level[:-5].replace('level', ''),
-                                    # size_hint_y=None,
-                                    # height=h)
-                    # button.bind(on_release=self.play_level)
-                    # buttons.add_widget(button)
-            buttons.add_widget(Label(text='[b]Magnet[/b]', markup=True))
-            buttons.add_widget(Label())
-            for i in range(1, 5):
-                button = MaterialButton(text=str(i),
-                                        size_hint_y=None,
-                                        elevation=z1,
-                                        raised_elevation=z1,
-                                        pressed_elevation=z2,
-                                        height=h)
-                button.bind(on_release=self.play_level)
-                buttons.add_widget(button)
+        buttons.add_widget(Label(text='[b]Magnet[/b]', markup=True))
+        buttons.add_widget(Label())
+        for i in range(1, 5):
+            button = MaterialButton(text=str(i),
+                                    size_hint_y=None,
+                                    elevation=z1,
+                                    raised_elevation=z1,
+                                    pressed_elevation=z2,
+                                    height=h)
+            button.bind(on_release=self.play_level)
+            buttons.add_widget(button)
 
-            buttons.add_widget(Label(text='[b]Rotator[/b]', markup=True))
-            buttons.add_widget(Label())
-            for i in range(5, 9):
-                button = MaterialButton(text=str(i),
-                                        size_hint_y=None,
-                                        elevation=z1,
-                                        raised_elevation=z1,
-                                        pressed_elevation=z2,
-                                        height=h)
-                button.bind(on_release=self.play_level)
-                buttons.add_widget(button)
+        buttons.add_widget(Label(text='[b]Rotator[/b]', markup=True))
+        buttons.add_widget(Label())
+        for i in range(5, 9):
+            button = MaterialButton(text=str(i),
+                                    size_hint_y=None,
+                                    elevation=z1,
+                                    raised_elevation=z1,
+                                    pressed_elevation=z2,
+                                    height=h)
+            button.bind(on_release=self.play_level)
+            buttons.add_widget(button)
 
-            buttons.add_widget(Label(text='[b]Changer[/b]', markup=True))
-            buttons.add_widget(Label())
-            for i in range(9, 13):
-                button = MaterialButton(text=str(i),
-                                        size_hint_y=None,
-                                        elevation=z1,
-                                        raised_elevation=z1,
-                                        pressed_elevation=z2,
-                                        height=h)
-                button.bind(on_release=self.play_level)
-                buttons.add_widget(button)
+        buttons.add_widget(Label(text='[b]Membrane[/b]', markup=True))
+        buttons.add_widget(Label())
+        for i in range(9, 13):
+            button = MaterialButton(text=str(i),
+                                    size_hint_y=None,
+                                    elevation=z1,
+                                    raised_elevation=z1,
+                                    pressed_elevation=z2,
+                                    height=h)
+            button.bind(on_release=self.play_level)
+            buttons.add_widget(button)
 
-            buttons.add_widget(Label(text='[b]Membrane[/b]', markup=True))
-            buttons.add_widget(Label())
-            for i in range(13, 17):
-                button = MaterialButton(text=str(i),
-                                        size_hint_y=None,
-                                        elevation=z1,
-                                        raised_elevation=z1,
-                                        pressed_elevation=z2,
-                                        height=h)
-                button.bind(on_release=self.play_level)
-                buttons.add_widget(button)
+        buttons.add_widget(Label(text='[b]Changer[/b]', markup=True))
+        buttons.add_widget(Label())
+        for i in range(13, 17):
+            button = MaterialButton(text=str(i),
+                                    size_hint_y=None,
+                                    elevation=z1,
+                                    raised_elevation=z1,
+                                    pressed_elevation=z2,
+                                    height=h)
+            button.bind(on_release=self.play_level)
+            buttons.add_widget(button)
 
         buttons.size_y = len(buttons.children) * h_int + h_int/2
         buttons.bind(minimum_height=buttons.setter('height'))
-
-        scr.scroll_container.x = scr.width
-        anim = Animation(x=scr.width - scr.scroll_container.width, duration=0.25)
-        anim.start(scr.scroll_container)
 
     def go_to_play_screen(self):
         self.gameworld.state = 'play'
@@ -478,6 +476,20 @@ class AttractorGame(Widget):
                                            'y': point.y,
                                            'rotation': rotation})
 
+        if level.background is not None:
+            level_data['background'] = {'x': level.background.pos[0],
+                                        'y': level.background.pos[1],
+                                        'w': level.background.size[0],
+                                        'h': level.background.size[1],
+                                        'source': level.background.source}
+
+        if level.background2 is not None:
+            level_data['background2'] = {'x': level.background2.pos[0],
+                                         'y': level.background2.pos[1],
+                                         'w': level.background2.size[0],
+                                         'h': level.background2.size[1],
+                                         'source': level.background2.source}
+
         with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
             json.dump(level_data, f, indent=2)
 
@@ -520,24 +532,25 @@ class AttractorGame(Widget):
                                                                level_data['background']['h']),
                                                          source=level_data['background']['source'])
             with self.ids.play_camera.canvas.before:
-                self.editor.level.background = Rectangle(pos=(level_data['background2']['x'],
-                                                              level_data['background2']['y']),
-                                                         size=(level_data['background2']['w'],
-                                                               level_data['background2']['h']),
-                                                         source=level_data['background2']['source'])
+                self.editor.level.background2 = Rectangle(pos=(level_data['background2']['x'],
+                                                               level_data['background2']['y']),
+                                                          size=(level_data['background2']['w'],
+                                                                level_data['background2']['h']),
+                                                          source=level_data['background2']['source'])
         except KeyError:
             pass
 
         # Order entities such that 'tiles' is always added first
-        ordered_ents = []
-        for ent in level_data['entities']:
-            if ent['name'] != 'tiles':
-                ordered_ents.append(ent)
-            else:
-                ordered_ents = [ent] + ordered_ents
+        # ordered_ents = []
+        # for ent in level_data['entities']:
+            # if ent['name'] != 'tiles':
+                # ordered_ents.append(ent)
+            # else:
+                # ordered_ents = [ent] + ordered_ents
 
         # Use those ordered entities to build the level
-        for ent in ordered_ents:
+        # for ent in ordered_ents:
+        for ent in level_data['entities']:
             name = ent['name']
             x = ent['x']
             y = ent['y']

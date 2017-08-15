@@ -280,15 +280,8 @@
   "background": {
     "x": 0,
     "y": -1040,
-    "w": 1038,
-    "h": 1038,
-    "source": "resources/src/bg/level1.png"
-    },
-    "background2": {
-    "x": 0,
-    "y": 0,
-    "w": 1038,
-    "h": 1038,
+    "w": 2076,
+    "h": 2076,
     "source": "resources/src/bg/level1.png"
     }
 }

@@ -4,3 +4,4 @@ bin/
 .buildozer/
 *.pyc
 tags
+app.profile

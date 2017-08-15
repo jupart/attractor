@@ -2,14 +2,29 @@
 
 import sys
 
+from kivy.utils import platform
+
 from kivy.app import App
 from kivy.config import Config
 from kivy.core.window import Window
+
+if platform == 'unix':
+    import cProfile
 
 import Game
 
 
 class AttractorApp(App):
+    def on_start(self):
+        if platform == 'unix':
+            self.profile = cProfile.Profile()
+            self.profile.enable()
+
+    def on_stop(self):
+        if platform == 'unix':
+            self.profile.disable()
+            self.profile.dump_stats('app.profile')
+
     def build(self):
         Config.set('kivy', 'exit_on_escape', '0')
         Config.set('graphics', 'width', '300')
