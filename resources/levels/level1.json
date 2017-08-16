@@ -298,7 +298,7 @@
   "background": {
     "y": 0.0, 
     "x": 0.0, 
-    "source": "/media/sf_vbshare/attractor/resources/src/bg/level1.png", 
+    "source": "resources/src/bg/level1.png", 
     "w": 2076.0, 
     "h": 2076.0
   }

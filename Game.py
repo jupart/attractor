@@ -478,6 +478,7 @@ class AttractorGame(Widget):
                                            'rotation': rotation})
 
         if level.background is not None:
+            source = 'resources' + level.background.source.split('resources')[1]
             level_data['background'] = {'x': level.background.pos[0],
                                         'y': level.background.pos[1],
                                         'w': level.background.size[0],
