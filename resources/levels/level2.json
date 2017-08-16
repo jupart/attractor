@@ -227,13 +227,121 @@
       "x": 1100, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": 480, 
+      "x": 1470, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 140, 
+      "x": 1540, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 120, 
+      "x": 1910, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 520, 
+      "x": 1860, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 780, 
+      "x": 1910, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 900, 
+      "x": 1550, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1170, 
+      "x": 1940, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1260, 
+      "x": 1540, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1600, 
+      "x": 1900, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1900, 
+      "x": 1870, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1920, 
+      "x": 1530, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1670, 
+      "x": 1450, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1950, 
+      "x": 1110, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1560, 
+      "x": 1020, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1540, 
+      "x": 630, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1950, 
+      "x": 650, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1920, 
+      "x": 170, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1490, 
+      "x": 170, 
+      "rotation": 0, 
+      "name": "big_black"
     }
-  ],
+  ], 
   "background": {
-      "x": 0,
-      "y": 0,
-      "w": 2076,
-      "h": 2076,
-      "source": "resources/src/bg/level1.png"
+    "y": 0.0, 
+    "x": 0.0, 
+    "source": "/media/sf_vbshare/attractor/resources/src/bg/level1.png", 
+    "w": 2076.0, 
+    "h": 2076.0
   }
 }

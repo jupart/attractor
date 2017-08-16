@@ -533,13 +533,109 @@
       "x": 1470, 
       "rotation": 270, 
       "name": "big_black"
+    }, 
+    {
+      "y": -130, 
+      "x": 1830, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -80, 
+      "x": 2110, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 240, 
+      "x": 1780, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 330, 
+      "x": 2170, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 650, 
+      "x": 1840, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 770, 
+      "x": 2170, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1030, 
+      "x": 1790, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1190, 
+      "x": 2120, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1620, 
+      "x": 2090, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1630, 
+      "x": 1720, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1410, 
+      "x": 1700, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1280, 
+      "x": 1510, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1710, 
+      "x": 1290, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1670, 
+      "x": 880, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1650, 
+      "x": 540, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1630, 
+      "x": 330, 
+      "rotation": 0, 
+      "name": "big_black"
     }
-  ],
-    "background": {                           
-    "x": 150,                                 
-    "y": -250,                             
-    "w": 2076,                              
-    "h": 2076,                              
-    "source": "resources/src/bg/level2.png" 
-    }
+  ], 
+  "background": {
+    "y": -250.0, 
+    "x": 150.0, 
+    "source": "/media/sf_vbshare/attractor/resources/src/bg/level2.png", 
+    "w": 2076.0, 
+    "h": 2076.0
+  }
 }

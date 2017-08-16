@@ -359,13 +359,175 @@
       "x": 350, 
       "rotation": 180, 
       "name": "wall_small"
+    }, 
+    {
+      "y": -600, 
+      "x": 1040, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -520, 
+      "x": 1420, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -460, 
+      "x": 1670, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -130, 
+      "x": 1670, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -90, 
+      "x": 1380, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -10, 
+      "x": 1040, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 330, 
+      "x": 1040, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 330, 
+      "x": 1370, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 320, 
+      "x": 1750, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 680, 
+      "x": 1680, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1100, 
+      "x": 1670, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1360, 
+      "x": 1650, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1360, 
+      "x": 1260, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 990, 
+      "x": 1250, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 710, 
+      "x": 1250, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1320, 
+      "x": -70, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1110, 
+      "x": -70, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1370, 
+      "x": 320, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 990, 
+      "x": 340, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1320, 
+      "x": 690, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1200, 
+      "x": 900, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1330, 
+      "x": 950, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 890, 
+      "x": 660, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 760, 
+      "x": 870, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 760, 
+      "x": 310, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 690, 
+      "x": 620, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 690, 
+      "x": 330, 
+      "rotation": 0, 
+      "name": "big_black"
     }
-  ],
+  ], 
   "background": {
-      "x": -250,
-      "y": -600,
-      "w": 2076,
-      "h": 2076,
-      "source": "resources/src/bg/level2.png"
+    "y": -600.0, 
+    "x": -250.0, 
+    "source": "/media/sf_vbshare/attractor/resources/src/bg/level2.png", 
+    "w": 2076.0, 
+    "h": 2076.0
   }
 }

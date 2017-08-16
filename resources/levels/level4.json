@@ -37,12 +37,6 @@
       "name": "wall"
     }, 
     {
-      "y": 210, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_inlay"
-    }, 
-    {
       "y": 330, 
       "x": 960, 
       "rotation": 180, 
@@ -65,12 +59,6 @@
       "x": 120, 
       "rotation": 270, 
       "name": "wall_corner"
-    }, 
-    {
-      "y": 208, 
-      "x": 940, 
-      "rotation": 90, 
-      "name": "negapole_weak"
     }, 
     {
       "y": 182, 
@@ -100,12 +88,6 @@
       "y": -420, 
       "x": 120, 
       "rotation": 270, 
-      "name": "wall"
-    }, 
-    {
-      "y": -30, 
-      "x": 960, 
-      "rotation": 90, 
       "name": "wall"
     }, 
     {
@@ -407,13 +389,109 @@
       "x": 1230, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": 680, 
+      "x": 1400, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 670, 
+      "x": 1780, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 640, 
+      "x": 1950, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 340, 
+      "x": 1460, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 290, 
+      "x": 1910, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -90, 
+      "x": 1970, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -90, 
+      "x": 1600, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -490, 
+      "x": 1610, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -550, 
+      "x": 1940, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -950, 
+      "x": 1940, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -920, 
+      "x": 1610, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -1160, 
+      "x": 1630, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -1230, 
+      "x": 1990, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -20, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": 180, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -22, 
+      "x": 940, 
+      "rotation": 90, 
+      "name": "negapole_weak"
     }
-  ],
+  ], 
   "background": {
-    "x": 0,
-    "y": -1240,
-    "w": 2076,
-    "h": 2076,
-    "source": "resources/src/bg/level1.png"
+    "y": -1240.0, 
+    "x": 0.0, 
+    "source": "/media/sf_vbshare/attractor/resources/src/bg/level1.png", 
+    "w": 2076.0, 
+    "h": 2076.0
   }
 }
