@@ -142,6 +142,7 @@ AttractorGame:
 
     FloatLayout:
         BoxLayout:
+            id: button_container
 
             canvas.before:
                 Color:
@@ -165,6 +166,7 @@ AttractorGame:
                 on_release: app.game.open_level_select_menu()
 
             MaterialButton:
+                id: editor_button
                 text: 'Editor'
                 elevation: 3
                 raised_elevation: 3
@@ -200,8 +202,8 @@ AttractorGame:
     id: scr
 
     canvas:
-        #:set alpha 0.1
-        #:set w 6
+        #:set alpha 0.125
+        #:set w 8
 
         # Red
         Color:
@@ -250,7 +252,7 @@ AttractorGame:
             background_normal: ''
 
     MaterialButton:
-        size_hint: 0.15, 0.04
+        size_hint: 0.2, 0.06
         pos: 0 + w * 2, self.parent.height - self.height - w * 2
         text: "Menu"
         elevation: 2
@@ -259,7 +261,7 @@ AttractorGame:
         on_release: app.game.go_to_menu_screen()
 
     MaterialButton:
-        size_hint: 0.15, 0.04
+        size_hint: 0.2, 0.06
         pos: self.parent.width - self.width - w * 2, self.parent.height - self.height - w * 2
         text: "Reset"
         elevation: 2
@@ -282,19 +284,6 @@ AttractorGame:
         text: "Clear"
         on_release: app.game.clear_level()
 
-    Button:
-        size_hint: 0.1, 0.035
-        pos: self.parent.width/2, self.parent.height - self.height
-        text: "Redraw"
-        on_release: app.game.editor.redraw_anchors()
-
-    Button:
-        size_hint: 0.1, 0.035
-        pos: self.parent.width - self.width, self.parent.height - self.height
-        text: "Reset"
-        on_release: app.game.reset_attractor()
-
-    # Grid settings
     BoxLayout:
         id: ui
         padding: 0
@@ -319,6 +308,7 @@ AttractorGame:
             text: '10'
 
         ToggleButton:
+            id: delete
             text: 'Delete'
             on_release: app.game.editor.toggle_deleting()
 
@@ -337,8 +327,9 @@ AttractorGame:
             text: 'Load'
             on_release: app.game.load_level()
 
-        Label:
-            text: 'Rot'
+        Button:
+            text: 'Rotate'
+            on_release: app.game.editor.rotate_entity_to_place()
 
         TouchedTextBox:
             id: rotation

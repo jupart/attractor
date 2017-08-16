@@ -129,6 +129,10 @@ class LevelEditorSystem(GameSystem):
 
     def toggle_deleting(self):
         if not self.deleting:
+            button = self.screen.ids.delete
+            if button.state == 'normal':
+                button.state = 'down'
+
             self.deleting = True
 
             if self.asset_id != -1:
@@ -137,16 +141,13 @@ class LevelEditorSystem(GameSystem):
                 self.entity_to_place = ''
 
         else:
-            print self.entity_to_place
-            self.deleting = False
+            button = self.screen.ids.delete
+            if button.state == 'down':
+                button.state = 'normal'
 
-            if self.entity_to_place != '':
-                factory = App.get_running_app().game.entity_factory
-                self.asset_id = factory.create_entity_at(
-                            self.entity_to_place,
-                            0,
-                            0,
-                            int(self.screen.ids.rotation.text))
+            self.deleting = False
+            self.entity_to_place = ''
+            self.asset_id = -1
 
     def rotate_entity_to_place(self):
         r = int(self.screen.ids.rotation.text)

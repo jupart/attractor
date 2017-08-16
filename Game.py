@@ -346,7 +346,8 @@ class AttractorGame(Widget):
         self.gameworld.state = 'play'
 
     def go_to_editor_screen(self):
-        self.toggle_level_editor()
+        if platform != 'android':
+            self.toggle_level_editor()
 
     def change_attractor_charge(self, button, change_to):
         button.background_color[3] = 0.1
@@ -560,6 +561,12 @@ class AttractorGame(Widget):
             self.editor.level.add_entity(name, x, y, rot, ids)
 
         self.create_attractor()
+
+        if self.gameworld.state == 'editor':
+            self.ids.play_camera.focus_entity = False
+            self.editor.redraw_anchors()
+        else:
+            self.ids.play_camera.focus_entity = True
 
     def finish_level(self):
         self.current_level = self.current_level + 1
