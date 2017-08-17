@@ -7,6 +7,13 @@ class Point():
         self.y = y
 
 
+class Stats():
+    ideal_time = 0
+    ideal_changes = 0
+
+    def __init__(self, **kwargs):
+        self.timer = 0
+        self.changes = 0
 class Level():
     names = []
     points = []
@@ -14,6 +21,7 @@ class Level():
     ids = []
     background = None
     background2 = None
+    stats = Stats()
 
     def __init__(self, **kwargs):
         pass
@@ -38,3 +46,8 @@ class Level():
         del self.points[:]
         del self.rotations[:]
         del self.ids[:]
+
+        self.stats.time = 0
+        self.stats.changes = 0
+
+

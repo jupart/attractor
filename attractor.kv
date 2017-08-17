@@ -125,6 +125,8 @@ AttractorGame:
 
 
 <GameScreenManager>:
+    play_screen: play_screen
+
     MenuScreen:
         id: menu_screen
 
@@ -200,74 +202,115 @@ AttractorGame:
 <PlayScreen@GameScreen>:
     name: 'play_screen'
     id: scr
-
-    canvas:
-        #:set alpha 0.125
-        #:set w 8
-
-        # Red
-        Color:
-            rgba: 0.894, 0.243, 0.282, alpha
-
-        Line:
-            width: w
-            points: [0.325 * scr.width, 0, 0, 0, 0, scr.height, 0.325 * scr.width, scr.height]
-
-        # Gray
-        Color:
-            rgba: 0.314, 0.376, 0.412, alpha
-
-        Line:
-            width: w
-            points: [0.33 * scr.width, 0, (1 - 0.33) * scr.width, 0]
-
-        Line:
-            width: w
-            points: [0.33 * scr.width, scr.height, (1 - 0.33) * scr.width, scr.height]
-
-        # Blue
-        Color:
-            rgba: 0.118, 0.490, 0.694, alpha
-
-        Line:
-            width: w
-            points: [(1 - 0.325) * scr.width, 0, scr.width, 0, scr.width, scr.height, (1 - 0.325) * scr.width, scr.height]
+    changes: changes
+    time: time
+    #:set alpha 0.125
+    #:set w 8
 
     BoxLayout:
-        orientation: 'horizontal'
-        padding: w
-        spacing: 1
+        spacing: w
+        orientation: 'vertical'
 
-        Button:
-            on_press: app.game.change_attractor_charge(self, '+')
-            background_color: [1, 0.4, 0.4, 0.]
-            background_normal: ''
-        Button:
-            on_press: app.game.change_attractor_charge(self, 'n')
-            background_color: [0.4, 0.4, 0.4, 0.]
-            background_normal: ''
-        Button:
-            on_press: app.game.change_attractor_charge(self, '-')
-            background_color: [0.4, 0.4, 1, 0.]
-            background_normal: ''
+        # Level info
+        BoxLayout:
+            padding: 5
+            size_hint: 1, 0.06
 
-    MaterialButton:
-        size_hint: 0.2, 0.06
-        pos: 0 + w * 2, self.parent.height - self.height - w * 2
-        text: "Menu"
-        elevation: 2
-        raised_elevation: 2
-        press_elevation: 1
-        on_release: app.game.go_to_menu_screen()
+            canvas:
+                Color:
+                    rgba: 0.15, 0.15, 0.15, 1
 
-    MaterialButton:
-        size_hint: 0.2, 0.06
-        pos: self.parent.width - self.width - w * 2, self.parent.height - self.height - w * 2
-        text: "Reset"
-        elevation: 2
-        raised_elevation: 2
-        press_elevation: 1
-        on_release: app.game.reset_attractor()
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            MaterialButton:
+                text: "Menu"
+                elevation: 2
+                raised_elevation: 2
+                press_elevation: 1
+                on_release: app.game.go_to_menu_screen()
+
+            Label:
+                text: 'Time:'
+
+            Label:
+                id: time
+                text: '0'
+
+            Label:
+                text: 'Changes:'
+
+            Label:
+                id: changes
+                text: '0'
+
+            MaterialButton:
+                text: "Reset"
+                elevation: 2
+                raised_elevation: 2
+                press_elevation: 1
+                on_release: app.game.reset_attractor()
+
+        # Change buttons
+        BoxLayout:
+            size_hint: 1, 0.94
+            orientation: 'horizontal'
+            spacing: 5
+
+            canvas:
+                # Red
+                Color:
+                    rgba: 0.894, 0.243, 0.282, alpha
+
+                Line:
+                    cap: 'none'
+                    width: w
+                    points: [0.325 * self.width, 0, 0, 0, 0, self.height]
+                Line:
+                    cap: 'none'
+                    width: w/2
+                    points: [0, self.height + w/2, 0.325 * self.width, self.height + w/2]
+
+                # Gray
+                Color:
+                    rgba: 0.314, 0.376, 0.412, alpha
+
+                Line:
+                    cap: 'none'
+                    width: w
+                    points: [0.33 * self.width, 0, (1 - 0.33) * self.width, 0]
+
+                Line:
+                    cap: 'none'
+                    width: w/2
+                    points: [0.33 * self.width, self.height + w/2, (1 - 0.33) * self.width, self.height + w/2]
+
+                # Blue
+                Color:
+                    rgba: 0.118, 0.490, 0.694, alpha
+
+                Line:
+                    cap: 'none'
+                    width: w
+                    points: [(1 - 0.325) * self.width, 0, self.width, 0, self.width, self.height]
+                Line:
+                    cap: 'none'
+                    width: w/2
+                    points: [self.width, self.height + w/2, (1 - 0.325) * self.width, self.height + w/2]
+
+            Button:
+                on_press: app.game.change_attractor_charge(self, '+')
+                background_color: [1, 0.4, 0.4, 0.]
+                background_normal: ''
+            Button:
+                on_press: app.game.change_attractor_charge(self, 'n')
+                background_color: [0.4, 0.4, 0.4, 0.]
+                background_normal: ''
+            Button:
+                on_press: app.game.change_attractor_charge(self, '-')
+                background_color: [0.4, 0.4, 1, 0.]
+                background_normal: ''
 
 <EditorScreen@GameScreen>:
     name: 'editor_screen'

@@ -85,6 +85,7 @@ class AttractorGame(Widget):
     attractor_id = NumericProperty(-1)
     current_level = 0
     dd = None
+    clock = None
 
     def __init__(self, **kwargs):
         super(AttractorGame, self).__init__(**kwargs)
@@ -371,6 +372,9 @@ class AttractorGame(Widget):
         attractor.animation.animation = new_anim
         attractor.charge.charge = change_to
 
+        self.editor.level.stats.changes += 1
+        self.ids.gamescreenmanager.play_screen.changes.text = str(self.editor.level.stats.changes)
+
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):
             return True
@@ -492,6 +496,9 @@ class AttractorGame(Widget):
                                          'h': level.background2.size[1],
                                          'source': level.background2.source}
 
+        level_data['ideal_time'] = self.level.stats.ideal_time
+        level_data['ideal_changes'] = self.level.stats.ideal_changes
+
         with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
             json.dump(level_data, f, indent=2)
 
@@ -542,16 +549,14 @@ class AttractorGame(Widget):
         except KeyError:
             pass
 
-        # Order entities such that 'tiles' is always added first
-        # ordered_ents = []
-        # for ent in level_data['entities']:
-            # if ent['name'] != 'tiles':
-                # ordered_ents.append(ent)
-            # else:
-                # ordered_ents = [ent] + ordered_ents
+        try:
+            self.level.stats.ideal_time = level_data['ideal_time']
+            self.level.stats.ideal_changes = level_data['ideal_changes']
 
-        # Use those ordered entities to build the level
-        # for ent in ordered_ents:
+        except KeyError:
+            self.editor.level.stats.ideal_time = 0
+            self.editor.level.stats.ideal_changes = 0
+
         for ent in level_data['entities']:
             name = ent['name']
             x = ent['x']
@@ -568,6 +573,12 @@ class AttractorGame(Widget):
             self.editor.redraw_anchors()
         else:
             self.ids.play_camera.focus_entity = True
+
+        self.editor.level.stats.time = 0
+        self.editor.level.stats.changes = 0
+
+        if self.clock is None:
+            self.clock = Clock.schedule_interval(self.update_timer, 1)
 
     def finish_level(self):
         self.current_level = self.current_level + 1
@@ -597,3 +608,7 @@ class AttractorGame(Widget):
 
         attractor.charge.charge = 'n'
         attractor.animation.animation = 'attractor_neutral_idle'
+
+    def update_timer(self, dt):
+        self.editor.level.stats.timer += 1
+        self.ids.gamescreenmanager.play_screen.time.text = str(self.editor.level.stats.timer)
