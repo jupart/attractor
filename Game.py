@@ -39,6 +39,7 @@ from PoleChangerSystem import PoleChangerSystem
 from TouchedTextBox import TouchedTextBox
 from CircularButton import CircularButton
 from MaterialButton import MaterialButton
+from BetterButton import BetterButton
 
 
 # Load all .png in resources/png

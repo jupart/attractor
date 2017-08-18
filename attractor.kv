@@ -79,7 +79,7 @@ AttractorGame:
             system_id: 'play_camera'
             gameworld: gameworld
             currentmap: gamemap
-            camera_scale: 1
+            camera_scale: 2
             camera_speed_multiplier: 10
             size: root.size
             window_size: root.size
@@ -301,18 +301,15 @@ AttractorGame:
                     width: w/2
                     points: [self.width, self.height + w/2, (1 - 0.325) * self.width, self.height + w/2]
 
-            Button:
+            BetterButton:
                 on_press: app.game.change_attractor_charge(self, '+')
                 background_color: [1, 0.4, 0.4, 0.]
-                background_normal: ''
-            Button:
+            BetterButton:
                 on_press: app.game.change_attractor_charge(self, 'n')
                 background_color: [0.4, 0.4, 0.4, 0.]
-                background_normal: ''
-            Button:
+            BetterButton:
                 on_press: app.game.change_attractor_charge(self, '-')
                 background_color: [0.4, 0.4, 1, 0.]
-                background_normal: ''
 
 <EditorScreen@GameScreen>:
     name: 'editor_screen'
