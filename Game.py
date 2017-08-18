@@ -119,7 +119,7 @@ class AttractorGame(Widget):
         self.editor = self.gameworld.system_manager['editor']
         self.editor.screen = self.ids.gamescreenmanager.ids.editor_screen
 
-        self.load_level('test')
+        # self.load_level('test')
         self.ids.play_camera.focus_entity = True
         self.ids.play_camera.entity_to_focus = self.attractor_id
         self.ids.cymunk_physics.collision_slop = 2
@@ -373,7 +373,9 @@ class AttractorGame(Widget):
         attractor.charge.charge = change_to
 
         self.editor.level.stats.changes += 1
-        self.ids.gamescreenmanager.play_screen.changes.text = str(self.editor.level.stats.changes)
+        self.ids.gamescreenmanager.play_screen.changes.text = \
+            str(self.editor.level.stats.changes) + ' / ' + \
+            str(self.editor.level.stats.ideal_changes)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):
@@ -550,8 +552,8 @@ class AttractorGame(Widget):
             pass
 
         try:
-            self.level.stats.ideal_time = level_data['ideal_time']
-            self.level.stats.ideal_changes = level_data['ideal_changes']
+            self.editor.level.stats.ideal_time = level_data['ideal_time']
+            self.editor.level.stats.ideal_changes = level_data['ideal_changes']
 
         except KeyError:
             self.editor.level.stats.ideal_time = 0
@@ -574,8 +576,12 @@ class AttractorGame(Widget):
         else:
             self.ids.play_camera.focus_entity = True
 
-        self.editor.level.stats.time = 0
+        self.editor.level.stats.timer = 0
         self.editor.level.stats.changes = 0
+        self.ids.gamescreenmanager.play_screen.time.text = '0 / ' + \
+                str(self.editor.level.stats.ideal_time)
+        self.ids.gamescreenmanager.play_screen.changes.text = '0 / ' + \
+                str(self.editor.level.stats.ideal_changes)
 
         if self.clock is None:
             self.clock = Clock.schedule_interval(self.update_timer, 1)
@@ -610,5 +616,7 @@ class AttractorGame(Widget):
         attractor.animation.animation = 'attractor_neutral_idle'
 
     def update_timer(self, dt):
-        self.editor.level.stats.timer += 1
-        self.ids.gamescreenmanager.play_screen.time.text = str(self.editor.level.stats.timer)
+        self.editor.level.stats.timer += dt
+        self.ids.gamescreenmanager.play_screen.time.text = \
+            str(int(round(self.editor.level.stats.timer))) + \
+            ' / ' + str(self.editor.level.stats.ideal_time)
