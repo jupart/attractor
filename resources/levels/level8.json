@@ -215,6 +215,129 @@
       "x": 720, 
       "rotation": 0, 
       "name": "tri_wall_corner"
+    }, 
+    {
+      "y": 170, 
+      "x": 1900, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 190, 
+      "x": 1550, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 620, 
+      "x": 1580, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 610, 
+      "x": 1910, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1090, 
+      "x": 1920, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1030, 
+      "x": 1580, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1360, 
+      "x": 1210, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1430, 
+      "x": 1610, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1470, 
+      "x": 1940, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1870, 
+      "x": 1910, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1870, 
+      "x": 1540, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1720, 
+      "x": 1170, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1980, 
+      "x": 1140, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1950, 
+      "x": 710, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1600, 
+      "x": 730, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1510, 
+      "x": 350, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1620, 
+      "x": 70, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1930, 
+      "x": 100, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1910, 
+      "x": 350, 
+      "rotation": 0, 
+      "name": "big_black"
     }
-  ]
+  ], 
+  "ideal_changes": 3, 
+  "background": {
+    "y": 0.0, 
+    "x": 0.0, 
+    "source": "/media/sf_vbshare/attractor/resources/src/bg/level2.png", 
+    "w": 2076.0, 
+    "h": 2076.0
+  }, 
+  "ideal_time": 10
 }

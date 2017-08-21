@@ -182,12 +182,6 @@
     }, 
     {
       "y": 600, 
-      "x": 210, 
-      "rotation": 0, 
-      "name": "big_black"
-    }, 
-    {
-      "y": 600, 
       "x": 680, 
       "rotation": 0, 
       "name": "big_black"
@@ -281,6 +275,99 @@
       "x": 810, 
       "rotation": 0, 
       "name": "negamembrane"
+    }, 
+    {
+      "y": 150, 
+      "x": 1670, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 160, 
+      "x": 1940, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 560, 
+      "x": 1940, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 580, 
+      "x": 1570, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1030, 
+      "x": 1340, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 980, 
+      "x": 1760, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1020, 
+      "x": 2000, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 600, 
+      "x": 230, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -280, 
+      "x": 1620, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -290, 
+      "x": 1930, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -630, 
+      "x": 1930, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -630, 
+      "x": 1540, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -900, 
+      "x": 1490, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -940, 
+      "x": 1930, 
+      "rotation": 0, 
+      "name": "big_black"
     }
-  ]
+  ], 
+  "ideal_changes": 3, 
+  "background": {
+    "y": -1000.0, 
+    "x": 0.0, 
+    "source": "/media/sf_vbshare/attractor/resources/src/bg/level3.png", 
+    "w": 2076.0, 
+    "h": 2076.0
+  }, 
+  "ideal_time": 10
 }

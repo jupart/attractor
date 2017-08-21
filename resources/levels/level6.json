@@ -37,12 +37,6 @@
       "name": "wall"
     }, 
     {
-      "y": 210, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_inlay"
-    }, 
-    {
       "y": 330, 
       "x": 960, 
       "rotation": 180, 
@@ -67,12 +61,6 @@
       "name": "wall_corner"
     }, 
     {
-      "y": 208, 
-      "x": 940, 
-      "rotation": 90, 
-      "name": "negapole_weak"
-    }, 
-    {
       "y": 182, 
       "x": 140, 
       "rotation": 90, 
@@ -94,12 +82,6 @@
       "y": -420, 
       "x": 120, 
       "rotation": 270, 
-      "name": "wall"
-    }, 
-    {
-      "y": -30, 
-      "x": 960, 
-      "rotation": 90, 
       "name": "wall"
     }, 
     {
@@ -497,13 +479,39 @@
       "x": 1900, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": 180, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -50, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": -52, 
+      "x": 940, 
+      "rotation": 90, 
+      "name": "negapole_weak"
+    }, 
+    {
+      "y": -334, 
+      "x": 1230, 
+      "rotation": 90, 
+      "name": "big_black"
     }
   ], 
+  "ideal_changes": 3, 
   "background": {
     "y": -1240.0, 
     "x": 0.0, 
-    "source": "resources/src/bg/level2.png", 
+    "source": "/media/sf_vbshare/attractor/resources/src/bg/level2.png", 
     "w": 2076.0, 
     "h": 2076.0
-  }
+  }, 
+  "ideal_time": 10
 }

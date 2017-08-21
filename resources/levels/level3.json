@@ -379,5 +379,7 @@
     "source": "resources/src/bg/level1.png", 
     "w": 2076.0, 
     "h": 2076.0
-  }
+  },
+  "ideal_time": 10,
+  "ideal_changes": 3
 }

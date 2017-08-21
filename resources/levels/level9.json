@@ -185,6 +185,177 @@
       "x": 140, 
       "rotation": 90, 
       "name": "negapole_weak"
+    }, 
+    {
+      "y": 170, 
+      "x": 1290, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 920, 
+      "x": 1000, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 920, 
+      "x": 570, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 930, 
+      "x": 180, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1550, 
+      "x": 180, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1940, 
+      "x": 170, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1950, 
+      "x": 510, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1600, 
+      "x": 560, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1890, 
+      "x": 880, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1540, 
+      "x": 960, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 2000, 
+      "x": 1230, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1940, 
+      "x": 1760, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1920, 
+      "x": 1560, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1570, 
+      "x": 1330, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1900, 
+      "x": 2070, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1550, 
+      "x": 1960, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1480, 
+      "x": 1630, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1220, 
+      "x": 1170, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 940, 
+      "x": 1420, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1070, 
+      "x": 1630, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1070, 
+      "x": 2000, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 730, 
+      "x": 1990, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 610, 
+      "x": 1660, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 520, 
+      "x": 1390, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 180, 
+      "x": 1610, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 190, 
+      "x": 1840, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 340, 
+      "x": 1940, 
+      "rotation": 0, 
+      "name": "big_black"
     }
-  ]
+  ], 
+  "ideal_changes": 3, 
+  "background": {
+    "y": 0.0, 
+    "x": 0.0, 
+    "source": "/media/sf_vbshare/attractor/resources/src/bg/level3.png", 
+    "w": 2076.0, 
+    "h": 2076.0
+  }, 
+  "ideal_time": 10
 }

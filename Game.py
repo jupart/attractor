@@ -499,8 +499,8 @@ class AttractorGame(Widget):
                                          'h': level.background2.size[1],
                                          'source': level.background2.source}
 
-        level_data['ideal_time'] = self.level.stats.ideal_time
-        level_data['ideal_changes'] = self.level.stats.ideal_changes
+        level_data['ideal_time'] = self.editor.level.stats.ideal_time
+        level_data['ideal_changes'] = self.editor.level.stats.ideal_changes
 
         with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
             json.dump(level_data, f, indent=2)
