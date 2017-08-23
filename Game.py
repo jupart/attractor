@@ -12,7 +12,6 @@ from kivy.uix.label import Label
 from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy.animation import Animation
-from kivy.uix.screenmanager import FadeTransition
 from kivy.graphics import Rectangle
 
 # Properties
@@ -219,6 +218,22 @@ class AttractorGame(Widget):
                                                    'finish',
                                                    'charge'],
                                  screenmanager_screen='editor_screen')
+        self.gameworld.add_state(state_name='finish',
+                                 systems_added=[],
+                                 systems_removed=[],
+                                 systems_paused=['position',
+                                                 'rotate',
+                                                 'rotate_renderer',
+                                                 'bg_renderer',
+                                                 'mid_renderer',
+                                                 'animation',
+                                                 'cymunk_physics',
+                                                 'play_camera',
+                                                 'pole_changer',
+                                                 'finish',
+                                                 'charge'],
+                                 systems_unpaused=[],
+                                 screenmanager_screen='finish_screen')
 
     def load_models(self):
         model_manager = self.gameworld.model_manager
@@ -588,8 +603,14 @@ class AttractorGame(Widget):
             self.clock = Clock.schedule_interval(self.update_timer, 1)
 
     def finish_level(self):
-        self.current_level = self.current_level + 1
-        self.load_level('level' + str(self.current_level))
+        self.gameworld.state = 'finish'
+        screen = self.ids.gamescreenmanager.ids.finish_screen
+
+        screen.ids.time.text = str(int(round(self.editor.level.stats.timer))) + \
+            ' / ' + str(self.editor.level.stats.ideal_time)
+
+        screen.ids.changes.text = str(self.editor.level.stats.changes) + ' / ' + \
+            str(self.editor.level.stats.ideal_changes)
 
     def clear_level(self):
         self.gameworld.clear_entities()
@@ -621,3 +642,8 @@ class AttractorGame(Widget):
         self.ids.gamescreenmanager.play_screen.time.text = \
             str(int(round(self.editor.level.stats.timer))) + \
             ' / ' + str(self.editor.level.stats.ideal_time)
+    def go_to_next_level(self):
+        self.current_level = self.current_level + 1
+        self.load_level('level' + str(self.current_level))
+
+        self.gameworld.state = 'play'
