@@ -386,6 +386,7 @@ AttractorGame:
 
     BoxLayout:
         padding: 5
+        spacing: 10
         orientation: 'vertical'
         size_hint: 0.5, 0.4
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -421,6 +422,10 @@ AttractorGame:
                 id: changes
                 text: ''
 
+        BoxLayout:
+            size_hint: 1, 0.25
+            pos_hint: {'center_x': 0.5, 'bottom': 1}
+            spacing: 5
             MaterialButton:
                 text: "Menu"
                 elevation: 2
