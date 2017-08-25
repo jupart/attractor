@@ -13,10 +13,10 @@ package.domain = org.attractor
 source.dir = ./
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py, png, kv, atlas, glsl, json
+source.include_exts = py, png, kv, atlas, glsl, json, wav
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = resources/png/*, src/*, resources/shaders/*, resources/levels/*, resources/*
+source.include_patterns = resources/png/*, src/*, resources/shaders/*, resources/levels/*, resources/*, resources/sfx/*, resources/sfx/membrane/* resources/sfx/wall/*
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
