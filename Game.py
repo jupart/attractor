@@ -1,5 +1,6 @@
 import os
 import json
+import random
 
 from kivy.utils import platform
 from kivy.clock import Clock
@@ -152,12 +153,13 @@ class AttractorGame(Widget):
         if attractor.charge.charge == membrane.charge.charge:
             return False
         else:
-            # self.gameworld.managers['sound_manager'].play_direct(
-                    # random.choice(self.sound_groups['membrane_csharp']), 1.0)
+            self.gameworld.managers['sound_manager'].play_direct(self.sound, 1.0)
             return True
 
     def wall_solver(self, space, arbiter):
         self.gameworld.managers['sound_manager'].play_direct(self.sound, 1.0)
+        # self.gameworld.managers['sound_manager'].play(
+                # random.choice(self.sound_groups['membrane_csharp']), 1.0)
         return True
 
     def setup_states(self):
@@ -285,6 +287,11 @@ class AttractorGame(Widget):
 
         for sound in data['sounds']:
             self.sound = manager.load_sound(sound['name'], sound['source'])
+            try:
+                self.sound_groups[sound['group']].append(sound['name'])
+            except KeyError:
+                self.sound_groups[sound['group']] = []
+                self.sound_groups[sound['group']].append(sound['name'])
 
     def load_music(self):
         manager = self.gameworld.managers['sound_manager']
