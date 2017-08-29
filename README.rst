@@ -22,8 +22,8 @@ Features
 ###################
 Project checkpoints
 ###################
-√ 1. First level, navigating attractor through obstacles using magnets
-2. Decide on visual aesthetic
+√ First level, navigating attractor through obstacles using magnets
+√ Decide on visual aesthetic
 3. First set of 10 levels, sound effects
 4. Decide on aural aesthetic, music for first set
 5. Alpha release
@@ -35,15 +35,15 @@ Project checkpoints
 Idea Sketchpad
 ##############
 √ player controls an attractor that can switch "poles"
-  * neutral, north, or south based
-  * maybe it should be simply charged-based (positive, negative, neutral)
-  * level is laid out statically, so player only changes the attractor's charge
+  √ neutral, north, or south based
+  √ maybe it should be simply charged-based (positive, negative, neutral)
+  √ level is laid out statically, so player only changes the attractor's charge
 
 √ improve level menu
-* display the time it took to finish level
-* display # of Attractor changes it took
+√ display the time it took to finish level
+√ display # of Attractor changes it took
 * metrics: time/level and time/pole/level
 √ implement membrane
-* magnet show needs alpha gradient to edge or some other design
+x magnet show needs alpha gradient to edge or some other design
 √ continue to next level on completion, only show selector from menu
-* horizontal levels in which magnets only affect v_y (flappy bird?)
+x horizontal levels in which magnets only affect v_y (flappy bird?)

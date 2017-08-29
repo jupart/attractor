@@ -136,6 +136,9 @@ AttractorGame:
     EditorScreen:
         id: editor_screen
 
+    FinishScreen:
+        id: finish_screen
+
 
 <MenuScreen@GameScreen>:
     level_buttons: buttons
@@ -377,6 +380,66 @@ AttractorGame:
             id: rotation
             text: '0'
             on_text: app.game.update_editor_rotation(self.text)
+
+<FinishScreen@GameScreen>:
+    name: 'finish_screen'
+
+    BoxLayout:
+        padding: 5
+        spacing: 10
+        orientation: 'vertical'
+        size_hint: 0.5, 0.4
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        canvas.before:
+            Color:
+                rgba: 0.12, 0.12, 0.12, 0.95
+
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            text: '[b]Complete![/b]'
+            markup: True
+            size_hint_y: 0.35
+
+        GridLayout:
+            spacing: 5
+            cols: 2
+
+            Label:
+                text: '[b]Time:[/b]'
+                markup: True
+            Label:
+                id: time
+                text: ''
+
+            Label:
+                text: '[b]Changes:[/b]'
+                markup: True
+            Label:
+                id: changes
+                text: ''
+
+        BoxLayout:
+            size_hint: 1, 0.25
+            pos_hint: {'center_x': 0.5, 'bottom': 1}
+            spacing: 5
+            MaterialButton:
+                text: "Menu"
+                elevation: 2
+                raised_elevation: 2
+                press_elevation: 1
+                on_release: app.game.go_to_menu_screen()
+
+            MaterialButton:
+                text: "Continue"
+                elevation: 2
+                raised_elevation: 2
+                press_elevation: 1
+                on_release: app.game.go_to_next_level()
+
 
 <MaterialButton>
     color: 1, 1, 1, 1

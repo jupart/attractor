@@ -1,0 +1,6 @@
+{
+    "sounds": [
+        {"name": "wall", "source": "resources/sfx/membrane/membrane_csharp.wav", "group": "wall"}
+        ]
+}
+

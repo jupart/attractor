@@ -1,5 +1,6 @@
 import os
 import json
+import random
 
 from kivy.utils import platform
 from kivy.clock import Clock
@@ -12,7 +13,6 @@ from kivy.uix.label import Label
 from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy.animation import Animation
-from kivy.uix.screenmanager import FadeTransition
 from kivy.graphics import Rectangle
 
 # Properties
@@ -87,6 +87,8 @@ class AttractorGame(Widget):
     current_level = 0
     dd = None
     clock = None
+    sound_groups = {}
+    sound = -1
 
     def __init__(self, **kwargs):
         super(AttractorGame, self).__init__(**kwargs)
@@ -113,6 +115,8 @@ class AttractorGame(Widget):
         self.gameworld.state = 'menu'
         self.load_models()
         self.load_animations()
+        self.load_sounds()
+        self.load_music()
 
         self.populate_level_select_menu()
 
@@ -128,6 +132,7 @@ class AttractorGame(Widget):
 
         physics = self.ids.cymunk_physics
         physics.add_collision_handler(1, 2, self.membrane_solver)
+        physics.add_collision_handler(1, 1, self.wall_solver)
 
     def _keyboard_closed(self):
         pass
@@ -148,7 +153,14 @@ class AttractorGame(Widget):
         if attractor.charge.charge == membrane.charge.charge:
             return False
         else:
+            self.gameworld.managers['sound_manager'].play_direct(self.sound, 1.0)
             return True
+
+    def wall_solver(self, space, arbiter):
+        self.gameworld.managers['sound_manager'].play_direct(self.sound, 1.0)
+        # self.gameworld.managers['sound_manager'].play(
+                # random.choice(self.sound_groups['membrane_csharp']), 1.0)
+        return True
 
     def setup_states(self):
         self.gameworld.add_state(state_name='menu',
@@ -219,6 +231,22 @@ class AttractorGame(Widget):
                                                    'finish',
                                                    'charge'],
                                  screenmanager_screen='editor_screen')
+        self.gameworld.add_state(state_name='finish',
+                                 systems_added=[],
+                                 systems_removed=[],
+                                 systems_paused=['position',
+                                                 'rotate',
+                                                 'rotate_renderer',
+                                                 'bg_renderer',
+                                                 'mid_renderer',
+                                                 'animation',
+                                                 'cymunk_physics',
+                                                 'play_camera',
+                                                 'pole_changer',
+                                                 'finish',
+                                                 'charge'],
+                                 systems_unpaused=[],
+                                 screenmanager_screen='finish_screen')
 
     def load_models(self):
         model_manager = self.gameworld.model_manager
@@ -251,6 +279,26 @@ class AttractorGame(Widget):
                     'duration': anim['duration']})
 
             manager.load_animation(anim['name'], len(animation_frames), animation_frames)
+
+    def load_sounds(self):
+        manager = self.gameworld.managers['sound_manager']
+        with open('resources/sfx/sounds.json') as j_file:
+            data = json.load(j_file)
+
+        for sound in data['sounds']:
+            self.sound = manager.load_sound(sound['name'], sound['source'])
+            try:
+                self.sound_groups[sound['group']].append(sound['name'])
+            except KeyError:
+                self.sound_groups[sound['group']] = []
+                self.sound_groups[sound['group']].append(sound['name'])
+
+    def load_music(self):
+        manager = self.gameworld.managers['sound_manager']
+        for root, dirs, files in os.walk("resources/music/"):
+            for music_file in files:
+                manager.load_music(music_file.split('.')[0],
+                                   os.path.join(root, music_file))
 
     def create_entities(self):
         self.attractor_id = self.entity_factory.create_entity_at('attractor', 200, 200)
@@ -535,7 +583,7 @@ class AttractorGame(Widget):
 
         self.clear_level()
 
-        # Draw background
+        # Try to get background from level
         try:
             with self.ids.play_camera.canvas.before:
                 self.editor.level.background = Rectangle(pos=(level_data['background']['x'],
@@ -552,6 +600,7 @@ class AttractorGame(Widget):
         except KeyError:
             pass
 
+        # Try to get ideal time and changes from level
         try:
             self.editor.level.stats.ideal_time = level_data['ideal_time']
             self.editor.level.stats.ideal_changes = level_data['ideal_changes']
@@ -559,6 +608,13 @@ class AttractorGame(Widget):
         except KeyError:
             self.editor.level.stats.ideal_time = 0
             self.editor.level.stats.ideal_changes = 0
+
+        # Try to get music track from level
+        try:
+            track = level_data['track']
+
+        except KeyError:
+            track = 'bum_dabum_da'
 
         for ent in level_data['entities']:
             name = ent['name']
@@ -587,9 +643,19 @@ class AttractorGame(Widget):
         if self.clock is None:
             self.clock = Clock.schedule_interval(self.update_timer, 1)
 
+        self.fade_in_track(track)
+
     def finish_level(self):
-        self.current_level = self.current_level + 1
-        self.load_level('level' + str(self.current_level))
+        self.gameworld.state = 'finish'
+        screen = self.ids.gamescreenmanager.ids.finish_screen
+
+        screen.ids.time.text = str(int(round(self.editor.level.stats.timer))) + \
+            ' / ' + str(self.editor.level.stats.ideal_time)
+
+        screen.ids.changes.text = str(self.editor.level.stats.changes) + ' / ' + \
+            str(self.editor.level.stats.ideal_changes)
+
+        self.fade_out_track()
 
     def clear_level(self):
         self.gameworld.clear_entities()
@@ -621,3 +687,23 @@ class AttractorGame(Widget):
         self.ids.gamescreenmanager.play_screen.time.text = \
             str(int(round(self.editor.level.stats.timer))) + \
             ' / ' + str(self.editor.level.stats.ideal_time)
+    def go_to_next_level(self):
+        self.current_level = self.current_level + 1
+        self.load_level('level' + str(self.current_level))
+
+        self.gameworld.state = 'play'
+
+    def fade_in_track(self, name):
+        manager = self.gameworld.managers['sound_manager']
+        manager.music_volume = 0.0
+
+        if manager.current_track != name:
+            manager.play_track(name)
+
+        anim = Animation(music_volume=1.0, duration=3)
+        anim.start(manager)
+
+    def fade_out_track(self):
+        manager = self.gameworld.managers['sound_manager']
+        anim = Animation(music_volume=0.0, duration=3)
+        anim.start(manager)
