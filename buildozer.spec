@@ -42,6 +42,8 @@ requirements = python2,kivy,kivent_core,kivent_cymunk,,pil,plyer,android
 # Sets custom source for any requirements with recipes
 requirements.source.kivent_core = /home/jpartain/Tools/kivent
 
+requirements.source.kivy = /home/jpartain/Tools/kivy
+
 # (list) Garden requirements
 #garden_requirements =
 
