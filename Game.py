@@ -400,7 +400,7 @@ class AttractorGame(Widget):
             self.toggle_level_editor()
 
     def change_attractor_charge(self, button, change_to):
-        button.background_color[3] = 0.1
+        button.background_color[3] = 0.15
         c = button.background_color
         anim = Animation(background_color=[c[0], c[1], c[2], 0], d=0.5, t='out_circ')
         anim.start(button)
