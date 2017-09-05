@@ -85,6 +85,8 @@ class EntityFactory():
             c_order.append('position')
         if 'rotate' in c_data:
             c_order.append('rotate')
+        if 'attractor' in c_data:
+            c_order.append('attractor')
         if 'rotate_renderer' in c_data:
             c_order.append('rotate_renderer')
         # if 'mid_renderer' in c_data:
@@ -119,6 +121,14 @@ class EntityFactory():
                                                # component_data['size_y']),
                                       # 'model_key': component_data['texture'].encode('utf-8'),
                                       # 'render': True}}
+
+        elif component_data['type'] == 'attractor':
+            c_dict = {'attractor': {'drawn': False,
+                                    'to_change': False,
+                                    'shapes': [],
+                                    'outline': None,
+                                    'fill': None,
+                                    'rotate': None}}
 
         elif component_data['type'] == 'rotate':
             c_dict = {'rotate': component_data['rotation']}

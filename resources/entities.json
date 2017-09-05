@@ -4,15 +4,14 @@
             "name": "attractor",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "attractor_neutral", "size_x": 60, "size_y": 60},
+                {"type": "attractor"},
                 {"type": "physics",
                     "segments": [],
                     "circles": [
                         {"radius": 25, "offset_x": 0, "offset_y": 0}],
                     "mass": 1, "friction": 1.0, "moment": 5, "shape": "circle"},
                 {"type": "rotate", "rotation": 0},
-                {"type": "charge", "charge": "n", "strength": 1},
-                {"type": "animation", "animation": "attractor_neutral_idle", "looped": true}
+                {"type": "charge", "charge": "n", "strength": 1}
             ]
         },
 		{

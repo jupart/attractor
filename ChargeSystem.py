@@ -23,22 +23,10 @@ class ChargeSystem(GameSystem):
             if component is not None:
                 entity_id = component.entity_id
 
-                entity = self.gameworld.entities[entity_id]
-
-                # Apply individual damping
                 if entity_id == attractor_id:
-                    vx, vy = entity.cymunk_physics.body.velocity
-                    if (vx, vy) != (0, 0):
-                        vx = vx - (vx * self.DAMPING * dt)
-                        vy = vy - (vy * self.DAMPING * dt)
-                        entity.cymunk_physics.body.velocity = (vx, vy)
-
-                    ry = entity.cymunk_physics.body.angular_velocity
-                    if ry != 0:
-                        ry = ry - (ry * self.DAMPING * dt)
-                        entity.cymunk_physics.body.angular_velocity = ry
-
                     continue
+
+                entity = self.gameworld.entities[entity_id]
 
                 if entity.charge.skip:
                     continue

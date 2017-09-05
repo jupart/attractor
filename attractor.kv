@@ -13,7 +13,7 @@ AttractorGame:
         gamescreenmanager: gamescreenmanager
         size_of_gameworld: 200 * 1024
         zones: {'general': 40000}
-        system_count: 16
+        system_count: 17
 
         PositionSystem2D:
             system_id: 'position'
@@ -113,6 +113,12 @@ AttractorGame:
 
         LevelEditorSystem:
             system_id: 'editor'
+            gameworld: gameworld
+            zones: ['general']
+            updateable: True
+
+        AttractorSystem:
+            system_id: 'attractor'
             gameworld: gameworld
             zones: ['general']
             updateable: True

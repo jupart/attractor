@@ -34,6 +34,7 @@ from LevelEditor import LevelEditorSystem
 from ChargeSystem import ChargeSystem
 from FinishSystem import FinishSystem
 from PoleChangerSystem import PoleChangerSystem
+from AttractorSystem import AttractorSystem
 
 # Custom widgets
 from TouchedTextBox import TouchedTextBox
@@ -102,6 +103,7 @@ class AttractorGame(Widget):
                                        'play_camera',
                                        'finish',
                                        'pole_changer',
+                                       'attractor',
                                        'charge'],
                                       callback=self.init_game)
 
@@ -176,6 +178,7 @@ class AttractorGame(Widget):
                                                  'play_camera',
                                                  'pole_changer',
                                                  'finish',
+                                                 'attractor',
                                                  'charge'],
                                  systems_unpaused=[],
                                  screenmanager_screen='menu_screen')
@@ -190,6 +193,7 @@ class AttractorGame(Widget):
                                                 'play_camera',
                                                 'pole_changer',
                                                 'finish',
+                                                'attractor',
                                                 'charge'],
                                  systems_removed=[],
                                  systems_paused=[],
@@ -203,6 +207,7 @@ class AttractorGame(Widget):
                                                    'play_camera',
                                                    'pole_changer',
                                                    'finish',
+                                                   'attractor',
                                                    'charge'],
                                  screenmanager_screen='play_screen')
         self.gameworld.add_state(state_name='editor',
@@ -216,6 +221,7 @@ class AttractorGame(Widget):
                                                 'play_camera',
                                                 'pole_changer',
                                                 'finish',
+                                                'attractor',
                                                 'charge'],
                                  systems_removed=[],
                                  systems_paused=[],
@@ -229,6 +235,7 @@ class AttractorGame(Widget):
                                                    'play_camera',
                                                    'pole_changer',
                                                    'finish',
+                                                   'attractor',
                                                    'charge'],
                                  screenmanager_screen='editor_screen')
         self.gameworld.add_state(state_name='finish',
@@ -244,6 +251,7 @@ class AttractorGame(Widget):
                                                  'play_camera',
                                                  'pole_changer',
                                                  'finish',
+                                                 'attractor',
                                                  'charge'],
                                  systems_unpaused=[],
                                  screenmanager_screen='finish_screen')
@@ -405,20 +413,9 @@ class AttractorGame(Widget):
         anim = Animation(background_color=[c[0], c[1], c[2], 0], d=0.5, t='out_circ')
         anim.start(button)
 
-        if change_to != '+' and change_to != '-' and change_to != 'n':
-            return
-
         attractor = self.gameworld.entities[self.attractor_id]
 
-        new_anim = 'attractor_neutral_idle'
-        if change_to == '+':
-            new_anim = 'attractor_positive_idle'
-        elif change_to == '-':
-            new_anim = 'attractor_negative_idle'
-        else:
-            pass
-
-        attractor.animation.animation = new_anim
+        attractor.attractor.to_change = change_to
         attractor.charge.charge = change_to
 
         self.editor.level.stats.changes += 1
