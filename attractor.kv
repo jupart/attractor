@@ -391,27 +391,42 @@ AttractorGame:
     name: 'finish_screen'
 
     BoxLayout:
-        padding: 5
+        padding: 10
         spacing: 10
         orientation: 'vertical'
-        size_hint: 0.5, 0.4
+        size_hint: 0.5, 0.3
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
         canvas.before:
             Color:
-                rgba: 0.12, 0.12, 0.12, 0.95
+                rgba: 0.12, 0.12, 0.12, 1
 
             Rectangle:
                 size: self.size
                 pos: self.pos
 
         Label:
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.15, 1
+
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
             text: '[b]Complete![/b]'
             markup: True
-            size_hint_y: 0.35
+            size_hint_y: 0.4
 
         GridLayout:
-            spacing: 5
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.15, 1
+
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
             cols: 2
 
             Label:
@@ -452,7 +467,7 @@ AttractorGame:
 
     canvas.before:
         Color:
-            rgba: 0.175, 0.175, 0.175, 1
+            rgba: 0.2, 0.2, 0.2, 1
         Rectangle:
             size: self.shadow_size1
             pos: self.shadow_pos1
@@ -462,7 +477,7 @@ AttractorGame:
             pos: self.shadow_pos2
             texture: self.shadow_texture2
         Color:
-            rgba: 0.175, 0.175, 0.175, 1
+            rgba: 0.2, 0.2, 0.2, 1
         Rectangle:
             size: self.size
             pos: self.pos

@@ -88,8 +88,11 @@ class AttractorGame(Widget):
     current_level = 0
     dd = None
     clock = None
-    sound_groups = {}
-    sound = -1
+
+    wall_sound = -1
+    change_sound = -1
+    unpause_button = None
+
 
     def __init__(self, **kwargs):
         super(AttractorGame, self).__init__(**kwargs)
@@ -159,9 +162,7 @@ class AttractorGame(Widget):
             return True
 
     def wall_solver(self, space, arbiter):
-        self.gameworld.managers['sound_manager'].play_direct(self.sound, 1.0)
-        # self.gameworld.managers['sound_manager'].play(
-                # random.choice(self.sound_groups['membrane_csharp']), 1.0)
+        self.play_sound(self.wall_sound, 0.5)
         return True
 
     def setup_states(self):
@@ -294,12 +295,10 @@ class AttractorGame(Widget):
             data = json.load(j_file)
 
         for sound in data['sounds']:
-            self.sound = manager.load_sound(sound['name'], sound['source'])
-            try:
-                self.sound_groups[sound['group']].append(sound['name'])
-            except KeyError:
-                self.sound_groups[sound['group']] = []
-                self.sound_groups[sound['group']].append(sound['name'])
+            if sound['name'] == 'wall_sound':
+                self.wall_sound = manager.load_sound(sound['name'], sound['source'])
+            elif sound['name'] == 'change_sound':
+                self.change_sound = manager.load_sound(sound['name'], sound['source'])
 
     def load_music(self):
         manager = self.gameworld.managers['sound_manager']
@@ -329,7 +328,23 @@ class AttractorGame(Widget):
             if self.editor.asset_id != -1:
                 self.gameworld.remove_entity(self.editor.asset_id)
                 self.editor.asset_id = -1
-        self.gameworld.gamescreenmanager.transition.direction = 'right'
+
+        elif self.gameworld.state == 'play' and self.unpause_button is None:
+            menu = self.ids.gamescreenmanager.ids.menu_screen
+            self.unpause_button = MaterialButton(text='Unpause',
+                                                 elevation=3,
+                                                 raised_elevation=3,
+                                                 press_elevation=1)
+            self.unpause_button.bind(on_release=self.go_to_play_screen)
+            menu.ids.button_container.add_widget(self.unpause_button)
+        else:
+            menu = self.ids.gamescreenmanager.ids.menu_screen
+            try:
+                menu.ids.button_container.remove_widget(self.unpause_button)
+            except AttributeError:
+                pass
+
+        self.gameworld.gamescreenmanager.transition.direction = 'left'
         self.gameworld.state = 'menu'
 
     def open_level_select_menu(self):
@@ -400,7 +415,7 @@ class AttractorGame(Widget):
         buttons.size_y = len(buttons.children) * h_int + h_int/2
         buttons.bind(minimum_height=buttons.setter('height'))
 
-    def go_to_play_screen(self):
+    def go_to_play_screen(self, *args):
         self.gameworld.state = 'play'
 
     def go_to_editor_screen(self):
@@ -422,6 +437,8 @@ class AttractorGame(Widget):
         self.ids.gamescreenmanager.play_screen.changes.text = \
             str(self.editor.level.stats.changes) + ' / ' + \
             str(self.editor.level.stats.ideal_changes)
+
+        self.play_sound(self.change_sound, 0.5)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):
@@ -579,6 +596,8 @@ class AttractorGame(Widget):
             return
 
         self.clear_level()
+        self.ids.play_camera.canvas.before.clear()
+        self.ids.play_camera.canvas.after.clear()
 
         # Try to get background from level
         try:
@@ -640,7 +659,7 @@ class AttractorGame(Widget):
         if self.clock is None:
             self.clock = Clock.schedule_interval(self.update_timer, 1)
 
-        self.fade_in_track(track)
+        self.update_track(track)
 
     def finish_level(self):
         self.gameworld.state = 'finish'
@@ -652,7 +671,7 @@ class AttractorGame(Widget):
         screen.ids.changes.text = str(self.editor.level.stats.changes) + ' / ' + \
             str(self.editor.level.stats.ideal_changes)
 
-        self.fade_out_track()
+        # self.fade_out_track()
 
     def clear_level(self):
         self.gameworld.clear_entities()
@@ -690,17 +709,21 @@ class AttractorGame(Widget):
 
         self.gameworld.state = 'play'
 
+    def update_track(self, name):
+        manager = self.gameworld.managers['sound_manager']
+        if manager.current_track != name:
+            self.fade_out_track()
+            Clock.schedule_once(lambda dt: self.fade_in_track(name), 3)
+
     def fade_in_track(self, name):
         manager = self.gameworld.managers['sound_manager']
-        manager.music_volume = 0.0
-
-        if manager.current_track != name:
-            manager.play_track(name)
-
         anim = Animation(music_volume=1.0, duration=3)
-        anim.start(manager)
+        manager.play_track(name)
 
     def fade_out_track(self):
         manager = self.gameworld.managers['sound_manager']
         anim = Animation(music_volume=0.0, duration=3)
         anim.start(manager)
+
+    def play_sound(self, direct_num, vol=1.0):
+        self.gameworld.managers['sound_manager'].play_direct(direct_num, vol)

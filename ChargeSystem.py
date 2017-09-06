@@ -10,7 +10,6 @@ from cymunk import Vec2d
 class ChargeSystem(GameSystem):
     DISTANCE_MOD = 400
     FORCE_MOD = 2750
-    DAMPING = 0.7
 
     def __init__(self, **kwargs):
         super(ChargeSystem, self).__init__(**kwargs)
