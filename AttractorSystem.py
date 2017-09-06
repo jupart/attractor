@@ -6,6 +6,8 @@ from kivy.factory import Factory
 
 from cymunk import Vec2d
 
+from math import degrees
+
 
 class AttractorSystem(GameSystem):
     DAMPING = 0.7
@@ -29,72 +31,84 @@ class AttractorSystem(GameSystem):
             ry = ry - (ry * self.DAMPING * dt)
             attractor.cymunk_physics.body.angular_velocity = ry
 
-        r = 30
+        r = 30 * 2
         x, y = attractor.position.pos[0], attractor.position.pos[1]
+        s = 5
 
         # Draw shapes if needed
         if not attractor.attractor.drawn:
             with App.get_running_app().game.ids.play_camera.canvas.before:
                 PushMatrix()
-                attractor.attractor.rotate = Rotate()
+                attractor.attractor.rotate = Rotate(angle=0, axis=(0, 0, 1),
+                                                    origin=(x, y))
 
                 # Outlines
                 outline_color = Color(0.196, 0.302, 0.376, 1)
                 outline1 = Ellipse(size=(r, r), pos=(x - r, y - r))
-                outline2 = Ellipse(size=(0, 0), pos=(x - r, y - r))
+                outline2 = Ellipse(size=(r, r), pos=(x - r, y - r))
 
                 # Fill
                 fill_color = Color(0.314, 0.376, 0.412, 1)
-                fill1 = Ellipse(size=(r - 3, r - 3), pos=(x - r - 3, y - r - 3))
-                fill2 = Ellipse(size=(0, 0), pos=(x - r - 3, y - r - 3))
+                fill1 = Ellipse(size=(r - s, r - s), pos=(x - r - s, y - r - s))
+                fill2 = Ellipse(size=(r - s, r - s), pos=(x - r - s, y - r - s))
 
                 attractor.attractor.shapes = [outline1, fill1, outline2, fill2]
                 attractor.attractor.outline = outline_color
                 attractor.attractor.fill = fill_color
+                attractor.attractor.drawn = True
 
             with App.get_running_app().game.ids.play_camera.canvas.after:
                 PopMatrix()
 
+        # Update rotation and rotation origin
+        attractor.attractor.rotate.origin = (x, y)
+        attractor.attractor.rotate.angle = degrees(attractor.cymunk_physics.body.angle)
+
         # Update it's position and rotation
-        attractor.attractor.rotate = attractor.rotate
         for shape in attractor.attractor.shapes:
             shape.pos = (x - shape.size[0]/2, y - shape.size[1]/2)
 
         # Change if needed
         if attractor.attractor.to_change:
-            time = 0.5
-            line = 'out_circ'
+            time = 0.85
+            line = 'out_expo'
             pole = attractor.attractor.to_change
 
-            red_outline = [1, 1, 1, 1]
-            blue_outline = [1, 1, 1, 1]
+            red_outline = [0.6, 0.082, 0.106, 1]
+            blue_outline = [0.094, 0.388, 0.557, 1]
             grey_outline = [0.196, 0.302, 0.376, 1]
 
-            red_fill = [1, 1, 1, 1]
-            blue_fill = [1, 1, 1, 1]
+            red_fill = [0.894, 0.306, 0.282, 1]
+            blue_fill = [0.118, 0.490, 0.694, 1]
             grey_fill = [0.314, 0.376, 0.412, 1]
 
             if pole == '+':
-                fill_anim = Animation(fill=red_fill, d=time, t=line)
-                outline_anim = Animation(fill=red_outline, d=time, t=line)
-                size_anim1 = Animation(size=(r * 0.25, r), d=time, t=line)
-                size_anim2 = Animation(size=(r * 0.25 - 3, r - 3), d=time, t=line)
-                size_anim3 = Animation(size=(r, r * 0.25), d=time, t=line)
-                size_anim4 = Animation(size=(r - 3, r * 0.25 - 3), d=time, t=line)
+                fill_anim = Animation(r=red_fill[0], g=red_fill[1], b=red_fill[2],
+                                      d=time, t=line)
+                outline_anim = Animation(r=red_outline[0], g=red_outline[1], b=red_outline[2],
+                                         d=time, t=line)
+                size_anim1 = Animation(size=(r * 0.5, r), d=time, t=line)
+                size_anim2 = Animation(size=(r * 0.5 - s, r - s), d=time, t=line)
+                size_anim3 = Animation(size=(r, r * 0.5), d=time, t=line)
+                size_anim4 = Animation(size=(r - s, r * 0.5 - s), d=time, t=line)
             elif pole == '-':
-                fill_anim = Animation(fill=blue_fill, d=time, t=line)
-                outline_anim = Animation(fill=blue_outline, d=time, t=line)
-                size_anim1 = Animation(size=(r * 0.5, r * 0.5), d=time, t=line)
-                size_anim2 = Animation(size=(r * 0.5 - 3, r * 0.5 - 3), d=time, t=line)
-                size_anim3 = Animation(size=(r, r * 0.25), d=time, t=line)
-                size_anim4 = Animation(size=(r - 3, r * 0.25 - 3), d=time, t=line)
+                fill_anim = Animation(r=blue_fill[0], g=blue_fill[1], b=blue_fill[2],
+                                      d=time, t=line)
+                outline_anim = Animation(r=blue_outline[0], g=blue_outline[1], b=blue_outline[2],
+                                         d=time, t=line)
+                size_anim1 = Animation(size=(r * 0.7, r * 0.7), d=time, t=line)
+                size_anim2 = Animation(size=(r * 0.7 - s, r * 0.7 - s), d=time, t=line)
+                size_anim3 = Animation(size=(r, r * 0.5), d=time, t=line)
+                size_anim4 = Animation(size=(r - s, r * 0.5 - s), d=time, t=line)
             else:
-                fill_anim = Animation(fill=grey_fill, d=time, t=line)
-                outline_anim = Animation(fill=grey_outline, d=time, t=line)
+                fill_anim = Animation(r=grey_fill[0], g=grey_fill[1], b=grey_fill[2],
+                                      d=time, t=line)
+                outline_anim = Animation(r=grey_outline[0], g=grey_outline[1], b=grey_outline[2],
+                                         d=time, t=line)
                 size_anim1 = Animation(size=(r, r), d=time, t=line)
-                size_anim2 = Animation(size=(r - 3, r - 3), d=time, t=line)
-                size_anim3 = Animation(size=(0, 0), d=time, t=line)
-                size_anim4 = Animation(size=(0, 0), d=time, t=line)
+                size_anim2 = Animation(size=(r - s, r - s), d=time, t=line)
+                size_anim3 = Animation(size=(r, r), d=time, t=line)
+                size_anim4 = Animation(size=(r - s, r - s), d=time, t=line)
 
             attractor.attractor.to_change = False
 

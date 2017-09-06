@@ -677,7 +677,7 @@ class AttractorGame(Widget):
         attractor.cymunk_physics.body.velocity = (0, 0)
 
         attractor.charge.charge = 'n'
-        attractor.animation.animation = 'attractor_neutral_idle'
+        attractor.attractor.to_change = 'n'
 
     def update_timer(self, dt):
         self.editor.level.stats.timer += dt
