@@ -620,7 +620,6 @@ class AttractorGame(Widget):
         try:
             self.editor.level.stats.ideal_time = level_data['ideal_time']
             self.editor.level.stats.ideal_changes = level_data['ideal_changes']
-
         except KeyError:
             self.editor.level.stats.ideal_time = 0
             self.editor.level.stats.ideal_changes = 0
@@ -628,7 +627,6 @@ class AttractorGame(Widget):
         # Try to get music track from level
         try:
             track = level_data['track']
-
         except KeyError:
             track = 'bum_dabum_da'
 
@@ -713,16 +711,17 @@ class AttractorGame(Widget):
         manager = self.gameworld.managers['sound_manager']
         if manager.current_track != name:
             self.fade_out_track()
-            Clock.schedule_once(lambda dt: self.fade_in_track(name), 3)
+            Clock.schedule_once(lambda dt: self.fade_in_track(name), 1)
 
     def fade_in_track(self, name):
         manager = self.gameworld.managers['sound_manager']
-        anim = Animation(music_volume=1.0, duration=3)
+        anim = Animation(music_volume=1.0, duration=1)
+        anim.start(manager)
         manager.play_track(name)
 
     def fade_out_track(self):
         manager = self.gameworld.managers['sound_manager']
-        anim = Animation(music_volume=0.0, duration=3)
+        anim = Animation(music_volume=0.0, duration=1)
         anim.start(manager)
 
     def play_sound(self, direct_num, vol=1.0):
