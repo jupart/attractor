@@ -1,7 +1,7 @@
 {
     "sounds": [
-        {"name": "wall_sound", "source": "resources/sfx/membrane/membrane_csharp.wav"},
-        {"name": "change_sound", "source": "resources/sfx/membrane/membrane_csharp.wav"}
+        {"name": "wall_sound", "source": "resources/sfx/wall_sound.wav"},
+        {"name": "change_sound", "source": "resources/sfx/change_sound.wav"}
         ]
 }
 

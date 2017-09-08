@@ -70,7 +70,7 @@ class AttractorSystem(GameSystem):
 
         # Change if needed
         if attractor.attractor.to_change:
-            time = 0.85
+            time = 0.9
             line = 'out_expo'
             pole = attractor.attractor.to_change
 
