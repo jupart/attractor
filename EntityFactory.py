@@ -115,13 +115,6 @@ class EntityFactory():
                                           'model_key': component_data['texture'].encode('utf-8'),
                                           'render': True}}
 
-        # if component_data['type'] == 'bg_render':
-            # c_dict = {'bg_renderer': {'texture': component_data['texture'],
-                                      # 'size': (component_data['size_x'],
-                                               # component_data['size_y']),
-                                      # 'model_key': component_data['texture'].encode('utf-8'),
-                                      # 'render': True}}
-
         elif component_data['type'] == 'attractor':
             c_dict = {'attractor': {'drawn': False,
                                     'to_change': False,

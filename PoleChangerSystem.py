@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.graphics import Color, Ellipse
+from kivy.graphics import Color, Rectangle
 from kivy.animation import Animation
 from kivent_core.systems.gamesystem import GameSystem
 from kivy.factory import Factory
@@ -29,23 +29,20 @@ class PoleChangerSystem(GameSystem):
                 attractor_pos = attractor.position
 
                 if entity.pole_changer.rect is None:
-                    if to_charge == '+':
-                        r, g, b = 0.894, 0.243, 0.282
-                    elif to_charge == '-':
-                        r, g, b = 0.118, 0.490, 0.694
-                    else:
-                        r, g, b = 0.33, 0.33, 0.33
+                    r, g, b = 0.33, 0.33, 0.33
+                    r1, g1, b1 = 0.22, 0.22, 0.22
 
                     with App.get_running_app().game.ids.play_camera.canvas.before:
-                        color = Color(r, g, b, -0.05)
-                        entity.pole_changer.rect = Ellipse(size=(size[0],
-                                                                 size[1]),
-                                                           pos=(pos.x - size[0]/2,
-                                                                pos.y - size[1]/2))
-
-                    anim = Animation(a=0.1) + Animation(a=-0.05, duration=1)
-                    anim.repeat = True
-                    anim.start(color)
+                        color = Color(r, g, b, 1)
+                        entity.pole_changer.rect = Rectangle(size=(size[0],
+                                                                   size[1]),
+                                                             pos=(pos.x - size[0]/2,
+                                                                  pos.y - size[1]/2))
+                        color = Color(r1, g1, b1, 1)
+                        entity.pole_changer.rect = Rectangle(size=(size[0] - 6,
+                                                                   size[1] - 6),
+                                                             pos=(pos.x - (size[0] - 6)/2,
+                                                                  pos.y - (size[1] - 6)/2))
 
                 if self.in_range(pos, size, attractor_pos):
                     attractor.attractor.to_change = to_charge

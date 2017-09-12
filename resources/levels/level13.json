@@ -44,30 +44,6 @@
     }, 
     {
       "y": 360, 
-      "x": 720, 
-      "rotation": 180, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": 60, 
-      "x": 720, 
-      "rotation": 0, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": 340, 
-      "x": 722, 
-      "rotation": 0, 
-      "name": "negapole_weak"
-    }, 
-    {
-      "y": 80, 
-      "x": 718, 
-      "rotation": 0, 
-      "name": "negapole_weak"
-    }, 
-    {
-      "y": 360, 
       "x": 960, 
       "rotation": 180, 
       "name": "wall"
@@ -319,12 +295,6 @@
       "name": "big_black"
     }, 
     {
-      "y": 210, 
-      "x": 420, 
-      "rotation": 0, 
-      "name": "to_negative_pole_changer"
-    }, 
-    {
       "y": 212, 
       "x": 110, 
       "rotation": 90, 
@@ -335,6 +305,24 @@
       "x": -204, 
       "rotation": 90, 
       "name": "big_black"
+    }, 
+    {
+      "y": 360, 
+      "x": 720, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
+    {
+      "y": 60, 
+      "x": 720, 
+      "rotation": 0, 
+      "name": "wall"
+    }, 
+    {
+      "y": 210, 
+      "x": 740, 
+      "rotation": 0, 
+      "name": "to_positive_pole_changer"
     }
   ], 
   "ideal_changes": 3, 

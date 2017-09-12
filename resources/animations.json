@@ -1,35 +1,4 @@
 {
     "animations": [
-        {"name": "attractor_neutral_idle", "duration": 100, "frames": [
-            {"frame": "attractor_neutral"}
-        ]},
-        {"name": "attractor_negative_idle", "duration": 100, "frames": [
-            {"frame": "attractor_negative_idle_00"},
-            {"frame": "attractor_negative_idle_01"},
-            {"frame": "attractor_negative_idle_02"},
-            {"frame": "attractor_negative_idle_03"},
-            {"frame": "attractor_negative_idle_04"},
-            {"frame": "attractor_negative_idle_05"},
-            {"frame": "attractor_negative_idle_06"},
-            {"frame": "attractor_negative_idle_07"},
-            {"frame": "attractor_negative_idle_08"},
-            {"frame": "attractor_negative_idle_09"},
-            {"frame": "attractor_negative_idle_10"},
-            {"frame": "attractor_negative_idle_11"}
-        ]},
-        {"name": "attractor_positive_idle", "duration": 100, "frames": [
-            {"frame": "attractor_positive_idle_00"},
-            {"frame": "attractor_positive_idle_01"},
-            {"frame": "attractor_positive_idle_02"},
-            {"frame": "attractor_positive_idle_03"},
-            {"frame": "attractor_positive_idle_04"},
-            {"frame": "attractor_positive_idle_05"},
-            {"frame": "attractor_positive_idle_06"},
-            {"frame": "attractor_positive_idle_07"},
-            {"frame": "attractor_positive_idle_08"},
-            {"frame": "attractor_positive_idle_09"},
-            {"frame": "attractor_positive_idle_10"},
-            {"frame": "attractor_positive_idle_11"}
-        ]}
     ]
 }

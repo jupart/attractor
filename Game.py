@@ -49,31 +49,6 @@ for root, dirs, files in os.walk("resources/png"):
     for asset in files:
         if '.atlas' in asset:
             texture_manager.load_atlas(os.path.join(root, asset))
-            png_list.append('attractor_negative_idle_00.png')
-            png_list.append('attractor_negative_idle_01.png')
-            png_list.append('attractor_negative_idle_02.png')
-            png_list.append('attractor_negative_idle_03.png')
-            png_list.append('attractor_negative_idle_04.png')
-            png_list.append('attractor_negative_idle_05.png')
-            png_list.append('attractor_negative_idle_06.png')
-            png_list.append('attractor_negative_idle_07.png')
-            png_list.append('attractor_negative_idle_08.png')
-            png_list.append('attractor_negative_idle_09.png')
-            png_list.append('attractor_negative_idle_10.png')
-            png_list.append('attractor_negative_idle_11.png')
-
-            png_list.append('attractor_positive_idle_00.png')
-            png_list.append('attractor_positive_idle_01.png')
-            png_list.append('attractor_positive_idle_02.png')
-            png_list.append('attractor_positive_idle_03.png')
-            png_list.append('attractor_positive_idle_04.png')
-            png_list.append('attractor_positive_idle_05.png')
-            png_list.append('attractor_positive_idle_06.png')
-            png_list.append('attractor_positive_idle_07.png')
-            png_list.append('attractor_positive_idle_08.png')
-            png_list.append('attractor_positive_idle_09.png')
-            png_list.append('attractor_positive_idle_10.png')
-            png_list.append('attractor_positive_idle_11.png')
 
         if '.png' in asset:
             texture_manager.load_image(os.path.join(root, asset))

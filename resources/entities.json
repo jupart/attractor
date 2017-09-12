@@ -328,7 +328,7 @@
             "name": "to_negative_pole_changer",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "pole_changer", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "pole_changer_n", "size_x": 120, "size_y": 120},
                 {"type": "rotate", "rotation": 0},
                 {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "-"}
             ]
@@ -337,18 +337,9 @@
             "name": "to_positive_pole_changer",
             "components": [
                 {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "pole_changer", "size_x": 120, "size_y": 120},
+                {"type": "render", "texture": "pole_changer_p", "size_x": 120, "size_y": 120},
                 {"type": "rotate", "rotation": 0},
                 {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "+"}
-            ]
-        },
-		{
-            "name": "to_neutral_pole_changer",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "pole_changer", "size_x": 120, "size_y": 120},
-                {"type": "rotate", "rotation": 0},
-                {"type": "pole_changer", "size_x": 240, "size_y": 240, "to": "n"}
             ]
         },
 		{
@@ -385,24 +376,6 @@
                     "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
                 {"type": "rotate", "rotation": 0},
                 {"type": "membrane", "pole": "-"}
-            ]
-        },
-		{
-            "name": "neutral_membrane",
-            "components": [
-                {"type": "position", "x": 0, "y": 0},
-                {"type": "render", "texture": "neutral_membrane", "size_x": 240, "size_y": 60},
-                {"type": "physics",
-                    "segments": [
-                        {"ax": -120, "ay": -30, "bx": -120, "by": 30, "radius": 3},
-                        {"ax": 120, "ay": -30, "bx": -120, "by": -30, "radius": 3},
-                        {"ax": -120, "ay": 30, "bx": 120, "by": 30, "radius": 3},
-                        {"ax": 120, "ay": 30, "bx": 120, "by": -30, "radius": 3}
-                    ],
-                    "circles": [],
-                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
-                {"type": "rotate", "rotation": 0},
-                {"type": "membrane", "pole": "n"}
             ]
         },
 		{
