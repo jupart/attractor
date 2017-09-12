@@ -39,7 +39,6 @@ from AttractorSystem import AttractorSystem
 # Custom widgets
 from TouchedTextBox import TouchedTextBox
 from CircularButton import CircularButton
-from MaterialButton import MaterialButton
 from BetterButton import BetterButton
 
 
@@ -158,11 +157,11 @@ class AttractorGame(Widget):
         if attractor.charge.charge == membrane.charge.charge:
             return False
         else:
-            self.gameworld.managers['sound_manager'].play_direct(self.sound, 1.0)
+            # self.gameworld.managers['sound_manager'].play_direct(self.sound, 1.0)
             return True
 
     def wall_solver(self, space, arbiter):
-        self.play_sound(self.wall_sound, 0.5)
+        # self.play_sound(self.wall_sound, 0.5)
         return True
 
     def setup_states(self):
@@ -331,10 +330,7 @@ class AttractorGame(Widget):
 
         elif self.gameworld.state == 'play' and self.unpause_button is None:
             menu = self.ids.gamescreenmanager.ids.menu_screen
-            self.unpause_button = MaterialButton(text='Unpause',
-                                                 elevation=3,
-                                                 raised_elevation=3,
-                                                 press_elevation=1)
+            self.unpause_button = BetterButton(text='Unpause')
             self.unpause_button.bind(on_release=self.go_to_play_screen)
             menu.ids.button_container.add_widget(self.unpause_button)
         else:
@@ -367,23 +363,17 @@ class AttractorGame(Widget):
         buttons.add_widget(Label(text='[b]Magnet[/b]', markup=True))
         buttons.add_widget(Label())
         for i in range(1, 5):
-            button = MaterialButton(text=str(i),
-                                    size_hint_y=None,
-                                    elevation=z1,
-                                    raised_elevation=z1,
-                                    pressed_elevation=z2,
-                                    height=h)
+            button = BetterButton(text=str(i),
+                                  size_hint_y=None,
+                                  height=h)
             button.bind(on_release=self.play_level)
             buttons.add_widget(button)
 
         buttons.add_widget(Label(text='[b]Rotator[/b]', markup=True))
         buttons.add_widget(Label())
         for i in range(5, 9):
-            button = MaterialButton(text=str(i),
+            button = BetterButton(text=str(i),
                                     size_hint_y=None,
-                                    elevation=z1,
-                                    raised_elevation=z1,
-                                    pressed_elevation=z2,
                                     height=h)
             button.bind(on_release=self.play_level)
             buttons.add_widget(button)
@@ -391,11 +381,8 @@ class AttractorGame(Widget):
         buttons.add_widget(Label(text='[b]Membrane[/b]', markup=True))
         buttons.add_widget(Label())
         for i in range(9, 13):
-            button = MaterialButton(text=str(i),
+            button = BetterButton(text=str(i),
                                     size_hint_y=None,
-                                    elevation=z1,
-                                    raised_elevation=z1,
-                                    pressed_elevation=z2,
                                     height=h)
             button.bind(on_release=self.play_level)
             buttons.add_widget(button)
@@ -403,11 +390,8 @@ class AttractorGame(Widget):
         buttons.add_widget(Label(text='[b]Changer[/b]', markup=True))
         buttons.add_widget(Label())
         for i in range(13, 17):
-            button = MaterialButton(text=str(i),
+            button = BetterButton(text=str(i),
                                     size_hint_y=None,
-                                    elevation=z1,
-                                    raised_elevation=z1,
-                                    pressed_elevation=z2,
                                     height=h)
             button.bind(on_release=self.play_level)
             buttons.add_widget(button)
@@ -438,7 +422,7 @@ class AttractorGame(Widget):
             str(self.editor.level.stats.changes) + ' / ' + \
             str(self.editor.level.stats.ideal_changes)
 
-        self.play_sound(self.change_sound, 0.5)
+        self.play_sound(self.change_sound, 1.5)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):
@@ -474,6 +458,7 @@ class AttractorGame(Widget):
             self.editor.remove_anchors()
 
         else:
+            self.load_level('level1')
             self.gameworld.state = 'editor'
             self.ids.play_camera.focus_entity = False
             self.editor.draw_anchors()
@@ -695,6 +680,8 @@ class AttractorGame(Widget):
 
         attractor.charge.charge = 'n'
         attractor.attractor.to_change = 'n'
+        self.play_sound(self.change_sound, 1.0)
+        # self.play_sound(self.reset_sound, 1.0)
 
     def update_timer(self, dt):
         self.editor.level.stats.timer += dt

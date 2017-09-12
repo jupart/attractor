@@ -42,6 +42,7 @@ class AttractorSystem(GameSystem):
                 attractor.attractor.rotate = Rotate(angle=0, axis=(0, 0, 1),
                                                     origin=(x, y))
 
+            with App.get_running_app().game.ids.play_camera.canvas.after:
                 # Outlines
                 outline_color = Color(0.196, 0.302, 0.376, 1)
                 outline1 = Ellipse(size=(r, r), pos=(x - r, y - r))
@@ -57,7 +58,6 @@ class AttractorSystem(GameSystem):
                 attractor.attractor.fill = fill_color
                 attractor.attractor.drawn = True
 
-            with App.get_running_app().game.ids.play_camera.canvas.after:
                 PopMatrix()
 
         # Update rotation and rotation origin

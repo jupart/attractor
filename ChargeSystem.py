@@ -9,7 +9,7 @@ from cymunk import Vec2d
 
 class ChargeSystem(GameSystem):
     DISTANCE_MOD = 400
-    FORCE_MOD = 2750
+    FORCE_MOD = 150000
 
     def __init__(self, **kwargs):
         super(ChargeSystem, self).__init__(**kwargs)
@@ -63,7 +63,8 @@ class ChargeSystem(GameSystem):
                                      attractor.position):
                         self.exert_force(entity.position,
                                          entity.charge.strength,
-                                         attractor)
+                                         attractor,
+                                         dt)
 
     def in_range(self, pos, strength, attractor_pos):
         radius = abs(strength) * self.DISTANCE_MOD
@@ -78,7 +79,7 @@ class ChargeSystem(GameSystem):
         else:
             return False
 
-    def exert_force(self, pos, strength, attractor):
+    def exert_force(self, pos, strength, attractor, dt):
         offset = (attractor.position.x - pos.x, attractor.position.y - pos.y)
 
         if attractor.charge.charge == '+':
@@ -87,7 +88,7 @@ class ChargeSystem(GameSystem):
             mod = -1
 
         d = ((pos.x - attractor.position.x)**2 + (pos.y - attractor.position.y)**2)
-        f = mod * (strength * self.FORCE_MOD)/d
+        f = mod * (strength * self.FORCE_MOD)/d * dt
         force = (offset[0] * f, offset[1] * f)
 
         attractor.cymunk_physics.body.apply_impulse(force, offset)

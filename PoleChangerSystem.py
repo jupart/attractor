@@ -21,6 +21,11 @@ class PoleChangerSystem(GameSystem):
                 pos = entity.position
                 size = entity.pole_changer.size
                 to_charge = entity.pole_changer.to
+
+                # Skip if Attractor is already to_charge
+                if attractor.charge.charge == to_charge:
+                    continue
+
                 attractor_pos = attractor.position
 
                 if entity.pole_changer.rect is None:
@@ -43,15 +48,11 @@ class PoleChangerSystem(GameSystem):
                     anim.start(color)
 
                 if self.in_range(pos, size, attractor_pos):
-                    if to_charge == '+':
-                        new_anim = 'attractor_positive_idle'
-                    elif to_charge == '-':
-                        new_anim = 'attractor_negative_idle'
-                    else:
-                        new_anim = 'attractor_neutral_idle'
-
-                    attractor.animation.animation = new_anim
+                    attractor.attractor.to_change = to_charge
                     attractor.charge.charge = to_charge
+
+                    game = App.get_running_app().game
+                    game.play_sound(game.change_sound, 1.5)
 
     def in_range(self, pos, size, attractor_pos):
         left = pos.x - size[0]/2

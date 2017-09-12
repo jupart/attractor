@@ -1,7 +1,8 @@
 {
     "sounds": [
         {"name": "wall_sound", "source": "resources/sfx/wall_sound.wav"},
-        {"name": "change_sound", "source": "resources/sfx/change_sound.wav"}
+        {"name": "change_sound", "source": "resources/sfx/change_sound.wav"},
+        {"name": "reset_sound", "source": "resources/sfx/change_sound.wav"}
         ]
 }
 

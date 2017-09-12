@@ -169,19 +169,13 @@ AttractorGame:
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             size_hint: 0.4, 0.2
 
-            MaterialButton:
+            BetterButton:
                 text: 'Levels'
-                elevation: 3
-                raised_elevation: 3
-                press_elevation: 1
                 on_release: app.game.open_level_select_menu()
 
-            MaterialButton:
+            BetterButton:
                 id: editor_button
                 text: 'Editor'
-                elevation: 3
-                raised_elevation: 3
-                press_elevation: 1
                 on_release: app.game.go_to_editor_screen()
 
         ScrollView:
@@ -233,11 +227,8 @@ AttractorGame:
                     size: self.size
                     pos: self.pos
 
-            MaterialButton:
+            BetterButton:
                 text: "Menu"
-                elevation: 2
-                raised_elevation: 2
-                press_elevation: 1
                 on_release: app.game.go_to_menu_screen()
 
             Label:
@@ -256,11 +247,8 @@ AttractorGame:
                 id: changes
                 text: '0'
 
-            MaterialButton:
+            BetterButton:
                 text: "Reset"
-                elevation: 2
-                raised_elevation: 2
-                press_elevation: 1
                 on_release: app.game.reset_attractor()
 
         # Change buttons
@@ -447,37 +435,13 @@ AttractorGame:
             size_hint: 1, 0.25
             pos_hint: {'center_x': 0.5, 'bottom': 1}
             spacing: 5
-            MaterialButton:
+            BetterButton:
                 text: "Menu"
-                elevation: 2
-                raised_elevation: 2
-                press_elevation: 1
                 on_release: app.game.go_to_menu_screen()
 
-            MaterialButton:
+            BetterButton:
                 text: "Continue"
                 elevation: 2
                 raised_elevation: 2
                 press_elevation: 1
                 on_release: app.game.go_to_next_level()
-
-
-<MaterialButton>
-    color: 1, 1, 1, 1
-
-    canvas.before:
-        Color:
-            rgba: 0.2, 0.2, 0.2, 1
-        Rectangle:
-            size: self.shadow_size1
-            pos: self.shadow_pos1
-            texture: self.shadow_texture1
-        Rectangle:
-            size: self.shadow_size2
-            pos: self.shadow_pos2
-            texture: self.shadow_texture2
-        Color:
-            rgba: 0.2, 0.2, 0.2, 1
-        Rectangle:
-            size: self.size
-            pos: self.pos

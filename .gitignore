@@ -5,3 +5,4 @@ bin/
 *.pyc
 tags
 app.profile
+venv
