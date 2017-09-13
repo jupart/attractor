@@ -33,12 +33,12 @@ class PoleChangerSystem(GameSystem):
                     r1, g1, b1 = 0.22, 0.22, 0.22
 
                     with App.get_running_app().game.ids.play_camera.canvas.before:
-                        color = Color(r, g, b, 1)
+                        color = Color(r1, g1, b1, 0.25)
                         entity.pole_changer.rect = Rectangle(size=(size[0],
                                                                    size[1]),
                                                              pos=(pos.x - size[0]/2,
                                                                   pos.y - size[1]/2))
-                        color = Color(r1, g1, b1, 1)
+                        color = Color(r, g, b, 0.25)
                         entity.pole_changer.rect = Rectangle(size=(size[0] - 6,
                                                                    size[1] - 6),
                                                              pos=(pos.x - (size[0] - 6)/2,

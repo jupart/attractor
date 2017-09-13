@@ -112,6 +112,23 @@
             ]
         },
 		{
+            "name": "wall_inlay_small",
+            "components": [
+                {"type": "position", "x": 0, "y": 0},
+                {"type": "render", "texture": "thin_wall_inlay_small", "size_x": 80, "size_y": 60},
+                {"type": "physics",
+                    "segments": [
+                        {"ax": -40, "ay": -30, "bx": -40, "by": 30, "radius": 3},
+                        {"ax": 40, "ay": -30, "bx": -40, "by": -30, "radius": 3},
+                        {"ax": -40, "ay": 30, "bx": 40, "by": 30, "radius": 3},
+                        {"ax": 40, "ay": 30, "bx": 40, "by": -30, "radius": 3}
+                    ],
+                    "circles": [],
+                    "mass": 0, "friction": 1.0, "moment": 1, "shape": "box"},
+                {"type": "rotate", "rotation": 0}
+            ]
+        },
+		{
             "name": "posipole",
             "components": [
                 {"type": "position", "x": 0, "y": 0},

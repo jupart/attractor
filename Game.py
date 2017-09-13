@@ -397,7 +397,7 @@ class AttractorGame(Widget):
             str(self.editor.level.stats.changes) + ' / ' + \
             str(self.editor.level.stats.ideal_changes)
 
-        self.play_sound(self.change_sound, 1.5)
+        self.play_sound(self.change_sound, 2.0)
 
     def on_touch_down(self, touch):
         if super(AttractorGame, self).on_touch_down(touch):
@@ -428,7 +428,6 @@ class AttractorGame(Widget):
             self.gameworld.state = 'menu'
 
             self.ids.play_camera.focus_entity = True
-            self.ids.rotate_renderer.gameview = 'play_camera'
             self.ids.play_camera.entity_to_focus = self.attractor_id
             self.editor.remove_anchors()
 
@@ -590,7 +589,25 @@ class AttractorGame(Widget):
         except KeyError:
             track = 'bum_dabum_da'
 
+        # Order entities
+        finish = None
+        corners= []
+        other = []
+        changers = []
         for ent in level_data['entities']:
+            name = ent['name']
+            if name == 'finish':
+                finish = [ent]
+            elif name == 'wall_corner':
+                corners.append(ent)
+            elif 'changer' in name:
+                changers.append(ent)
+            else:
+                other.append(ent)
+
+        ents = changers + other + corners + finish
+
+        for ent in ents:
             name = ent['name']
             x = ent['x']
             y = ent['y']
@@ -655,7 +672,7 @@ class AttractorGame(Widget):
 
         attractor.charge.charge = 'n'
         attractor.attractor.to_change = 'n'
-        self.play_sound(self.change_sound, 1.0)
+        self.play_sound(self.change_sound, 2.0)
         # self.play_sound(self.reset_sound, 1.0)
 
     def update_timer(self, dt):

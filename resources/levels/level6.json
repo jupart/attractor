@@ -38,27 +38,9 @@
     }, 
     {
       "y": 330, 
-      "x": 960, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 330, 
       "x": 900, 
       "rotation": 180, 
       "name": "wall_small"
-    }, 
-    {
-      "y": 30, 
-      "x": 660, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 330, 
-      "x": 120, 
-      "rotation": 270, 
-      "name": "wall_corner"
     }, 
     {
       "y": 182, 
@@ -85,34 +67,10 @@
       "name": "wall"
     }, 
     {
-      "y": -260, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
       "y": -570, 
       "x": 710, 
       "rotation": 180, 
       "name": "wall"
-    }, 
-    {
-      "y": -410, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_small"
-    }, 
-    {
-      "y": -470, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_small"
-    }, 
-    {
-      "y": -510, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_small"
     }, 
     {
       "y": -570, 
@@ -143,12 +101,6 @@
       "x": 500, 
       "rotation": 180, 
       "name": "wall_small"
-    }, 
-    {
-      "y": -570, 
-      "x": 420, 
-      "rotation": 270, 
-      "name": "wall_corner"
     }, 
     {
       "y": -570, 
@@ -199,30 +151,6 @@
       "name": "wall_small"
     }, 
     {
-      "y": -1170, 
-      "x": 120, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -870, 
-      "x": 420, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -1170, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -270, 
-      "x": 660, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
       "y": -1060, 
       "x": 120, 
       "rotation": 270, 
@@ -239,12 +167,6 @@
       "x": 140, 
       "rotation": 270, 
       "name": "posipole_weak"
-    }, 
-    {
-      "y": -1020, 
-      "x": 870, 
-      "rotation": 270, 
-      "name": "finish"
     }, 
     {
       "y": -120, 
@@ -487,29 +409,95 @@
       "name": "wall"
     }, 
     {
-      "y": -50, 
+      "y": -334, 
+      "x": 1230, 
+      "rotation": 90, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 330, 
+      "x": 960, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 30, 
+      "x": 660, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 330, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -570, 
+      "x": 420, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -1170, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -870, 
+      "x": 420, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -1170, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -270, 
+      "x": 660, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -1020, 
+      "x": 870, 
+      "rotation": 270, 
+      "name": "finish"
+    }, 
+    {
+      "y": -420, 
       "x": 960, 
       "rotation": 90, 
       "name": "wall_inlay"
     }, 
     {
-      "y": -52, 
+      "y": -50, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -200, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -422, 
       "x": 940, 
       "rotation": 90, 
       "name": "negapole_weak"
-    }, 
-    {
-      "y": -334, 
-      "x": 1230, 
-      "rotation": 90, 
-      "name": "big_black"
     }
   ], 
   "ideal_changes": 3, 
   "background": {
     "y": -1240.0, 
     "x": 0.0, 
-    "source": "/media/sf_vbshare/attractor/resources/src/bg/level2.png", 
+    "source": "resources/src/bg/level2.png", 
     "w": 2076.0, 
     "h": 2076.0
   }, 

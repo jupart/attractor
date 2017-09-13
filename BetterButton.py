@@ -7,6 +7,7 @@ class BetterButton(Button):
         self.grabbed = False
 
     def on_touch_down(self, touch):
+        super(BetterButton, self).on_touch_down(touch)
         if self.collide_point(touch.x, touch.y):
             if self.grabbed == False:
                 self.dispatch('on_press')
@@ -16,8 +17,8 @@ class BetterButton(Button):
             else:
                 return True
 
-
     def on_touch_up(self, touch):
+        super(BetterButton, self).on_touch_up(touch)
         if touch.grab_current is self:
             self.dispatch('on_release')
             touch.ungrab(self)

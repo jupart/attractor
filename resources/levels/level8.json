@@ -1,30 +1,6 @@
 {
   "entities": [
     {
-      "y": 120, 
-      "x": 900, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 900, 
-      "x": 900, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 900, 
-      "x": 120, 
-      "rotation": 270, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 120, 
-      "x": 120, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
       "y": 270, 
       "x": 120, 
       "rotation": 90, 
@@ -145,18 +121,6 @@
       "name": "big_black"
     }, 
     {
-      "y": 510, 
-      "x": 540, 
-      "rotation": 0, 
-      "name": "rotator_100_posipole_ccw"
-    }, 
-    {
-      "y": 510, 
-      "x": 540, 
-      "rotation": 0, 
-      "name": "rotator_200_negapole"
-    }, 
-    {
       "y": 120, 
       "x": 510, 
       "rotation": 0, 
@@ -167,12 +131,6 @@
       "x": 510, 
       "rotation": 0, 
       "name": "wall"
-    }, 
-    {
-      "y": 210, 
-      "x": 810, 
-      "rotation": 0, 
-      "name": "finish"
     }, 
     {
       "y": 120, 
@@ -329,6 +287,42 @@
       "x": 350, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": 120, 
+      "x": 900, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 900, 
+      "x": 900, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 900, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 120, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 210, 
+      "x": 810, 
+      "rotation": 0, 
+      "name": "finish"
+    }, 
+    {
+      "y": 510, 
+      "x": 520, 
+      "rotation": 0, 
+      "name": "rotator_200_posipole"
     }
   ], 
   "ideal_changes": 3, 
