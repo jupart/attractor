@@ -1,14 +1,387 @@
 {
-  "entities": [], 
+  "entities": [
+    {
+      "y": 290, 
+      "x": 200, 
+      "rotation": 180, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": 140, 
+      "x": 50, 
+      "rotation": 270, 
+      "name": "wall"
+    }, 
+    {
+      "y": 140, 
+      "x": 350, 
+      "rotation": 270, 
+      "name": "wall"
+    }, 
+    {
+      "y": -460, 
+      "x": 50, 
+      "rotation": 270, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": -460, 
+      "x": 350, 
+      "rotation": 90, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": -760, 
+      "x": 350, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -760, 
+      "x": 50, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -910, 
+      "x": 200, 
+      "rotation": 180, 
+      "name": "wall"
+    }, 
+    {
+      "y": 270, 
+      "x": 202, 
+      "rotation": 0, 
+      "name": "negapole_weak"
+    }, 
+    {
+      "y": -462, 
+      "x": 330, 
+      "rotation": 90, 
+      "name": "negapole_weak"
+    }, 
+    {
+      "y": -458, 
+      "x": 70, 
+      "rotation": 90, 
+      "name": "negapole_weak"
+    }, 
+    {
+      "y": -1180, 
+      "x": 160, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -820, 
+      "x": -220, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -380, 
+      "x": -220, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 70, 
+      "x": -220, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 550, 
+      "x": -220, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 880, 
+      "x": 90, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 830, 
+      "x": 490, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 1010, 
+      "x": 430, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 950, 
+      "x": 910, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 660, 
+      "x": 920, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 970, 
+      "x": 1210, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 610, 
+      "x": 1290, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 920, 
+      "x": 1650, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 920, 
+      "x": 1950, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 500, 
+      "x": 1930, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 470, 
+      "x": 1630, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 60, 
+      "x": 1510, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 40, 
+      "x": 1980, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -360, 
+      "x": 1930, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -340, 
+      "x": 1530, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -730, 
+      "x": 1560, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -820, 
+      "x": 1960, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -950, 
+      "x": 1550, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -910, 
+      "x": 1130, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -560, 
+      "x": 1120, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -100, 
+      "x": 1100, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 250, 
+      "x": 1120, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 270, 
+      "x": 1300, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 330, 
+      "x": 710, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 560, 
+      "x": 500, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 560, 
+      "x": 170, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": 100, 
+      "x": 620, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -320, 
+      "x": 620, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -720, 
+      "x": 620, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -570, 
+      "x": 780, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -860, 
+      "x": 810, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -930, 
+      "x": 630, 
+      "rotation": 0, 
+      "name": "big_black"
+    }, 
+    {
+      "y": -160, 
+      "x": 50, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -160, 
+      "x": 350, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": 290, 
+      "x": 350, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 290, 
+      "x": 50, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -910, 
+      "x": 50, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -910, 
+      "x": 350, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -820, 
+      "x": 200, 
+      "rotation": 90, 
+      "name": "finish"
+    }, 
+    {
+      "y": -10, 
+      "x": 50, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -10, 
+      "x": 350, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -310, 
+      "x": 350, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -310, 
+      "x": 50, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -610, 
+      "x": 350, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -610, 
+      "x": 50, 
+      "rotation": 90, 
+      "name": "wall_small"
+    }, 
+    {
+      "y": -150, 
+      "x": 200, 
+      "rotation": 180, 
+      "name": "to_negative_pole_changer"
+    }
+  ], 
   "ideal_changes": 3, 
   "attractor_pos": [
     200, 
     200
   ], 
   "background": {
-    "y": 0.0, 
+    "y": -1000.0, 
     "x": 0.0, 
-    "source": "/home/jpartain/Code/attractor/resources/src/bg/level1.png", 
+    "source": "/home/jpartain/Code/attractor/resources/src/bg/level3.png", 
     "w": 2076.0, 
     "h": 2076.0
   }, 
