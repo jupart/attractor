@@ -415,6 +415,30 @@
       "name": "big_black"
     }, 
     {
+      "y": -420, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": -50, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -200, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall"
+    }, 
+    {
+      "y": -422, 
+      "x": 940, 
+      "rotation": 90, 
+      "name": "negapole_weak"
+    }, 
+    {
       "y": 330, 
       "x": 960, 
       "rotation": 180, 
@@ -467,37 +491,17 @@
       "x": 870, 
       "rotation": 270, 
       "name": "finish"
-    }, 
-    {
-      "y": -420, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": -50, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": -200, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall"
-    }, 
-    {
-      "y": -422, 
-      "x": 940, 
-      "rotation": 90, 
-      "name": "negapole_weak"
     }
   ], 
   "ideal_changes": 3, 
+  "attractor_pos": [
+    200, 
+    181
+  ], 
   "background": {
     "y": -1240.0, 
     "x": 0.0, 
-    "source": "resources/src/bg/level2.png", 
+    "source": "/home/jpartain/Code/attractor/resources/src/bg/level2.png", 
     "w": 2076.0, 
     "h": 2076.0
   }, 

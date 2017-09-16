@@ -1567,6 +1567,24 @@
       "name": "wall"
     }, 
     {
+      "y": 500, 
+      "x": 130, 
+      "rotation": 270, 
+      "name": "wall_inlay"
+    }, 
+    {
+      "y": 502, 
+      "x": 150, 
+      "rotation": 270, 
+      "name": "posipole"
+    }, 
+    {
+      "y": 230, 
+      "x": 470, 
+      "rotation": 270, 
+      "name": "wall"
+    }, 
+    {
       "y": 110, 
       "x": 130, 
       "rotation": 0, 
@@ -1643,31 +1661,17 @@
       "x": 980, 
       "rotation": 180, 
       "name": "finish"
-    }, 
-    {
-      "y": 500, 
-      "x": 130, 
-      "rotation": 270, 
-      "name": "wall_inlay"
-    }, 
-    {
-      "y": 502, 
-      "x": 150, 
-      "rotation": 270, 
-      "name": "posipole"
-    }, 
-    {
-      "y": 230, 
-      "x": 470, 
-      "rotation": 270, 
-      "name": "wall"
     }
   ], 
   "ideal_changes": 3, 
+  "attractor_pos": [
+    220, 
+    200
+  ], 
   "background": {
     "y": -1000.0, 
     "x": 0.0, 
-    "source": "resources/src/bg/level3.png", 
+    "source": "/home/jpartain/Code/attractor/resources/src/bg/level3.png", 
     "w": 2076.0, 
     "h": 2076.0
   }, 

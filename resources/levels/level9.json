@@ -26,18 +26,6 @@
     }, 
     {
       "y": 350, 
-      "x": 120, 
-      "rotation": 270, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 50, 
-      "x": 120, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 350, 
       "x": 270, 
       "rotation": 0, 
       "name": "wall"
@@ -107,24 +95,6 @@
       "x": 1020, 
       "rotation": 90, 
       "name": "wall"
-    }, 
-    {
-      "y": 350, 
-      "x": 1020, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 50, 
-      "x": 1020, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 200, 
-      "x": 930, 
-      "rotation": 90, 
-      "name": "finish"
     }, 
     {
       "y": 180, 
@@ -347,13 +317,47 @@
       "x": 1940, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": 350, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 50, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 350, 
+      "x": 1020, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 50, 
+      "x": 1020, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 200, 
+      "x": 930, 
+      "rotation": 90, 
+      "name": "finish"
     }
   ], 
   "ideal_changes": 3, 
+  "attractor_pos": [
+    200, 
+    203
+  ], 
   "background": {
     "y": 0.0, 
     "x": 0.0, 
-    "source": "resources/src/bg/level3.png", 
+    "source": "/home/jpartain/Code/attractor/resources/src/bg/level3.png", 
     "w": 2076.0, 
     "h": 2076.0
   }, 

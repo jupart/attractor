@@ -31,12 +31,6 @@
       "name": "wall"
     }, 
     {
-      "y": 120, 
-      "x": 120, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
       "y": -60, 
       "x": 420, 
       "rotation": 0, 
@@ -139,30 +133,6 @@
       "name": "wall_small"
     }, 
     {
-      "y": 570, 
-      "x": 210, 
-      "rotation": 90, 
-      "name": "finish"
-    }, 
-    {
-      "y": 660, 
-      "x": 120, 
-      "rotation": 270, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 300, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 480, 
-      "x": 960, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
       "y": 840, 
       "x": 420, 
       "rotation": 180, 
@@ -251,24 +221,6 @@
       "x": 1140, 
       "rotation": 0, 
       "name": "wall_small"
-    }, 
-    {
-      "y": -240, 
-      "x": 230, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -240, 
-      "x": 1200, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 120, 
-      "x": 1200, 
-      "rotation": 180, 
-      "name": "wall_corner"
     }, 
     {
       "y": 120, 
@@ -389,24 +341,6 @@
       "x": 1140, 
       "rotation": 180, 
       "name": "tri_wall_corner"
-    }, 
-    {
-      "y": 1020, 
-      "x": 230, 
-      "rotation": 270, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 660, 
-      "x": 1200, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 1020, 
-      "x": 1200, 
-      "rotation": 180, 
-      "name": "wall_corner"
     }, 
     {
       "y": 480, 
@@ -629,15 +563,85 @@
       "x": 330, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": 120, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 660, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 300, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 480, 
+      "x": 960, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -240, 
+      "x": 230, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -240, 
+      "x": 1200, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 120, 
+      "x": 1200, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 1020, 
+      "x": 230, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 660, 
+      "x": 1200, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 1020, 
+      "x": 1200, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 570, 
+      "x": 210, 
+      "rotation": 90, 
+      "name": "finish"
     }
+  ], 
+  "ideal_changes": 3, 
+  "attractor_pos": [
+    200, 
+    210
   ], 
   "background": {
     "y": -250.0, 
     "x": 150.0, 
-    "source": "resources/src/bg/level2.png", 
+    "source": "/home/jpartain/Code/attractor/resources/src/bg/level2.png", 
     "w": 2076.0, 
     "h": 2076.0
-  },
-  "ideal_time": 10,
-  "ideal_changes": 3
+  }, 
+  "ideal_time": 10
 }

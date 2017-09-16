@@ -522,6 +522,8 @@ class AttractorGame(Widget):
 
         level_data['ideal_time'] = self.editor.level.stats.ideal_time
         level_data['ideal_changes'] = self.editor.level.stats.ideal_changes
+        level_data['attractor_pos'] = (int(self.editor.screen.ids.attractor_pos_x.text),
+                                       int(self.editor.screen.ids.attractor_pos_y.text))
 
         with open('resources/levels/' + level_file_name + '.json', 'wb') as f:
             json.dump(level_data, f, indent=2)
@@ -589,6 +591,18 @@ class AttractorGame(Widget):
         except KeyError:
             track = 'bum_dabum_da'
 
+        # Try to get attractor position from level
+        try:
+            pos = level_data['attractor_pos']
+            attractor_pos = (int(pos[0]), int(pos[1]))
+        except KeyError:
+            attractor_pos = (200, 200)
+
+        xbox = self.gameworld.gamescreenmanager.ids.editor_screen.ids.attractor_pos_x
+        ybox = self.gameworld.gamescreenmanager.ids.editor_screen.ids.attractor_pos_y
+        xbox.text = str(attractor_pos[0])
+        ybox.text = str(attractor_pos[1])
+
         # Order entities
         finish = None
         corners= []
@@ -605,7 +619,10 @@ class AttractorGame(Widget):
             else:
                 other.append(ent)
 
-        ents = changers + other + corners + finish
+        try:
+            ents = changers + other + corners + finish
+        except TypeError:
+            ents = level_data['entities']
 
         for ent in ents:
             name = ent['name']
@@ -616,7 +633,7 @@ class AttractorGame(Widget):
             ids = self.entity_factory.create_entity_at(name, x, y, rot)
             self.editor.level.add_entity(name, x, y, rot, ids)
 
-        self.create_attractor()
+        self.create_attractor(attractor_pos)
 
         if self.gameworld.state == 'editor':
             self.ids.play_camera.focus_entity = False
@@ -653,14 +670,15 @@ class AttractorGame(Widget):
         self.ids.play_camera.canvas.before.clear()
         self.editor.level.clear()
 
-    def create_attractor(self):
+    def create_attractor(self, pos):
+        print pos
         self.attractor_id = self.entity_factory.create_entity_at('attractor',
-                                                                 200,
-                                                                 200,
+                                                                 pos[0],
+                                                                 pos[1],
                                                                  0)
         self.editor.level.add_entity('attractor',
-                                     200,
-                                     200,
+                                     pos[0],
+                                     pos[1],
                                      0,
                                      self.attractor_id)
 

@@ -1,0 +1,16 @@
+{
+  "entities": [], 
+  "ideal_changes": 3, 
+  "attractor_pos": [
+    200, 
+    200
+  ], 
+  "background": {
+    "y": 0.0, 
+    "x": 0.0, 
+    "source": "/home/jpartain/Code/attractor/resources/src/bg/level1.png", 
+    "w": 2076.0, 
+    "h": 2076.0
+  }, 
+  "ideal_time": 10
+}

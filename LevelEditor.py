@@ -45,7 +45,11 @@ class LevelEditorSystem(GameSystem):
         on_grid_y = int(round(pos[1]/grid) * grid)
 
         draw_ent = self.gameworld.entities[self.asset_id]
-        draw_ent.position.pos = (on_grid_x, on_grid_y)
+
+        try:
+            draw_ent.position.pos = (on_grid_x, on_grid_y)
+        except:
+            pass
 
         if hasattr(draw_ent, 'cymunk_physics'):
             draw_ent.cymunk_physics.body.position = draw_ent.position.pos

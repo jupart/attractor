@@ -2,24 +2,18 @@
   "entities": [
     {
       "y": 210, 
+      "x": 740, 
+      "rotation": 0, 
+      "name": "to_positive_pole_changer"
+    }, 
+    {
+      "y": 210, 
       "x": 90, 
       "rotation": 270, 
       "name": "wall_inlay"
     }, 
     {
       "y": 360, 
-      "x": 90, 
-      "rotation": 270, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 60, 
-      "x": 90, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 360, 
       "x": 240, 
       "rotation": 0, 
       "name": "wall"
@@ -59,24 +53,6 @@
       "x": 1110, 
       "rotation": 270, 
       "name": "wall"
-    }, 
-    {
-      "y": 60, 
-      "x": 1110, 
-      "rotation": 90, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 360, 
-      "x": 1110, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 210, 
-      "x": 1020, 
-      "rotation": 180, 
-      "name": "finish"
     }, 
     {
       "y": 190, 
@@ -319,17 +295,45 @@
       "name": "wall"
     }, 
     {
-      "y": 210, 
-      "x": 740, 
+      "y": 360, 
+      "x": 90, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 60, 
+      "x": 90, 
       "rotation": 0, 
-      "name": "to_positive_pole_changer"
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 60, 
+      "x": 1110, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 360, 
+      "x": 1110, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 210, 
+      "x": 1020, 
+      "rotation": 180, 
+      "name": "finish"
     }
   ], 
   "ideal_changes": 3, 
+  "attractor_pos": [
+    190, 
+    210
+  ], 
   "background": {
     "y": -1000.0, 
     "x": 0.0, 
-    "source": "resources/src/bg/level3.png", 
+    "source": "/home/jpartain/Code/attractor/resources/src/bg/level3.png", 
     "w": 2076.0, 
     "h": 2076.0
   }, 

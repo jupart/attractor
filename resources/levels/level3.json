@@ -55,24 +55,6 @@
       "name": "wall_small"
     }, 
     {
-      "y": 30, 
-      "x": 660, 
-      "rotation": 180, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 30, 
-      "x": 120, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": 330, 
-      "x": 120, 
-      "rotation": 270, 
-      "name": "wall_corner"
-    }, 
-    {
       "y": -360, 
       "x": 660, 
       "rotation": 270, 
@@ -113,24 +95,6 @@
       "x": 810, 
       "rotation": 180, 
       "name": "wall"
-    }, 
-    {
-      "y": -900, 
-      "x": 810, 
-      "rotation": 180, 
-      "name": "finish"
-    }, 
-    {
-      "y": -990, 
-      "x": 660, 
-      "rotation": 0, 
-      "name": "wall_corner"
-    }, 
-    {
-      "y": -990, 
-      "x": 960, 
-      "rotation": 90, 
-      "name": "wall_corner"
     }, 
     {
       "y": -358, 
@@ -155,12 +119,6 @@
       "x": 660, 
       "rotation": 180, 
       "name": "wall_small"
-    }, 
-    {
-      "y": 330, 
-      "x": 960, 
-      "rotation": 180, 
-      "name": "wall_corner"
     }, 
     {
       "y": 180, 
@@ -371,15 +329,61 @@
       "x": 780, 
       "rotation": 0, 
       "name": "big_black"
+    }, 
+    {
+      "y": 30, 
+      "x": 660, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 30, 
+      "x": 120, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 330, 
+      "x": 120, 
+      "rotation": 270, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -990, 
+      "x": 660, 
+      "rotation": 0, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -990, 
+      "x": 960, 
+      "rotation": 90, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": 330, 
+      "x": 960, 
+      "rotation": 180, 
+      "name": "wall_corner"
+    }, 
+    {
+      "y": -900, 
+      "x": 810, 
+      "rotation": 180, 
+      "name": "finish"
     }
+  ], 
+  "ideal_changes": 3, 
+  "attractor_pos": [
+    200, 
+    183
   ], 
   "background": {
     "y": -1040.0, 
     "x": 0.0, 
-    "source": "resources/src/bg/level1.png", 
+    "source": "/home/jpartain/Code/attractor/resources/src/bg/level1.png", 
     "w": 2076.0, 
     "h": 2076.0
-  },
-  "ideal_time": 10,
-  "ideal_changes": 3
+  }, 
+  "ideal_time": 10
 }
