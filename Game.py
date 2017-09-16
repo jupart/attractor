@@ -511,14 +511,15 @@ class AttractorGame(Widget):
                                         'y': level.background.pos[1],
                                         'w': level.background.size[0],
                                         'h': level.background.size[1],
-                                        'source': level.background.source}
+                                        'source': source}
 
         if level.background2 is not None:
+            source = 'resources' + level.background2.source.split('resources')[1]
             level_data['background2'] = {'x': level.background2.pos[0],
                                          'y': level.background2.pos[1],
                                          'w': level.background2.size[0],
                                          'h': level.background2.size[1],
-                                         'source': level.background2.source}
+                                         'source': source}
 
         level_data['ideal_time'] = self.editor.level.stats.ideal_time
         level_data['ideal_changes'] = self.editor.level.stats.ideal_changes
