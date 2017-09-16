@@ -357,7 +357,7 @@
   "background": {
     "y": 0.0, 
     "x": 0.0, 
-    "source": "/home/jpartain/Code/attractor/resources/src/bg/level3.png", 
+    "source": "resources/src/bg/level3.png", 
     "w": 2076.0, 
     "h": 2076.0
   }, 

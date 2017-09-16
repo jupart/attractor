@@ -639,7 +639,7 @@
   "background": {
     "y": -250.0, 
     "x": 150.0, 
-    "source": "/home/jpartain/Code/attractor/resources/src/bg/level2.png", 
+    "source": "resources/src/bg/level2.png", 
     "w": 2076.0, 
     "h": 2076.0
   }, 
