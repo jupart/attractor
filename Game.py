@@ -329,8 +329,6 @@ class AttractorGame(Widget):
     def populate_level_select_menu(self):
         h_int = 40
         h = str(h_int) + 'dp'
-        z1 = 2
-        z2 = 1
 
         scr = self.ids.gamescreenmanager.ids.menu_screen
         buttons = scr.level_buttons
@@ -672,7 +670,6 @@ class AttractorGame(Widget):
         self.editor.level.clear()
 
     def create_attractor(self, pos):
-        print pos
         self.attractor_id = self.entity_factory.create_entity_at('attractor',
                                                                  pos[0],
                                                                  pos[1],
