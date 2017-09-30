@@ -22,6 +22,7 @@ class Level():
     background = None
     background2 = None
     stats = Stats()
+    attractor_pos = (-1, -1)
 
     def __init__(self, **kwargs):
         pass

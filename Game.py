@@ -113,6 +113,8 @@ class AttractorGame(Widget):
         physics.add_collision_handler(1, 2, self.membrane_solver)
         physics.add_collision_handler(1, 1, self.wall_solver)
 
+        self.update_track('title')
+
     def _keyboard_closed(self):
         pass
 
@@ -588,7 +590,7 @@ class AttractorGame(Widget):
         try:
             track = level_data['track']
         except KeyError:
-            track = 'bum_dabum_da'
+            track = 'daflute'
 
         # Try to get attractor position from level
         try:
@@ -596,6 +598,8 @@ class AttractorGame(Widget):
             attractor_pos = (int(pos[0]), int(pos[1]))
         except KeyError:
             attractor_pos = (200, 200)
+
+        self.editor.level.attractor_pos = attractor_pos
 
         xbox = self.gameworld.gamescreenmanager.ids.editor_screen.ids.attractor_pos_x
         ybox = self.gameworld.gamescreenmanager.ids.editor_screen.ids.attractor_pos_y
@@ -681,15 +685,26 @@ class AttractorGame(Widget):
                                      self.attractor_id)
 
     def reset_attractor(self):
+        self.play_sound(self.change_sound, 2.0)
+
         attractor = self.gameworld.entities[self.attractor_id]
-        attractor.position.pos = (200, 200)
-        attractor.cymunk_physics.body.position = (200, 200)
+        attractor.attractor.to_change = 'r'
+        attractor.charge.charge = 'n'
+        attractor.cymunk_physics.body.velocity = (0, 0)
+
+        Clock.schedule_once(lambda dt: self.return_attractor_to_start_pos(), 0.5)
+
+    def return_attractor_to_start_pos(self):
+        attractor = self.gameworld.entities[self.attractor_id]
+
+        attractor.position.pos = self.editor.level.attractor_pos
+        attractor.cymunk_physics.body.position = self.editor.level.attractor_pos
         attractor.cymunk_physics.body.velocity = (0, 0)
 
         attractor.charge.charge = 'n'
         attractor.attractor.to_change = 'n'
-        self.play_sound(self.change_sound, 2.0)
         # self.play_sound(self.reset_sound, 1.0)
+
 
     def update_timer(self, dt):
         self.editor.level.stats.timer += dt
@@ -706,17 +721,16 @@ class AttractorGame(Widget):
         manager = self.gameworld.managers['sound_manager']
         if manager.current_track != name:
             self.fade_out_track()
-            Clock.schedule_once(lambda dt: self.fade_in_track(name), 1)
+            Clock.schedule_once(lambda dt: self.fade_in_track(name), 3)
 
     def fade_in_track(self, name):
         manager = self.gameworld.managers['sound_manager']
-        anim = Animation(music_volume=1.0, duration=1)
-        anim.start(manager)
+        manager.music_volume = 1.0
         manager.play_track(name)
 
     def fade_out_track(self):
         manager = self.gameworld.managers['sound_manager']
-        anim = Animation(music_volume=0.0, duration=1)
+        anim = Animation(music_volume=0.0, duration=2)
         anim.start(manager)
 
     def play_sound(self, direct_num, vol=1.0):
