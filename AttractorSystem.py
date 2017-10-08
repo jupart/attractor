@@ -101,12 +101,19 @@ class AttractorSystem(GameSystem):
                 size_anim3 = Animation(size=(r, r * 0.5), d=time, t=line)
                 size_anim4 = Animation(size=(r - s, r * 0.5 - s), d=time, t=line)
             elif pole == 'r':
-                fill_anim = Animation(r=1, g=1, b=1, d=0.5, t=line)
-                outline_anim = Animation(r=1, g=1, b=1, d=0.5, t=line)
+                fill_anim = Animation(r=0.314, g=0.314, b=0.314, d=0.5, t=line)
+                outline_anim = Animation(r=0.314, g=0.314, b=0.314, d=0.5, t=line)
                 size_anim1 = Animation(size=(0, 0), d=0.5, t=line)
                 size_anim2 = Animation(size=(0, 0), d=0.5, t=line)
                 size_anim3 = Animation(size=(0, 0), d=0.5, t=line)
                 size_anim4 = Animation(size=(0, 0), d=0.5, t=line)
+            elif pole == 'f':
+                fill_anim = Animation(r=0, g=0, b=0, d=0.6, t='in_expo')
+                outline_anim = Animation(r=0, g=0, b=0, d=0.6, t='in_expo')
+                size_anim1 = Animation(size=(0, 0), d=0.6, t='in_expo')
+                size_anim2 = Animation(size=(0, 0), d=0.6, t='in_expo')
+                size_anim3 = Animation(size=(0, 0), d=0.6, t='in_expo')
+                size_anim4 = Animation(size=(0, 0), d=0.6, t='in_expo')
             else:
                 fill_anim = Animation(r=grey_fill[0], g=grey_fill[1], b=grey_fill[2],
                                       d=time, t=line)

@@ -216,21 +216,30 @@ class AttractorGame(Widget):
                                                    'charge'],
                                  screenmanager_screen='editor_screen')
         self.gameworld.add_state(state_name='finish',
-                                 systems_added=[],
-                                 systems_removed=[],
-                                 systems_paused=['position',
-                                                 'rotate',
-                                                 'rotate_renderer',
-                                                 'bg_renderer',
-                                                 'mid_renderer',
-                                                 'animation',
-                                                 'cymunk_physics',
-                                                 'play_camera',
-                                                 'pole_changer',
-                                                 'finish',
-                                                 'attractor',
-                                                 'charge'],
-                                 systems_unpaused=[],
+                                 systems_added=['position',
+                                                'rotate',
+                                                'rotate_renderer',
+                                                'bg_renderer',
+                                                'mid_renderer',
+                                                'animation',
+                                                'cymunk_physics',
+                                                'play_camera',
+                                                'pole_changer',
+                                                'attractor',
+                                                'charge'],
+                                 systems_removed=['finish'],
+                                 systems_paused=['finish'],
+                                 systems_unpaused=['position',
+                                                   'rotate',
+                                                   'rotate_renderer',
+                                                   'bg_renderer',
+                                                   'mid_renderer',
+                                                   'animation',
+                                                   'cymunk_physics',
+                                                   'play_camera',
+                                                   'pole_changer',
+                                                   'attractor',
+                                                   'charge'],
                                  screenmanager_screen='finish_screen')
 
     def load_models(self):
@@ -299,6 +308,8 @@ class AttractorGame(Widget):
         # self.entity_factory.create_entity_at('posipole', 0, 100)
 
     def go_to_menu_screen(self):
+        self.gameworld.gamescreenmanager.transition.direction = 'up'
+
         if self.gameworld.state == 'editor':
             self.toggle_level_editor()
             if self.editor.asset_id != -1:
@@ -375,6 +386,7 @@ class AttractorGame(Widget):
         buttons.bind(minimum_height=buttons.setter('height'))
 
     def go_to_play_screen(self, *args):
+        self.gameworld.gamescreenmanager.transition.direction = 'up'
         self.gameworld.state = 'play'
 
     def go_to_editor_screen(self):
@@ -534,8 +546,7 @@ class AttractorGame(Widget):
         self.current_level = int(button.text)
 
         self.load_level(level_file_name)
-        self.gameworld.gamescreenmanager.transition.direction = 'left'
-        self.gameworld.state = 'play'
+        self.go_to_play_screen()
 
         Clock.schedule_once(lambda dt: self.hide_level_menu(), 1)
 
@@ -657,6 +668,12 @@ class AttractorGame(Widget):
         self.update_track(track)
 
     def finish_level(self):
+        attractor = self.gameworld.entities[self.attractor_id]
+        attractor.attractor.to_change = 'f'
+        attractor.charge.charge = 'n'
+        attractor.cymunk_physics.body.velocity = (0, 0)
+
+        self.gameworld.gamescreenmanager.transition.direction = 'up'
         self.gameworld.state = 'finish'
         screen = self.ids.gamescreenmanager.ids.finish_screen
 
@@ -665,8 +682,6 @@ class AttractorGame(Widget):
 
         screen.ids.changes.text = str(self.editor.level.stats.changes) + ' / ' + \
             str(self.editor.level.stats.ideal_changes)
-
-        # self.fade_out_track()
 
     def clear_level(self):
         self.gameworld.clear_entities()
@@ -715,13 +730,18 @@ class AttractorGame(Widget):
         self.current_level = self.current_level + 1
         self.load_level('level' + str(self.current_level))
 
+        self.gameworld.gamescreenmanager.transition.direction = 'down'
         self.gameworld.state = 'play'
 
     def update_track(self, name):
         manager = self.gameworld.managers['sound_manager']
-        if manager.current_track != name:
+        if manager.current_track is None:
+            Clock.schedule_once(lambda dt: self.fade_in_track(name), 0)
+        elif manager.current_track != name:
             self.fade_out_track()
             Clock.schedule_once(lambda dt: self.fade_in_track(name), 3)
+        else:
+            pass
 
     def fade_in_track(self, name):
         manager = self.gameworld.managers['sound_manager']

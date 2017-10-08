@@ -338,7 +338,7 @@
                 {"type": "position", "x": 0, "y": 0},
                 {"type": "render", "texture": "finish", "size_x": 120, "size_y": 120},
                 {"type": "rotate", "rotation": 0},
-                {"type": "finish", "size_x": 120, "size_y": 120}
+                {"type": "finish", "size_x": 70, "size_y": 70}
             ]
         },
 		{
