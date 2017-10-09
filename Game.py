@@ -113,6 +113,7 @@ class AttractorGame(Widget):
         physics.add_collision_handler(1, 2, self.membrane_solver)
         physics.add_collision_handler(1, 1, self.wall_solver)
 
+        self.gameworld.managers['sound_manager'].loop_music = True
         self.update_track('title')
 
     def _keyboard_closed(self):
@@ -736,7 +737,7 @@ class AttractorGame(Widget):
     def update_track(self, name):
         manager = self.gameworld.managers['sound_manager']
         if manager.current_track is None:
-            Clock.schedule_once(lambda dt: self.fade_in_track(name), 0)
+            self.fade_in_track(name)
         elif manager.current_track != name:
             self.fade_out_track()
             Clock.schedule_once(lambda dt: self.fade_in_track(name), 3)
