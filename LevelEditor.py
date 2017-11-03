@@ -1,5 +1,6 @@
 from math import radians
 
+from kivy.utils import platform
 from kivy.app import App
 from kivy.core.window import Window
 from kivent_core.systems.gamesystem import GameSystem
@@ -19,6 +20,7 @@ class LevelEditorSystem(GameSystem):
         self.screen = None
         self.entity_to_place = ''
         self.anchors = []
+        self.current_location = [0, 0]
 
     def update(self, dt):
         if self.asset_id != -1:
@@ -28,8 +30,12 @@ class LevelEditorSystem(GameSystem):
         app = App.get_running_app()
         cam_pos = app.game.ids.play_camera.camera_pos
         scale = app.game.ids.play_camera.camera_scale
-        pos = (Window.mouse_pos[0] * scale - cam_pos[0],
-               Window.mouse_pos[1] * scale - cam_pos[1])
+
+        # if platform == 'android' or platform == 'ios':
+            # pass
+        # else:
+            # self.current_location = [Window.mouse_pos[0] * scale - cam_pos[0],
+                                     # Window.mouse_pos[1] * scale - cam_pos[1]]
 
         try:
             grid = int(self.screen.ids.grid.text)
@@ -41,8 +47,8 @@ class LevelEditorSystem(GameSystem):
         except ValueError:
             r = 0
 
-        on_grid_x = int(round(pos[0]/grid) * grid)
-        on_grid_y = int(round(pos[1]/grid) * grid)
+        on_grid_x = int(round(self.current_location[0]/grid) * grid)
+        on_grid_y = int(round(self.current_location[1]/grid) * grid)
 
         draw_ent = self.gameworld.entities[self.asset_id]
 
@@ -68,7 +74,7 @@ class LevelEditorSystem(GameSystem):
                 ent_id = self.level.ids.pop(i)
                 self.gameworld.remove_entity(ent_id)
 
-    def handle_click(self, touch):
+    def handle_touch(self, touch):
         app = App.get_running_app()
         cam = app.game.ids.play_camera
 
@@ -77,53 +83,54 @@ class LevelEditorSystem(GameSystem):
         pos = (Window.mouse_pos[0] * scale - cam_pos[0],
                Window.mouse_pos[1] * scale - cam_pos[1])
 
-        if touch.button == 'left':
-            if self.deleting:
-                self.delete_at(pos)
+        if 'button' in touch.profile:
+            if touch.button == 'left':
+                if self.deleting:
+                    self.delete_at(pos)
 
-            else:
-                if self.entity_to_place == '':
-                    return
+                else:
+                    if self.entity_to_place == '':
+                        return
 
-                try:
-                    grid = int(self.screen.ids.grid.text)
-                except ValueError:
-                    grid = 10
+                    try:
+                        grid = int(self.screen.ids.grid.text)
+                    except ValueError:
+                        grid = 10
 
-                try:
-                    r = int(self.screen.ids.rotation.text)
-                except ValueError:
-                    r = 0
+                    try:
+                        r = int(self.screen.ids.rotation.text)
+                    except ValueError:
+                        r = 0
 
-                on_grid_x = int(round(pos[0]/grid) * grid)
-                on_grid_y = int(round(pos[1]/grid) * grid)
+                    on_grid_x = int(round(pos[0]/grid) * grid)
+                    on_grid_y = int(round(pos[1]/grid) * grid)
 
-                ids = app.game.entity_factory.create_entity_at(self.entity_to_place,
-                                                               on_grid_x,
-                                                               on_grid_y,
-                                                               r)
-                self.level.add_entity(self.entity_to_place,
-                                      on_grid_x,
-                                      on_grid_y,
-                                      r,
-                                      ids)
+                    ids = app.game.entity_factory.create_entity_at(self.entity_to_place,
+                                                                   on_grid_x,
+                                                                   on_grid_y,
+                                                                   r)
+                    self.level.add_entity(self.entity_to_place,
+                                          on_grid_x,
+                                          on_grid_y,
+                                          r,
+                                          ids)
 
-        elif touch.button == 'right':
-            if self.asset_id != -1:
-                self.entity_to_place = ''
-                self.gameworld.remove_entity(self.asset_id)
-                self.asset_id = -1
+            elif touch.button == 'right':
+                if self.asset_id != -1:
+                    self.entity_to_place = ''
+                    self.gameworld.remove_entity(self.asset_id)
+                    self.asset_id = -1
 
-        elif touch.button == 'scrollup':
-            cam.camera_scale = cam.camera_scale + 0.1
-            cam.look_at(pos)
+            elif touch.button == 'scrollup':
+                cam.camera_scale = cam.camera_scale + 0.1
+                cam.look_at(pos)
 
-        elif touch.button == 'scrolldown':
-            cam.camera_scale = cam.camera_scale - 0.1
-            cam.look_at(pos)
+            elif touch.button == 'scrolldown':
+                cam.camera_scale = cam.camera_scale - 0.1
+                cam.look_at(pos)
 
-        elif touch.button == 'middle':
-            cam.look_at(pos)
+            elif touch.button == 'middle':
+                cam.look_at(pos)
 
     def handle_key_down(self, key):
         if key == 'r':
@@ -190,6 +197,43 @@ class LevelEditorSystem(GameSystem):
         for anchor in self.anchors:
             canvas.after.remove(anchor)
         del self.anchors[:]
+
+    def move_entity_to_place(self, x, y):
+        try:
+            grid = int(self.screen.ids.grid.text)
+        except ValueError:
+            grid = 10
+
+        self.current_location[0] += x * grid
+        self.current_location[1] += y * grid
+
+    def set_entity(self):
+        if self.entity_to_place == '':
+            return
+
+        try:
+            grid = int(self.screen.ids.grid.text)
+        except ValueError:
+            grid = 10
+
+        try:
+            r = int(self.screen.ids.rotation.text)
+        except ValueError:
+            r = 0
+
+        on_grid_x = int(round(self.current_location[0]/grid) * grid)
+        on_grid_y = int(round(self.current_location[1]/grid) * grid)
+
+        app = App.get_running_app()
+        ids = app.game.entity_factory.create_entity_at(self.entity_to_place,
+                                                       on_grid_x,
+                                                       on_grid_y,
+                                                       r)
+        self.level.add_entity(self.entity_to_place,
+                              on_grid_x,
+                              on_grid_y,
+                              r,
+                              ids)
 
 
 Factory.register('LevelEditorSystem', cls=LevelEditorSystem)

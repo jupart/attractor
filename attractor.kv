@@ -303,6 +303,53 @@
 <EditorScreen@GameScreen>:
     name: 'editor_screen'
 
+    FloatLayout:
+
+        GridLayout:
+            canvas:
+                Color:
+                    rgba: 0.12, 0.12, 0.12, 0.25
+
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            size_hint: 0.2, 0.2
+            pos_hint: {'x': 0.8, 'y': 0.8}
+            cols: 3
+
+            Label:
+                text: ''
+
+            BetterButton:
+                text: "^"
+                on_release: app.game.editor.move_entity_to_place(0, 1)
+
+            Label:
+                text: ''
+
+            BetterButton:
+                text: "<"
+                on_release: app.game.editor.move_entity_to_place(-1, 0)
+
+            BetterButton:
+                text: "x"
+                on_release: app.game.editor.set_entity()
+
+            BetterButton:
+                text: ">"
+                on_release: app.game.editor.move_entity_to_place(1, 0)
+
+            Label:
+                text: ''
+
+            BetterButton:
+                text: "v"
+                on_release: app.game.editor.move_entity_to_place(0, -1)
+
+            Label:
+                text: ''
+
     Button:
         size_hint: 0.1, 0.035
         pos: 0, self.parent.height - self.height
@@ -319,7 +366,7 @@
         id: ui
         padding: 0
         spacing: 0
-        size_hint: 1, 0.035
+        size_hint: 1, 0.05
         orientation: 'horizontal'
         pos: 0, 0
 
@@ -449,7 +496,4 @@
 
             BetterButton:
                 text: "Continue"
-                elevation: 2
-                raised_elevation: 2
-                press_elevation: 1
                 on_release: app.game.go_to_next_level()

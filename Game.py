@@ -416,25 +416,8 @@ class AttractorGame(Widget):
         if super(AttractorGame, self).on_touch_down(touch):
             return True
 
-        state = self.gameworld.state
-
-        if state == 'editor':
-            self.editor.handle_click(touch)
-
-        # cam = self.ids.play_camera
-
-        # cam_pos = cam.camera_pos
-        # scale = cam.camera_scale
-        # pos = (touch.pos[0] * scale - cam_pos[0], touch.pos[1] * scale - cam_pos[1])
-
-        # For debug use only
-        # elif state == 'play':
-            # b = self.moving_to
-            # b.position = pos
-
-            # bodies = self.ids.cymunk_physics.space.bodies
-            # if b not in bodies:
-                # self.ids.cymunk_physics.space.add_body(b)
+        if self.gameworld.state == 'editor':
+            self.editor.handle_touch(touch)
 
     def toggle_level_editor(self):
         if self.gameworld.state == 'editor':
@@ -473,6 +456,8 @@ class AttractorGame(Widget):
     def grab_entity_to_place(self, instance):
         self.dd.dismiss()
 
+        pos = self.ids.play_camera.get_camera_center()
+
         if self.editor.asset_id != -1:
             self.gameworld.remove_entity(self.editor.asset_id)
             self.editor.asset_id = -1
@@ -482,9 +467,11 @@ class AttractorGame(Widget):
             self.editor.entity_to_place = instance.text
             self.editor.asset_id = self.entity_factory.create_entity_at(
                         instance.text,
-                        0,
-                        0,
+                        pos[0],
+                        pos[1],
                         int(self.editor.screen.ids.rotation.text))
+
+        self.editor.current_location = [pos[0], pos[1]]
 
     def update_editor_rotation(self, r):
         asset_id = self.editor.asset_id
