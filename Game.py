@@ -93,7 +93,6 @@ class AttractorGame(Widget):
         self.setup_states()
         self.gameworld.state = 'menu'
         self.load_models()
-        self.load_animations()
         self.load_sounds()
         self.load_music()
 
@@ -258,22 +257,6 @@ class AttractorGame(Widget):
             uv = list((uv[0], uv[3], uv[2], uv[1]))
             model = model_manager.models[asset_name]
             model.set_textured_rectangle(width, height, uv)
-
-    def load_animations(self):
-        manager = self.gameworld.animation_manager
-        with open('resources/animations.json') as j_file:
-            data = json.load(j_file)
-
-        for anim in data['animations']:
-            animation_frames = []
-
-            for f in anim['frames']:
-                animation_frames.append({
-                    'texture': f['frame'],
-                    'model': f['frame'],
-                    'duration': anim['duration']})
-
-            manager.load_animation(anim['name'], len(animation_frames), animation_frames)
 
     def load_sounds(self):
         manager = self.gameworld.managers['sound_manager']
